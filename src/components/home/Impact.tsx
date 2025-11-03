@@ -50,49 +50,70 @@ export const Impact = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-24 bg-primary text-primary-foreground relative overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-0 left-0 w-96 h-96 bg-accent rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-secondary rounded-full blur-3xl" />
+    <section ref={sectionRef} className="py-32 bg-gradient-to-br from-primary via-primary to-primary-dark text-primary-foreground relative overflow-hidden">
+      {/* Cinematic Background Pattern */}
+      <div className="absolute inset-0">
+        <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-gradient-gold opacity-20 rounded-full blur-[150px] animate-float-slow" />
+        <div className="absolute bottom-0 right-0 w-[700px] h-[700px] bg-gradient-aqua opacity-15 rounded-full blur-[150px] animate-float-slow" style={{ animationDelay: '4s' }} />
+        <div className="absolute top-1/2 left-1/2 w-[500px] h-[500px] bg-white opacity-5 rounded-full blur-[120px]" />
+      </div>
+
+      {/* Animated Particles */}
+      <div className="absolute inset-0 overflow-hidden">
+        {[...Array(15)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute w-1 h-1 bg-white/40 rounded-full animate-particle"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 15}s`,
+              animationDuration: `${12 + Math.random() * 8}s`,
+            }}
+          />
+        ))}
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-6xl mx-auto">
-          {/* Section Header */}
-          <div className="text-center mb-16">
-            <span className="inline-block px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm text-white text-sm font-semibold mb-4">
-              Making a Difference
-            </span>
-            <h2 className="text-4xl md:text-5xl font-bold font-['Playfair_Display'] text-white mb-6">
+          {/* Elegant Section Header */}
+          <div className="text-center mb-20 reveal">
+            <div className="inline-flex items-center space-x-2 glass-premium px-6 py-3 rounded-full mb-6 shimmer">
+              <div className="w-2 h-2 bg-gradient-gold rounded-full animate-pulse" />
+              <span className="text-sm font-semibold text-white tracking-wider uppercase">
+                Making a Difference
+              </span>
+            </div>
+            <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold font-['Playfair_Display'] text-white mb-8 leading-tight text-glow">
               Our Impact in Numbers
             </h2>
-            <p className="text-xl text-white/90 max-w-3xl mx-auto">
+            <p className="text-xl md:text-2xl text-white/95 max-w-3xl mx-auto leading-relaxed font-light">
               Real change, measurable results, and transformed lives across East and Central Africa.
             </p>
           </div>
 
-          {/* Stats Grid */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+          {/* Cinematic Stats Grid with Depth */}
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-10">
             {stats.map((stat, index) => {
               const Icon = stat.icon;
+              const gradients = ['bg-gradient-aqua', 'bg-gradient-sapphire', 'bg-gradient-gold', 'bg-gradient-primary'];
               return (
                 <div
                   key={stat.label}
-                  className="text-center group"
-                  style={{ animationDelay: `${index * 0.1}s` }}
+                  className="text-center group reveal"
+                  style={{ animationDelay: `${index * 0.15}s` }}
                 >
-                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-white/10 backdrop-blur-sm mb-4 group-hover:scale-110 transition-smooth">
-                    <Icon className="w-8 h-8 text-accent" />
+                  <div className={`inline-flex items-center justify-center w-20 h-20 rounded-3xl ${gradients[index]} mb-6 group-hover:rotate-12 group-hover:scale-125 transition-all duration-500 shadow-elegant`}>
+                    <Icon className="w-10 h-10 text-white" />
                   </div>
-                  <div className="text-5xl md:text-6xl font-bold mb-2">
+                  <div className="text-6xl md:text-7xl font-bold mb-4 text-white text-glow group-hover:scale-110 transition-transform">
                     {isVisible ? (
                       <CountUp end={stat.value} suffix={stat.suffix} />
                     ) : (
                       "0"
                     )}
                   </div>
-                  <div className="text-sm md:text-base text-white/80 font-medium">
+                  <div className="text-base md:text-lg text-white/90 font-semibold tracking-wide">
                     {stat.label}
                   </div>
                 </div>

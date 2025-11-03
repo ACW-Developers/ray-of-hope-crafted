@@ -2,55 +2,68 @@ import { Target, Eye, Heart } from "lucide-react";
 
 export const Mission = () => {
   return (
-    <section className="py-24 bg-background">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-32 bg-background relative overflow-hidden">
+      {/* Architectural Background */}
+      <div className="absolute inset-0 bg-gradient-subtle opacity-50" />
+      <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-primary/5 to-transparent" />
+      
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-6xl mx-auto">
-          {/* Section Header */}
-          <div className="text-center mb-16">
-            <span className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-4">
-              Our Purpose
-            </span>
-            <h2 className="text-4xl md:text-5xl font-bold font-['Playfair_Display'] gradient-text mb-6">
+          {/* Elegant Section Header */}
+          <div className="text-center mb-20 reveal">
+            <div className="inline-flex items-center space-x-2 glass-premium px-6 py-3 rounded-full mb-6">
+              <div className="w-2 h-2 bg-gradient-primary rounded-full animate-pulse" />
+              <span className="text-sm font-semibold text-primary tracking-wider uppercase">
+                Our Purpose
+              </span>
+            </div>
+            <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold font-['Playfair_Display'] gradient-text mb-8 leading-tight">
               Mission & Vision
             </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed font-light">
               Guided by faith and compassion, we work to transform lives and restore dignity.
             </p>
           </div>
 
-          {/* Cards */}
-          <div className="grid md:grid-cols-2 gap-8 mb-16">
+          {/* Floating Architectural Cards */}
+          <div className="grid md:grid-cols-2 gap-10 mb-20">
             {/* Mission Card */}
-            <div className="glass rounded-3xl p-8 md:p-10 hover:shadow-strong transition-smooth group">
-              <div className="w-16 h-16 rounded-2xl bg-gradient-primary flex items-center justify-center mb-6 group-hover:scale-110 transition-smooth shadow-soft">
-                <Target className="w-8 h-8 text-primary-foreground" />
+            <div className="glass-premium rounded-[2rem] p-10 md:p-12 floating-card group relative overflow-hidden reveal" style={{ animationDelay: '0.2s' }}>
+              <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-aqua opacity-10 rounded-full blur-[100px] group-hover:scale-150 transition-transform duration-1000" />
+              <div className="relative z-10">
+                <div className="w-20 h-20 rounded-3xl bg-gradient-primary flex items-center justify-center mb-8 group-hover:rotate-12 group-hover:scale-110 transition-all duration-500 shadow-elegant">
+                  <Target className="w-10 h-10 text-primary-foreground" />
+                </div>
+                <h3 className="text-3xl md:text-4xl font-bold mb-6 font-['Playfair_Display'] group-hover:text-primary transition-colors">Our Mission</h3>
+                <p className="text-muted-foreground leading-relaxed text-lg md:text-xl font-light">
+                  To support, educate, and protect vulnerable children, empowering them to become
+                  who God created them to be. We provide holistic care that addresses physical,
+                  emotional, and spiritual needs.
+                </p>
               </div>
-              <h3 className="text-2xl font-bold mb-4 font-['Playfair_Display']">Our Mission</h3>
-              <p className="text-muted-foreground leading-relaxed text-lg">
-                To support, educate, and protect vulnerable children, empowering them to become
-                who God created them to be. We provide holistic care that addresses physical,
-                emotional, and spiritual needs.
-              </p>
             </div>
 
             {/* Vision Card */}
-            <div className="glass rounded-3xl p-8 md:p-10 hover:shadow-strong transition-smooth group">
-              <div className="w-16 h-16 rounded-2xl bg-gradient-accent flex items-center justify-center mb-6 group-hover:scale-110 transition-smooth shadow-soft">
-                <Eye className="w-8 h-8 text-accent-foreground" />
+            <div className="glass-premium rounded-[2rem] p-10 md:p-12 floating-card group relative overflow-hidden reveal" style={{ animationDelay: '0.4s' }}>
+              <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-gold opacity-10 rounded-full blur-[100px] group-hover:scale-150 transition-transform duration-1000" />
+              <div className="relative z-10">
+                <div className="w-20 h-20 rounded-3xl bg-gradient-accent flex items-center justify-center mb-8 group-hover:rotate-12 group-hover:scale-110 transition-all duration-500 shadow-elegant">
+                  <Eye className="w-10 h-10 text-accent-foreground" />
+                </div>
+                <h3 className="text-3xl md:text-4xl font-bold mb-6 font-['Playfair_Display'] group-hover:text-primary transition-colors">Our Vision</h3>
+                <p className="text-muted-foreground leading-relaxed text-lg md:text-xl font-light">
+                  A generation of once-forgotten children rising with dignity and hope. We envision
+                  communities where every child has the opportunity to thrive and reach their
+                  full potential.
+                </p>
               </div>
-              <h3 className="text-2xl font-bold mb-4 font-['Playfair_Display']">Our Vision</h3>
-              <p className="text-muted-foreground leading-relaxed text-lg">
-                A generation of once-forgotten children rising with dignity and hope. We envision
-                communities where every child has the opportunity to thrive and reach their
-                full potential.
-              </p>
             </div>
           </div>
 
-          {/* Values Section */}
-          <div className="text-center">
-            <h3 className="text-3xl font-bold mb-8 font-['Playfair_Display']">Our Core Values</h3>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          {/* Elegant Values Grid */}
+          <div className="text-center reveal" style={{ animationDelay: '0.6s' }}>
+            <h3 className="text-4xl md:text-5xl font-bold mb-12 font-['Playfair_Display'] gradient-text">Our Core Values</h3>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               {[
                 "Compassion",
                 "Integrity",
@@ -63,11 +76,13 @@ export const Mission = () => {
               ].map((value, index) => (
                 <div
                   key={value}
-                  className="bg-muted/50 rounded-xl p-4 hover:bg-primary/10 hover:scale-105 transition-smooth"
+                  className="glass-premium rounded-2xl p-6 hover:bg-primary/10 floating-card group cursor-pointer"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
-                  <Heart className="w-5 h-5 text-primary mx-auto mb-2" />
-                  <span className="text-sm font-medium">{value}</span>
+                  <div className="w-12 h-12 bg-gradient-primary rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:rotate-12 transition-transform duration-500">
+                    <Heart className="w-6 h-6 text-white" fill="currentColor" />
+                  </div>
+                  <span className="text-base font-semibold group-hover:text-primary transition-colors">{value}</span>
                 </div>
               ))}
             </div>
