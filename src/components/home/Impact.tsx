@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Users, GraduationCap, Heart, Globe } from "lucide-react";
+import { motion, useInView } from "framer-motion";
 
 const stats = [
   {
@@ -92,31 +93,83 @@ export const Impact = () => {
             </p>
           </div>
 
-          {/* Cinematic Stats Grid with Depth */}
+          {/* Interactive 3D Stats Grid with Particles */}
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-10">
             {stats.map((stat, index) => {
               const Icon = stat.icon;
               const gradients = ['bg-gradient-aqua', 'bg-gradient-sapphire', 'bg-gradient-gold', 'bg-gradient-primary'];
               return (
-                <div
+                <motion.div
                   key={stat.label}
-                  className="text-center group reveal"
-                  style={{ animationDelay: `${index * 0.15}s` }}
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.15, duration: 0.6 }}
+                  className="text-center group relative"
                 >
-                  <div className={`inline-flex items-center justify-center w-20 h-20 rounded-3xl ${gradients[index]} mb-6 group-hover:rotate-12 group-hover:scale-125 transition-all duration-500 shadow-elegant`}>
-                    <Icon className="w-10 h-10 text-white" />
+                  {/* Pulsating Rings */}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <motion.div
+                      animate={{
+                        scale: [1, 1.5, 1],
+                        opacity: [0.5, 0, 0.5],
+                      }}
+                      transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                      }}
+                      className={`w-32 h-32 rounded-full ${gradients[index]} opacity-20`}
+                    />
                   </div>
-                  <div className="text-6xl md:text-7xl font-bold mb-4 text-white text-glow group-hover:scale-110 transition-transform">
+                  
+                  {/* Rotating 3D Icon */}
+                  <motion.div
+                    whileHover={{
+                      rotateY: 360,
+                      scale: 1.2,
+                    }}
+                    transition={{ duration: 0.6 }}
+                    className={`inline-flex items-center justify-center w-20 h-20 rounded-3xl ${gradients[index]} mb-6 shadow-elegant relative z-10`}
+                    style={{ transformStyle: "preserve-3d" }}
+                  >
+                    <Icon className="w-10 h-10 text-white" />
+                    
+                    {/* Particle Effects */}
+                    {[...Array(3)].map((_, i) => (
+                      <motion.div
+                        key={i}
+                        className="absolute w-1 h-1 bg-white rounded-full"
+                        animate={{
+                          x: [0, (i - 1) * 30],
+                          y: [0, -40],
+                          opacity: [1, 0],
+                        }}
+                        transition={{
+                          duration: 2,
+                          repeat: Infinity,
+                          delay: i * 0.3,
+                        }}
+                      />
+                    ))}
+                  </motion.div>
+                  
+                  {/* Animated Counter */}
+                  <motion.div
+                    whileHover={{ scale: 1.1 }}
+                    className="text-6xl md:text-7xl font-bold mb-4 text-white text-glow"
+                  >
                     {isVisible ? (
                       <CountUp end={stat.value} suffix={stat.suffix} />
                     ) : (
                       "0"
                     )}
-                  </div>
+                  </motion.div>
+                  
                   <div className="text-base md:text-lg text-white/90 font-semibold tracking-wide">
                     {stat.label}
                   </div>
-                </div>
+                </motion.div>
               );
             })}
           </div>

@@ -1,143 +1,161 @@
-import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Heart, Moon, Sun } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Heart, Menu, X, Home, Users, BookOpen, FolderOpen, MessageSquare, Mail } from "lucide-react";
+import { useState, useEffect } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { ScrollProgress } from "@/components/ui/ScrollProgress";
 
 export const Navbar = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+  const { scrollY } = useScroll();
+  const navbarBlur = useTransform(scrollY, [0, 100], [0, 20]);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      setScrolled(window.scrollY > 20);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  useEffect(() => {
-    setIsMobileMenuOpen(false);
-  }, [location]);
-
-  const toggleDarkMode = () => {
-    setIsDarkMode(!isDarkMode);
-    document.documentElement.classList.toggle("dark");
-  };
-
-  const navLinks = [
-    { name: "Home", path: "/" },
-    { name: "About", path: "/about" },
-    { name: "Programs", path: "/programs" },
-    { name: "Projects", path: "/projects" },
-    { name: "Testimonials", path: "/testimonials" },
-    { name: "Contact", path: "/contact" },
+  const navItems = [
+    { name: "Home", path: "/", icon: Home },
+    { name: "About", path: "/about", icon: Users },
+    { name: "Programs", path: "/programs", icon: BookOpen },
+    { name: "Projects", path: "/projects", icon: FolderOpen },
+    { name: "Testimonials", path: "/testimonials", icon: MessageSquare },
+    { name: "Contact", path: "/contact", icon: Mail },
   ];
 
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled
-          ? "glass shadow-medium"
-          : "bg-transparent"
-      }`}
-    >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
-          {/* Logo */}
-          <Link to="/" className="flex items-center space-x-3 group">
-            <div className="w-10 h-10 rounded-full bg-gradient-primary flex items-center justify-center shadow-soft group-hover:shadow-medium transition-smooth group-hover:scale-110">
-              <Heart className="w-5 h-5 text-primary-foreground" fill="currentColor" />
-            </div>
-            <div className="hidden sm:block">
-              <span className="text-xl font-bold font-['Playfair_Display'] gradient-text">
+    <>
+      <ScrollProgress />
+      <motion.nav
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.6 }}
+        className={`fixed top-4 left-4 right-4 z-50 transition-all duration-500 ${
+          scrolled ? "glass-premium shadow-elegant" : "glass-premium"
+        }`}
+        style={{
+          backdropFilter: useTransform(navbarBlur, (v) => `blur(${v}px)`),
+          borderRadius: "2rem",
+        }}
+      >
+        <div className="container mx-auto px-6 lg:px-8">
+          <div className="flex items-center justify-between h-20">
+            {/* Logo */}
+            <Link to="/" className="flex items-center space-x-3 group">
+              <motion.div
+                whileHover={{ scale: 1.1, rotate: 5 }}
+                whileTap={{ scale: 0.95 }}
+                className="w-12 h-12 bg-gradient-primary rounded-full flex items-center justify-center shadow-elegant"
+              >
+                <Heart className="w-6 h-6 text-white" fill="currentColor" />
+              </motion.div>
+              <span className="text-xl font-bold text-foreground font-['Playfair_Display']">
                 Ray of Hope
               </span>
-              <p className="text-xs text-muted-foreground">Community</p>
-            </div>
-          </Link>
-
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-1">
-            {navLinks.map((link) => (
-              <Link
-                key={link.path}
-                to={link.path}
-                className={`px-4 py-2 rounded-md text-sm font-medium transition-smooth ${
-                  location.pathname === link.path
-                    ? "bg-primary/10 text-primary"
-                    : "text-foreground/80 hover:bg-muted hover:text-foreground"
-                }`}
-              >
-                {link.name}
-              </Link>
-            ))}
-          </div>
-
-          {/* Right Section */}
-          <div className="flex items-center space-x-2">
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={toggleDarkMode}
-              className="rounded-full"
-            >
-              {isDarkMode ? (
-                <Sun className="h-5 w-5" />
-              ) : (
-                <Moon className="h-5 w-5" />
-              )}
-            </Button>
-
-            <Link to="/donate" className="hidden md:block">
-              <Button variant="accent" size="lg">
-                Donate Now
-              </Button>
             </Link>
 
-            {/* Mobile Menu Toggle */}
-            <Button
-              variant="ghost"
-              size="icon"
-              className="lg:hidden"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            >
-              {isMobileMenuOpen ? (
-                <X className="h-6 w-6" />
-              ) : (
-                <Menu className="h-6 w-6" />
-              )}
-            </Button>
-          </div>
-        </div>
+            {/* Desktop Navigation */}
+            <div className="hidden md:flex items-center space-x-2">
+              {navItems.map((item) => {
+                const Icon = item.icon;
+                return (
+                  <Link key={item.path} to={item.path}>
+                    <motion.div
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="relative group"
+                    >
+                      <div
+                        className={`flex items-center space-x-2 px-4 py-2 rounded-full transition-all ${
+                          location.pathname === item.path
+                            ? "bg-primary/20 text-primary"
+                            : "text-muted-foreground hover:bg-primary/10 hover:text-primary"
+                        }`}
+                      >
+                        <Icon className="w-4 h-4" />
+                        <span className="text-sm font-medium">{item.name}</span>
+                      </div>
+                      <motion.div
+                        className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-primary rounded-full"
+                        initial={{ scaleX: 0 }}
+                        whileHover={{ scaleX: 1 }}
+                        transition={{ duration: 0.3 }}
+                      />
+                    </motion.div>
+                  </Link>
+                );
+              })}
+              <Link to="/donate">
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                  <Button variant="accent" size="sm" className="ml-4 glow-pulse">
+                    <Heart className="w-4 h-4 mr-2" fill="currentColor" />
+                    Donate Now
+                  </Button>
+                </motion.div>
+              </Link>
+            </div>
 
-        {/* Mobile Menu */}
-        {isMobileMenuOpen && (
-          <div className="lg:hidden py-4 animate-fade-in">
-            <div className="flex flex-col space-y-2">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.path}
-                  to={link.path}
-                  className={`px-4 py-3 rounded-md text-base font-medium transition-smooth ${
-                    location.pathname === link.path
-                      ? "bg-primary/10 text-primary"
-                      : "text-foreground/80 hover:bg-muted"
-                  }`}
-                >
-                  {link.name}
-                </Link>
-              ))}
-              <Link to="/donate" className="pt-2">
-                <Button variant="accent" className="w-full">
+            {/* Mobile Menu Button */}
+            <motion.button
+              whileTap={{ scale: 0.9 }}
+              onClick={() => setIsOpen(!isOpen)}
+              className="md:hidden p-2 rounded-xl glass-premium transition-colors"
+              aria-label="Toggle menu"
+            >
+              {isOpen ? (
+                <X className="w-6 h-6 text-foreground" />
+              ) : (
+                <Menu className="w-6 h-6 text-foreground" />
+              )}
+            </motion.button>
+          </div>
+
+          {/* Mobile Navigation */}
+          {isOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              className="md:hidden py-4 space-y-2 border-t border-white/10"
+            >
+              {navItems.map((item) => {
+                const Icon = item.icon;
+                return (
+                  <Link
+                    key={item.path}
+                    to={item.path}
+                    onClick={() => setIsOpen(false)}
+                  >
+                    <motion.div
+                      whileHover={{ x: 5 }}
+                      className={`flex items-center space-x-3 px-4 py-3 rounded-xl transition-all ${
+                        location.pathname === item.path
+                          ? "bg-primary/20 text-primary"
+                          : "text-muted-foreground hover:bg-primary/10"
+                      }`}
+                    >
+                      <Icon className="w-5 h-5" />
+                      <span className="text-sm font-medium">{item.name}</span>
+                    </motion.div>
+                  </Link>
+                );
+              })}
+              <Link to="/donate" onClick={() => setIsOpen(false)}>
+                <Button variant="accent" size="sm" className="w-full mt-2">
+                  <Heart className="w-4 h-4 mr-2" fill="currentColor" />
                   Donate Now
                 </Button>
               </Link>
-            </div>
-          </div>
-        )}
-      </div>
-    </nav>
+            </motion.div>
+          )}
+        </div>
+      </motion.nav>
+    </>
   );
 };

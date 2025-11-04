@@ -1,21 +1,66 @@
-import { ArrowRight, Heart, Shield, Users } from "lucide-react";
+import { ArrowRight, Heart, Shield, Users, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+import { TypingAnimation } from "@/components/ui/TypingAnimation";
 import heroImage from "@/assets/hero-children.jpg";
+import unityImage from "@/assets/unity-hands.jpg";
+import childReading from "@/assets/child-reading.jpg";
 
 export const Hero = () => {
+  const images = [heroImage, unityImage, childReading];
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setProgress((prev) => {
+        if (prev >= 100) {
+          setCurrentImageIndex((current) => (current + 1) % images.length);
+          return 0;
+        }
+        return prev + 1;
+      });
+    }, 50);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  const typingPhrases = [
+    "Rebuilding Lives",
+    "Empowering Children",
+    "Restoring Dignity",
+    "Building Hope",
+  ];
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Cinematic Background with Mesh Gradient */}
+      {/* Animated Background Carousel */}
       <div className="absolute inset-0 z-0">
-        <div
-          className="absolute inset-0 bg-cover bg-center transform scale-110 transition-transform duration-[20s]"
-          style={{
-            backgroundImage: `url(${heroImage})`,
-          }}
-        />
+        {images.map((image, index) => (
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, scale: 1.1 }}
+            animate={{
+              opacity: currentImageIndex === index ? 1 : 0,
+              scale: currentImageIndex === index ? 1 : 1.1,
+            }}
+            transition={{ duration: 1.5 }}
+            className="absolute inset-0 bg-cover bg-center"
+            style={{ backgroundImage: `url(${image})` }}
+          />
+        ))}
         <div className="absolute inset-0 bg-gradient-mesh opacity-90" />
         <div className="absolute inset-0 bg-gradient-to-br from-primary/80 via-primary/60 to-transparent" />
+        
+        {/* Progress Bar */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 w-64 h-1 bg-white/20 rounded-full overflow-hidden z-10">
+          <motion.div
+            className="h-full bg-gradient-gold"
+            style={{ width: `${progress}%` }}
+          />
+        </div>
       </div>
 
       {/* Animated Particles */}
@@ -45,67 +90,111 @@ export const Hero = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 z-10 pt-20">
         <div className="max-w-5xl mx-auto text-center">
           {/* Glass Badge with Shimmer */}
-          <div className="inline-flex items-center space-x-2 glass-premium px-6 py-3 rounded-full mb-8 animate-fade-in shimmer">
-            <Heart className="w-4 h-4 text-accent" fill="currentColor" />
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="inline-flex items-center space-x-2 glass-premium px-6 py-3 rounded-full mb-8 shimmer"
+          >
+            <motion.div
+              animate={{ rotate: [0, 360] }}
+              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+            >
+              <Sparkles className="w-4 h-4 text-accent" />
+            </motion.div>
             <span className="text-sm font-semibold text-white tracking-wide">
-              Rebuilding Lives Since 2015
+              <TypingAnimation phrases={typingPhrases} />
             </span>
-          </div>
+          </motion.div>
 
           {/* Cinematic Main Heading with Glow */}
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-8 font-['Playfair_Display'] leading-[1.1] animate-fade-in-up text-glow">
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 }}
+            className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-8 font-['Playfair_Display'] leading-[1.1] text-glow"
+          >
             Every Child Deserves
             <br />
             <span className="bg-gradient-gold bg-clip-text text-transparent">
               A Ray of Hope
             </span>
-          </h1>
+          </motion.h1>
 
           {/* Elegant Subheading */}
-          <p className="text-xl md:text-2xl text-white/95 mb-14 max-w-3xl mx-auto leading-relaxed animate-fade-in-up font-light" style={{ animationDelay: '0.2s' }}>
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.6 }}
+            className="text-xl md:text-2xl text-white/95 mb-14 max-w-3xl mx-auto leading-relaxed font-light"
+          >
             Supporting orphaned and vulnerable children across East and Central Africa
             through education, protection, and holistic care.
-          </p>
+          </motion.p>
 
           {/* Premium CTA Buttons with Micro-interactions */}
-          <div className="flex flex-col sm:flex-row gap-6 justify-center mb-20 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.8 }}
+            className="flex flex-col sm:flex-row gap-6 justify-center mb-20"
+          >
             <Link to="/donate">
-              <Button variant="accent" size="xl" className="group glow-pulse hover:scale-110 transition-all duration-500 shadow-elegant">
-                Donate Now
-                <ArrowRight className="ml-2 group-hover:translate-x-2 transition-transform duration-300" />
-              </Button>
+              <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
+                <Button variant="accent" size="xl" className="group glow-pulse shadow-elegant">
+                  Donate Now
+                  <ArrowRight className="ml-2 group-hover:translate-x-2 transition-transform duration-300" />
+                </Button>
+              </motion.div>
             </Link>
             <Link to="/about">
-              <Button variant="outline" size="xl" className="glass-premium border-white/40 text-white hover:bg-white/20 hover:scale-105 transition-all duration-500">
-                Learn Our Story
-              </Button>
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <Button variant="outline" size="xl" className="glass-premium border-white/40 text-white hover:bg-white/20">
+                  Learn Our Story
+                </Button>
+              </motion.div>
             </Link>
-          </div>
+          </motion.div>
 
           {/* Floating Stats Cards with Depth */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
-            <div className="glass-premium rounded-3xl p-8 floating-card group cursor-pointer">
-              <div className="w-16 h-16 bg-gradient-aqua rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:rotate-12 transition-transform duration-500">
-                <Users className="w-8 h-8 text-white" />
-              </div>
-              <div className="text-5xl font-bold text-white mb-2 group-hover:scale-110 transition-transform">500+</div>
-              <div className="text-sm text-white/90 font-medium tracking-wide">Children Supported</div>
-            </div>
-            <div className="glass-premium rounded-3xl p-8 floating-card group cursor-pointer">
-              <div className="w-16 h-16 bg-gradient-sapphire rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:rotate-12 transition-transform duration-500">
-                <Shield className="w-8 h-8 text-white" />
-              </div>
-              <div className="text-5xl font-bold text-white mb-2 group-hover:scale-110 transition-transform">3</div>
-              <div className="text-sm text-white/90 font-medium tracking-wide">Countries Active</div>
-            </div>
-            <div className="glass-premium rounded-3xl p-8 floating-card group cursor-pointer">
-              <div className="w-16 h-16 bg-gradient-gold rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:rotate-12 transition-transform duration-500">
-                <Heart className="w-8 h-8 text-white" fill="currentColor" />
-              </div>
-              <div className="text-5xl font-bold text-white mb-2 group-hover:scale-110 transition-transform">100%</div>
-              <div className="text-sm text-white/90 font-medium tracking-wide">Transparency</div>
-            </div>
-          </div>
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1 }}
+            className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto"
+          >
+            {[
+              { icon: Users, value: "500+", label: "Children Supported", gradient: "bg-gradient-aqua" },
+              { icon: Shield, value: "3", label: "Countries Active", gradient: "bg-gradient-sapphire" },
+              { icon: Heart, value: "100%", label: "Transparency", gradient: "bg-gradient-gold" },
+            ].map((stat, index) => {
+              const Icon = stat.icon;
+              return (
+                <motion.div
+                  key={stat.label}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 1 + index * 0.1 }}
+                  whileHover={{ y: -10, scale: 1.05 }}
+                  className="glass-premium rounded-3xl p-8 floating-card group cursor-pointer"
+                >
+                  <motion.div
+                    whileHover={{ rotate: 12, scale: 1.1 }}
+                    className={`w-16 h-16 ${stat.gradient} rounded-2xl flex items-center justify-center mx-auto mb-4`}
+                  >
+                    <Icon className="w-8 h-8 text-white" fill={stat.label.includes("Transparency") ? "currentColor" : "none"} />
+                  </motion.div>
+                  <motion.div
+                    whileHover={{ scale: 1.1 }}
+                    className="text-5xl font-bold text-white mb-2"
+                  >
+                    {stat.value}
+                  </motion.div>
+                  <div className="text-sm text-white/90 font-medium tracking-wide">{stat.label}</div>
+                </motion.div>
+              );
+            })}
+          </motion.div>
         </div>
       </div>
 

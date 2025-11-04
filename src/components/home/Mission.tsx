@@ -1,34 +1,71 @@
 import { Target, Eye, Heart } from "lucide-react";
+import { motion } from "framer-motion";
+import { BubbleBackground } from "@/components/ui/BubbleBackground";
 
 export const Mission = () => {
   return (
     <section className="py-32 bg-background relative overflow-hidden">
-      {/* Architectural Background */}
+      {/* Bubbly Animated Background */}
+      <BubbleBackground />
       <div className="absolute inset-0 bg-gradient-subtle opacity-50" />
       <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-primary/5 to-transparent" />
       
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-6xl mx-auto">
-          {/* Elegant Section Header */}
-          <div className="text-center mb-20 reveal">
-            <div className="inline-flex items-center space-x-2 glass-premium px-6 py-3 rounded-full mb-6">
-              <div className="w-2 h-2 bg-gradient-primary rounded-full animate-pulse" />
+          {/* Elegant Section Header with Animation */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-20"
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              className="inline-flex items-center space-x-2 glass-premium px-6 py-3 rounded-full mb-6"
+            >
+              <motion.div
+                animate={{ scale: [1, 1.2, 1] }}
+                transition={{ duration: 2, repeat: Infinity }}
+                className="w-2 h-2 bg-gradient-primary rounded-full"
+              />
               <span className="text-sm font-semibold text-primary tracking-wider uppercase">
                 Our Purpose
               </span>
-            </div>
-            <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold font-['Playfair_Display'] gradient-text mb-8 leading-tight">
+            </motion.div>
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="text-5xl md:text-6xl lg:text-7xl font-bold font-['Playfair_Display'] gradient-text mb-8 leading-tight"
+            >
               Mission & Vision
-            </h2>
-            <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed font-light">
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4 }}
+              className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed font-light"
+            >
               Guided by faith and compassion, we work to transform lives and restore dignity.
-            </p>
-          </div>
+            </motion.p>
+          </motion.div>
 
-          {/* Floating Architectural Cards */}
+          {/* Floating Architectural Cards with Scale-in Animation */}
           <div className="grid md:grid-cols-2 gap-10 mb-20">
             {/* Mission Card */}
-            <div className="glass-premium rounded-[2rem] p-10 md:p-12 floating-card group relative overflow-hidden reveal" style={{ animationDelay: '0.2s' }}>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2, duration: 0.5 }}
+              whileHover={{ y: -10 }}
+              className="glass-premium rounded-[2rem] p-10 md:p-12 floating-card group relative overflow-hidden"
+            >
               <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-aqua opacity-10 rounded-full blur-[100px] group-hover:scale-150 transition-transform duration-1000" />
               <div className="relative z-10">
                 <div className="w-20 h-20 rounded-3xl bg-gradient-primary flex items-center justify-center mb-8 group-hover:rotate-12 group-hover:scale-110 transition-all duration-500 shadow-elegant">
@@ -41,10 +78,17 @@ export const Mission = () => {
                   emotional, and spiritual needs.
                 </p>
               </div>
-            </div>
+            </motion.div>
 
             {/* Vision Card */}
-            <div className="glass-premium rounded-[2rem] p-10 md:p-12 floating-card group relative overflow-hidden reveal" style={{ animationDelay: '0.4s' }}>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4, duration: 0.5 }}
+              whileHover={{ y: -10 }}
+              className="glass-premium rounded-[2rem] p-10 md:p-12 floating-card group relative overflow-hidden"
+            >
               <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-gold opacity-10 rounded-full blur-[100px] group-hover:scale-150 transition-transform duration-1000" />
               <div className="relative z-10">
                 <div className="w-20 h-20 rounded-3xl bg-gradient-accent flex items-center justify-center mb-8 group-hover:rotate-12 group-hover:scale-110 transition-all duration-500 shadow-elegant">
@@ -57,7 +101,7 @@ export const Mission = () => {
                   full potential.
                 </p>
               </div>
-            </div>
+            </motion.div>
           </div>
 
           {/* Elegant Values Grid */}
