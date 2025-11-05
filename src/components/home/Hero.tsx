@@ -1,34 +1,51 @@
-import { ArrowRight, Heart, Sparkles, Star, Target, Play, Shield, BookOpen } from "lucide-react";
+import { ArrowRight, Sparkles, Play } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { TypingAnimation } from "@/components/ui/TypingAnimation";
 
+// Import local images from assets
+import bgImage1 from "@/assets/general/child.jpg";
+import bgImage2 from "@/assets/general/child2.jpeg";
+import bgImage3 from "@/assets/general/hero-children.jpg";
+import bgImage4 from "@/assets/general/bg1.jpeg";
+import featuredImage1 from "@/assets/general/bg6.jpg";
+import featuredImage2 from "@/assets/general/child.jpg"; // Reusing existing images
+import featuredImage3 from "@/assets/general/child2.jpeg"; // Reusing existing images
+
 export const Hero = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   
-  // High-quality images that reflect your mission
-  const images = [
-    "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
-    "https://images.unsplash.com/photo-1577896851231-70ef18881754?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
-    "https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&crop=faces&fit=crop&w=2070&q=80",
-    "https://images.unsplash.com/photo-1491895200221-4c6d5b7d45e1?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
+  // Local background images from assets
+  const bgImages = [
+    bgImage1,
+    bgImage2,
+    bgImage3,
+    bgImage4
+  ];
+
+  // Featured images for the circular arrangement
+  const featuredImages = [
+    featuredImage1,
+    featuredImage2,
+    featuredImage3
   ];
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentImageIndex((current) => (current + 1) % images.length);
+      setCurrentImageIndex((current) => (current + 1) % bgImages.length);
     }, 5000);
     return () => clearInterval(interval);
   }, []);
 
   const typingPhrases = [
     "Rebuilding Lives",
-    "Empowering Children",
+    "Empowering Children", 
     "Restoring Dignity",
     "Building Hope",
-    "Creating Futures"
+    "Creating Futures",
+    "Transforming Communities"
   ];
 
   const fadeInUp = {
@@ -49,7 +66,7 @@ export const Hero = () => {
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900 to-blue-900">
       {/* Enhanced Background Carousel */}
       <div className="absolute inset-0 z-0">
-        {images.map((image, index) => (
+        {bgImages.map((image, index) => (
           <motion.div
             key={index}
             initial={{ opacity: 0, scale: 1.1 }}
@@ -124,7 +141,7 @@ export const Hero = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center min-h-[80vh]">
           {/* Left Content */}
           <motion.div 
-            className="space-y-8"
+            className="space-y-6"
             variants={staggerChildren}
             initial="initial"
             animate="animate"
@@ -132,7 +149,7 @@ export const Hero = () => {
             {/* Animated Badge */}
             <motion.div
               variants={fadeInUp}
-              className="inline-flex items-center space-x-3 bg-white/10 backdrop-blur-md px-6 py-3 rounded-2xl border border-white/20 shadow-2xl"
+              className="inline-flex items-center mt-10 space-x-3 bg-white/10 backdrop-blur-md px-3 py-2 rounded-2xl border border-white/20 shadow-2xl"
             >
               <motion.div
                 animate={{ 
@@ -148,74 +165,47 @@ export const Hero = () => {
                 <Sparkles className="w-5 h-5 text-accent" fill="currentColor" />
               </motion.div>
               <span className="text-sm font-semibold text-white tracking-wider">
-                <TypingAnimation 
-                  phrases={typingPhrases} 
-                  className="bg-gradient-to-r from-accent to-yellow-300 bg-clip-text text-transparent font-bold"
-                />
+                Faith-Based Humanitarian Organization
               </span>
             </motion.div>
 
-            {/* Main Heading */}
-            <motion.div variants={fadeInUp} className="space-y-4">
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight">
-                Every Child
+            {/* Main Heading - Constant Statement */}
+            <motion.div variants={fadeInUp} className="space-y-6">
+              <h1 className="text-5xl md:text-6xl font-bold text-white mt-4 leading-tight">
+                <span className="gradient-animated-text">
+                  Every Child
+                </span>
                 <br />
-                <motion.span 
-                  className="bg-gradient-to-r from-accent via-yellow-300 to-purple-400 bg-clip-text text-transparent"
-                  animate={{
-                    backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
-                  }}
-                  transition={{
-                    duration: 6,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                  }}
-                  style={{
-                    backgroundSize: '200% 200%'
-                  }}
-                >
+                <span className="gradient-animated-text delay-animation">
                   Deserves Hope
-                </motion.span>
+                </span>
               </h1>
               
               <div className="w-24 h-1 bg-gradient-to-r from-accent to-purple-400 rounded-full" />
             </motion.div>
 
-            {/* Subheading */}
-            <motion.p
-              variants={fadeInUp}
-              className="text-xl md:text-2xl text-white/90 leading-relaxed max-w-2xl"
-            >
-              Transforming lives of orphaned and vulnerable children across{" "}
-              <span className="bg-gradient-to-r from-accent to-yellow-300 bg-clip-text text-transparent font-semibold">
-                East and Central Africa
-              </span>{" "}
-              through education, protection, and sustainable community development.
-            </motion.p>
-
-            {/* Impact Stats */}
+            {/* Typing Animation Section with Gradient Transitions */}
             <motion.div
               variants={fadeInUp}
-              className="flex flex-wrap gap-8 py-4"
+              className="space-y-4"
             >
-              {[
-                { number: "2,000+", label: "Children Supported" },
-                { number: "15", label: "Communities" },
-                { number: "12", label: "Years of Service" }
-              ].map((stat, index) => (
-                <motion.div
-                  key={stat.label}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 1 + index * 0.2 }}
-                  className="text-center"
-                >
-                  <div className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-accent to-yellow-300 bg-clip-text text-transparent">
-                    {stat.number}
-                  </div>
-                  <div className="text-white/70 text-sm font-medium">{stat.label}</div>
-                </motion.div>
-              ))}
+              <div className="text-2xl md:text-3xl lg:text-4xl font-bold text-white/90 leading-tight min-h-[60px]">
+                We are{" "}
+                <TypingAnimation 
+                  phrases={typingPhrases} 
+                  className="typing-gradient"
+                  cursorClassName="bg-gradient-to-r from-accent to-purple-400"
+                />
+              </div>
+              
+              <p className="text-lg md:text-xl text-white/80 leading-relaxed max-w-2xl">
+                Through education, protection, and sustainable community development, 
+                we're bringing lasting change to{" "}
+                <span className="bg-gradient-to-r from-accent to-yellow-300 bg-clip-text text-transparent font-semibold">
+                  East and Central Africa
+                </span>
+                .
+              </p>
             </motion.div>
 
             {/* CTA Buttons */}
@@ -267,102 +257,101 @@ export const Hero = () => {
             </motion.div>
           </motion.div>
 
-          {/* Right Content - Enhanced Visual Elements */}
+          {/* Right Content - Circular Image Arrangement */}
           <motion.div
-            initial={{ opacity: 0, x: 100 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1, delay: 0.5 }}
+            initial={{ opacity: 0, x: 100, scale: 0.9 }}
+            animate={{ opacity: 1, x: 0, scale: 1 }}
+            transition={{ duration: 1.2, delay: 0.5, type: "spring" }}
             className="relative hidden lg:block"
           >
-            {/* Floating Mission Cards */}
-            <div className="relative h-[500px]">
-              {[
-                {
-                  icon: Heart,
-                  title: "Compassionate Care",
-                  description: "Driven by love and Christian compassion",
-                  color: "from-red-400 to-pink-500",
-                  position: "top-0 left-10",
-                  delay: 0
-                },
-                {
-                  icon: BookOpen,
-                  title: "Education Focus",
-                  description: "Quality education for every child",
-                  color: "from-blue-400 to-cyan-500",
-                  position: "top-1/3 right-0",
-                  delay: 0.3
-                },
-                {
-                  icon: Shield,
-                  title: "Child Protection",
-                  description: "Safe environments for vulnerable children",
-                  color: "from-green-400 to-emerald-500",
-                  position: "bottom-1/3 left-0",
-                  delay: 0.6
-                },
-                {
-                  icon: Target,
-                  title: "Sustainable Impact",
-                  description: "Building future community leaders",
-                  color: "from-purple-400 to-indigo-500",
-                  position: "bottom-0 right-10",
-                  delay: 0.9
-                }
-              ].map((item, index) => {
-                const Icon = item.icon;
-                return (
-                  <motion.div
-                    key={item.title}
-                    initial={{ opacity: 0, y: 20, scale: 0.8 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    transition={{ 
-                      duration: 0.6, 
-                      delay: item.delay,
-                      type: "spring",
-                      stiffness: 100
-                    }}
-                    whileHover={{ 
-                      y: -5,
-                      scale: 1.05,
-                      transition: { type: "spring", stiffness: 400 }
-                    }}
-                    className={`absolute ${item.position} bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 shadow-2xl max-w-[280px] group cursor-pointer hover:bg-white/15 transition-all duration-500`}
-                  >
-                    {/* Background Gradient */}
-                    <div className={`absolute inset-0 bg-gradient-to-br ${item.color} opacity-0 group-hover:opacity-10 rounded-2xl transition-opacity duration-500`} />
-                    
-                    <div className="relative z-10">
-                      <div className={`w-14 h-14 bg-gradient-to-r ${item.color} rounded-2xl flex items-center justify-center mb-4 shadow-lg`}>
-                        <Icon className="w-6 h-6 text-white" />
-                      </div>
-                      <h3 className="text-lg font-bold text-white mb-2">
-                        {item.title}
-                      </h3>
-                      <p className="text-white/80 text-sm leading-relaxed">
-                        {item.description}
-                      </p>
-                    </div>
-                  </motion.div>
-                );
-              })}
-
-              {/* Central Floating Element */}
+            <div className="relative h-[500px] w-[500px]">
+              {/* Circular Image 1 - Top */}
               <motion.div
-                animate={{
-                  y: [0, -20, 0],
-                  rotate: [0, 5, 0],
-                }}
-                transition={{
-                  duration: 6,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-                className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+                className="absolute mt-14 left-32 transform -translate-x-1/2 -translate-y-4 w-56 h-56 rounded-full overflow-hidden shadow-2xl border-4 border-white/20 backdrop-blur-sm"
+                initial={{ scale: 0.8, opacity: 0, y: -50 }}
+                animate={{ scale: 1, opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.7 }}
+                whileHover={{ scale: 1.05, zIndex: 10 }}
               >
-                <div className="w-32 h-32 bg-gradient-to-r from-accent to-purple-500 rounded-3xl flex items-center justify-center shadow-2xl shadow-accent/30">
-                  <Star className="w-12 h-12 text-white" fill="currentColor" />
-                </div>
+                <motion.div
+                  className="absolute inset-0 bg-cover bg-center"
+                  style={{ backgroundImage: `url(${featuredImages[0]})` }}
+                  animate={{
+                    scale: [1, 1.1, 1],
+                  }}
+                  transition={{
+                    duration: 15,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/40" />
+              </motion.div>
+
+              {/* Circular Image 2 - Bottom Left */}
+              <motion.div
+                className="absolute bottom-8 left-6 w-56 h-56 rounded-full overflow-hidden shadow-2xl border-4 border-white/20 backdrop-blur-sm"
+                initial={{ scale: 0.8, opacity: 0, x: -50 }}
+                animate={{ scale: 1, opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: 0.9 }}
+                whileHover={{ scale: 1.05, zIndex: 10 }}
+              >
+                <motion.div
+                  className="absolute inset-0 bg-cover bg-center"
+                  style={{ backgroundImage: `url(${featuredImages[1]})` }}
+                  animate={{
+                    scale: [1, 1.08, 1],
+                  }}
+                  transition={{
+                    duration: 12,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: 2
+                  }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-transparent to-black/40" />
+                
+                {/* Floating Badge for Image 2 */}
+                <motion.div
+                  className="absolute top-4 right-4 bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full border border-white/30"
+                  initial={{ y: -20, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ delay: 1.4 }}
+                >
+                </motion.div>
+              </motion.div>
+
+              {/* Circular Image 3 - Bottom Right */}
+              <motion.div
+                className="absolute bottom-8 right-10 w-56 h-56 rounded-full overflow-hidden shadow-2xl border-4 border-white/20 backdrop-blur-sm"
+                initial={{ scale: 0.8, opacity: 0, x: 50 }}
+                animate={{ scale: 1, opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: 1.1 }}
+                whileHover={{ scale: 1.05, zIndex: 10 }}
+              >
+                <motion.div
+                  className="absolute inset-0 bg-cover bg-center"
+                  style={{ backgroundImage: `url(${featuredImages[2]})` }}
+                  animate={{
+                    scale: [1, 1.08, 1],
+                  }}
+                  transition={{
+                    duration: 10,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: 4
+                  }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-transparent to-black/40" />
+                
+                {/* Floating Badge for Image 3 */}
+                <motion.div
+                  className="absolute top-4 left-4 bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full border border-white/30"
+                  initial={{ y: -20, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ delay: 1.6 }}
+                >
+                </motion.div>
               </motion.div>
             </div>
           </motion.div>
@@ -381,9 +370,6 @@ export const Hero = () => {
           transition={{ duration: 2, repeat: Infinity }}
           className="flex flex-col items-center space-y-3"
         >
-          <span className="text-sm font-medium text-white/70 tracking-wider">
-            Discover Our Mission
-          </span>
           <div className="w-6 h-10 border-2 border-white/40 rounded-full flex justify-center p-1 backdrop-blur-sm">
             <motion.div
               animate={{ y: [0, 16, 0] }}
@@ -397,7 +383,7 @@ export const Hero = () => {
       {/* Image Progress Indicator */}
       <div className="absolute bottom-8 right-8 z-10 hidden lg:block">
         <div className="flex flex-col space-y-3">
-          {images.map((_, index) => (
+          {bgImages.map((_, index) => (
             <button
               key={index}
               onClick={() => setCurrentImageIndex(index)}
@@ -410,6 +396,57 @@ export const Hero = () => {
           ))}
         </div>
       </div>
+
+      {/* Custom CSS for gradient animations */}
+      <style>{`
+        .typing-gradient {
+          background: linear-gradient(
+            45deg,
+            #f59e0b,
+            #ec4899,
+            #8b5cf6,
+            #06b6d4,
+            #10b981
+          );
+          background-size: 300% 300%;
+          background-clip: text;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          animation: gradientShift 8s ease infinite;
+        }
+
+        .gradient-animated-text {
+          background: linear-gradient(
+            45deg,
+            #f59e0b,
+            #ec4899,
+            #8b5cf6,
+            #06b6d4,
+            #10b981
+          );
+          background-size: 300% 300%;
+          background-clip: text;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          animation: gradientShift 8s ease infinite;
+        }
+
+        .delay-animation {
+          animation-delay: 2s;
+        }
+
+        @keyframes gradientShift {
+          0% {
+            background-position: 0% 50%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
+          100% {
+            background-position: 0% 50%;
+          }
+        }
+      `}</style>
     </section>
   );
 };

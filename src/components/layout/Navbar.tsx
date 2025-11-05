@@ -1,9 +1,12 @@
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Heart, Menu, X, Home, Users, BookOpen, FolderOpen, MessageSquare, Mail } from "lucide-react";
+import { Menu, X, Home, Users, BookOpen, FolderOpen, Mail } from "lucide-react";
 import { useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ScrollProgress } from "@/components/ui/ScrollProgress";
+
+// Import your actual logo from assets
+import logo from "@/assets/logos/logo2.png"; // Adjust the path to your actual logo file
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -35,7 +38,7 @@ export const Navbar = () => {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.6 }}
-        className={`fixed top-4 left-4 right-4 z-50 transition-all duration-500 ${
+        className={`fixed top-2 left-4 right-4 z-50 transition-all duration-500 ${
           scrolled ? "glass-premium shadow-elegant" : "glass-premium"
         }`}
         style={{
@@ -44,19 +47,14 @@ export const Navbar = () => {
         }}
       >
         <div className="container mx-auto px-6 lg:px-8">
-          <div className="flex items-center justify-between h-20">
+          <div className="flex items-center justify-between py-1">
             {/* Logo */}
-            <Link to="/" className="flex items-center space-x-3 group">
-              <motion.div
-                whileHover={{ scale: 1.1, rotate: 5 }}
-                whileTap={{ scale: 0.95 }}
-                className="w-12 h-12 bg-gradient-primary rounded-full flex items-center justify-center shadow-elegant"
-              >
-                <Heart className="w-6 h-6 text-white" fill="currentColor" />
-              </motion.div>
-              <span className="text-xl font-bold text-foreground font-['Playfair_Display']">
-                Ray of Hope
-              </span>
+            <Link to="/" className="flex items-center space-x-3">
+                <img 
+                  src={logo} 
+                  alt="Ray of Hope Community Logo" 
+                  className="w-20 h-22 object-contain"
+                />
             </Link>
 
             {/* Desktop Navigation */}
@@ -93,7 +91,7 @@ export const Navbar = () => {
               <Link to="/donate">
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                   <Button variant="accent" size="sm" className="ml-4 glow-pulse">
-                    <Heart className="w-4 h-4 mr-2" fill="currentColor" />
+                    <span className="mr-2">❤️</span>
                     Donate Now
                   </Button>
                 </motion.div>
@@ -147,7 +145,7 @@ export const Navbar = () => {
               })}
               <Link to="/donate" onClick={() => setIsOpen(false)}>
                 <Button variant="accent" size="sm" className="w-full mt-2">
-                  <Heart className="w-4 h-4 mr-2" fill="currentColor" />
+                  <span className="mr-2">❤️</span>
                   Donate Now
                 </Button>
               </Link>
