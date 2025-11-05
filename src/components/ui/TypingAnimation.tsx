@@ -4,9 +4,10 @@ import { motion, AnimatePresence } from "framer-motion";
 interface TypingAnimationProps {
   phrases: string[];
   className?: string;
+  cursorClassName?: string;
 }
 
-export const TypingAnimation = ({ phrases, className = "" }: TypingAnimationProps) => {
+export const TypingAnimation = ({ phrases, className = "", cursorClassName = "" }: TypingAnimationProps) => {
   const [currentPhraseIndex, setCurrentPhraseIndex] = useState(0);
   const [displayText, setDisplayText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
@@ -42,7 +43,7 @@ export const TypingAnimation = ({ phrases, className = "" }: TypingAnimationProp
       <motion.span
         animate={{ opacity: [1, 0] }}
         transition={{ duration: 0.8, repeat: Infinity }}
-        className="ml-1 inline-block w-1 h-[1em] bg-current"
+        className={`ml-1 inline-block w-1 h-[1em] ${cursorClassName || 'bg-current'}`}
       />
     </div>
   );

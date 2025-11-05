@@ -49,12 +49,18 @@ export const Navbar = () => {
         <div className="container mx-auto px-6 lg:px-8">
           <div className="flex items-center justify-between py-1">
             {/* Logo */}
-            <Link to="/" className="flex items-center space-x-3">
+            <Link to="/" className="flex items-center space-x-3 group">
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="relative"
+              >
                 <img 
                   src={logo} 
                   alt="Ray of Hope Community Logo" 
-                  className="w-20 h-22 object-contain"
+                  className="w-16 h-16 object-contain transition-all duration-300"
                 />
+              </motion.div>
             </Link>
 
             {/* Desktop Navigation */}

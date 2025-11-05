@@ -1,4 +1,5 @@
-import { Award, TrendingUp, Target } from "lucide-react";
+import { Award, TrendingUp, Target, Sparkles } from "lucide-react";
+import { motion } from "framer-motion";
 import childImage from "@/assets/child-reading.jpg";
 import heroImage from "@/assets/hero-children.jpg";
 
@@ -45,23 +46,62 @@ const successStories = [
 ];
 
 const Projects = () => {
+  const fadeInUp = {
+    initial: { opacity: 0, y: 40 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 0.6 }
+  };
+
+  const staggerContainer = {
+    animate: {
+      transition: {
+        staggerChildren: 0.15
+      }
+    }
+  };
+
   return (
     <main className="min-h-screen pt-20">
       {/* Hero Section */}
-      <section className="py-24 bg-gradient-hero text-white relative overflow-hidden">
+      <section className="py-24 bg-gradient-to-br from-slate-900 via-purple-900 to-blue-900 text-white relative overflow-hidden">
+        {/* Animated Background */}
         <div className="absolute inset-0 opacity-20">
-          <div className="absolute top-0 left-0 w-96 h-96 bg-accent rounded-full blur-3xl" />
-          <div className="absolute bottom-0 right-0 w-96 h-96 bg-secondary rounded-full blur-3xl" />
+          <motion.div
+            className="absolute top-0 left-0 w-96 h-96 bg-gradient-to-r from-accent/30 to-purple-500/30 rounded-full blur-3xl"
+            animate={{
+              scale: [1, 1.2, 1],
+              opacity: [0.3, 0.5, 0.3],
+            }}
+            transition={{ duration: 8, repeat: Infinity }}
+          />
+          <motion.div
+            className="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-r from-blue-500/30 to-cyan-500/30 rounded-full blur-3xl"
+            animate={{
+              scale: [1.2, 1, 1.2],
+              opacity: [0.4, 0.2, 0.4],
+            }}
+            transition={{ duration: 6, repeat: Infinity, delay: 1 }}
+          />
         </div>
+
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-5xl md:text-6xl font-bold font-['Playfair_Display'] mb-6">
+          <motion.div 
+            className="max-w-4xl mx-auto text-center"
+            initial="initial"
+            animate="animate"
+            variants={staggerContainer}
+          >
+            <motion.div variants={fadeInUp} className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-md rounded-full px-6 py-3 mb-6">
+              <Award className="w-5 h-5 text-accent" fill="currentColor" />
+              <span className="text-sm font-semibold tracking-wider">REAL IMPACT, REAL CHANGE</span>
+            </motion.div>
+            <motion.h1 variants={fadeInUp} className="text-5xl md:text-6xl font-bold font-['Playfair_Display'] mb-6 gradient-animated-text">
               Success Stories
-            </h1>
-            <p className="text-xl md:text-2xl text-white/90">
+            </motion.h1>
+            <motion.p variants={fadeInUp} className="text-xl md:text-2xl text-white/90">
               Real impact, transformed lives, and communities empowered
-            </p>
-          </div>
+            </motion.p>
+          </motion.div>
         </div>
       </section>
 
@@ -70,50 +110,85 @@ const Projects = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto space-y-24">
             {successStories.map((story, index) => (
-              <div
+              <motion.div
                 key={story.title}
                 className={`grid md:grid-cols-2 gap-12 items-center ${
                   index % 2 === 1 ? "md:flex-row-reverse" : ""
                 }`}
+                initial={{ opacity: 0, y: 60 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.6, delay: 0.2 }}
               >
-                <div className={index % 2 === 1 ? "md:order-2" : ""}>
-                  <div className="glass rounded-3xl overflow-hidden shadow-strong group">
-                    <img
+                <motion.div 
+                  className={index % 2 === 1 ? "md:order-2" : ""}
+                  whileHover={{ scale: 1.03 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <div className="glass-premium rounded-3xl overflow-hidden shadow-strong group relative">
+                    <motion.img
                       src={story.image}
                       alt={story.title}
-                      className="w-full h-80 object-cover group-hover:scale-105 transition-smooth"
+                      className="w-full h-80 object-cover"
+                      whileHover={{ scale: 1.1 }}
+                      transition={{ duration: 0.4 }}
                     />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-smooth" />
                   </div>
-                </div>
+                </motion.div>
 
                 <div className={index % 2 === 1 ? "md:order-1" : ""}>
-                  <div className="inline-flex items-center space-x-2 bg-primary/10 px-4 py-2 rounded-full mb-4">
+                  <motion.div 
+                    className="inline-flex items-center space-x-2 bg-primary/10 px-4 py-2 rounded-full mb-4"
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.3 }}
+                  >
                     <Award className="w-4 h-4 text-primary" />
                     <span className="text-sm font-semibold text-primary">
                       {story.location}
                     </span>
-                  </div>
+                  </motion.div>
 
-                  <h2 className="text-4xl font-bold font-['Playfair_Display'] mb-4">
+                  <motion.h2 
+                    className="text-4xl font-bold font-['Playfair_Display'] mb-4"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.4 }}
+                  >
                     {story.title}
-                  </h2>
+                  </motion.h2>
 
-                  <div className="flex items-center space-x-2 mb-6">
+                  <motion.div 
+                    className="flex items-center space-x-2 mb-6"
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.5 }}
+                  >
                     <TrendingUp className="w-5 h-5 text-accent" />
                     <span className="text-lg font-semibold text-accent">
                       {story.impact}
                     </span>
-                  </div>
+                  </motion.div>
 
-                  <p className="text-muted-foreground leading-relaxed mb-8">
+                  <motion.p 
+                    className="text-muted-foreground leading-relaxed mb-8"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.6 }}
+                  >
                     {story.description}
-                  </p>
+                  </motion.p>
 
                   <div className="grid grid-cols-3 gap-4">
-                    {story.stats.map((stat) => (
-                      <div
+                    {story.stats.map((stat, idx) => (
+                      <motion.div
                         key={stat.label}
-                        className="glass rounded-xl p-4 text-center hover:shadow-medium transition-smooth"
+                        className="glass-premium rounded-xl p-4 text-center hover:shadow-medium transition-smooth"
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        transition={{ delay: 0.7 + idx * 0.1 }}
+                        whileHover={{ y: -4, scale: 1.05 }}
                       >
                         <div className="text-2xl font-bold text-primary mb-1">
                           {stat.value}
@@ -121,31 +196,45 @@ const Projects = () => {
                         <div className="text-xs text-muted-foreground">
                           {stat.label}
                         </div>
-                      </div>
+                      </motion.div>
                     ))}
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
       {/* Future Goals Section */}
-      <section className="py-24 bg-gradient-subtle">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-16">
-              <span className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-4">
+      <section className="py-24 bg-gradient-subtle relative overflow-hidden">
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute top-20 left-20 w-64 h-64 bg-primary rounded-full blur-3xl" />
+          <div className="absolute bottom-20 right-20 w-64 h-64 bg-accent rounded-full blur-3xl" />
+        </div>
+
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <motion.div 
+            className="max-w-4xl mx-auto"
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={staggerContainer}
+          >
+            <motion.div variants={fadeInUp} className="text-center mb-16">
+              <motion.span 
+                className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-4"
+                whileHover={{ scale: 1.05 }}
+              >
                 Looking Ahead
-              </span>
+              </motion.span>
               <h2 className="text-4xl font-bold font-['Playfair_Display'] gradient-text mb-6">
                 Future Goals
               </h2>
               <p className="text-xl text-muted-foreground">
                 Our vision for expanding impact and reaching more children
               </p>
-            </div>
+            </motion.div>
 
             <div className="space-y-6">
               {[
@@ -170,26 +259,62 @@ const Projects = () => {
                     "Establish vocational training facilities to equip youth with marketable skills for employment and entrepreneurship.",
                 },
               ].map((goal, index) => (
-                <div
+                <motion.div
                   key={goal.title}
-                  className="glass rounded-2xl p-6 hover:shadow-medium transition-smooth group"
-                  style={{ animationDelay: `${index * 0.1}s` }}
+                  variants={fadeInUp}
+                  className="glass-premium rounded-2xl p-6 hover:shadow-medium transition-smooth group"
+                  whileHover={{ x: 8 }}
                 >
                   <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 rounded-xl bg-gradient-primary flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-smooth">
+                    <motion.div 
+                      className="w-12 h-12 rounded-xl bg-gradient-primary flex items-center justify-center flex-shrink-0 group-hover:shadow-elegant transition-smooth"
+                      whileHover={{ rotate: 360, scale: 1.1 }}
+                      transition={{ duration: 0.6 }}
+                    >
                       <Target className="w-6 h-6 text-primary-foreground" />
-                    </div>
+                    </motion.div>
                     <div>
                       <h3 className="text-xl font-bold mb-2">{goal.title}</h3>
                       <p className="text-muted-foreground">{goal.description}</p>
                     </div>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
+
+      {/* Custom Styles */}
+      <style>{`
+        .gradient-animated-text {
+          background: linear-gradient(
+            45deg,
+            #f59e0b,
+            #ec4899,
+            #8b5cf6,
+            #06b6d4,
+            #10b981
+          );
+          background-size: 300% 300%;
+          background-clip: text;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          animation: gradientShift 8s ease infinite;
+        }
+
+        @keyframes gradientShift {
+          0% {
+            background-position: 0% 50%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
+          100% {
+            background-position: 0% 50%;
+          }
+        }
+      `}</style>
     </main>
   );
 };

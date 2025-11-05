@@ -52,26 +52,11 @@ const itemVariants = {
     y: 0,
     opacity: 1,
     transition: {
-      duration: 0.6,
-      ease: "easeOut"
+      duration: 0.6
     }
   }
 };
 
-const socialIconVariants = {
-  hover: {
-    scale: 1.2,
-    rotate: 360,
-    transition: {
-      type: "spring",
-      stiffness: 400,
-      damping: 10
-    }
-  },
-  tap: {
-    scale: 0.9
-  }
-};
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -150,9 +135,9 @@ export const Footer = () => {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    variants={socialIconVariants}
-                    whileHover="hover"
-                    whileTap="tap"
+                    whileHover={{ scale: 1.2, rotate: 360 }}
+                    whileTap={{ scale: 0.9 }}
+                    transition={{ type: "spring" as const, stiffness: 400, damping: 10 }}
                     className={`relative group ${social.color}`}
                     aria-label={social.label}
                     style={{ transitionDelay: `${index * 100}ms` }}
