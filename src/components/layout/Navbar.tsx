@@ -25,7 +25,6 @@ export const Navbar = () => {
     { name: "About", path: "/about", icon: Users },
     { name: "Programs", path: "/programs", icon: BookOpen },
     { name: "Projects", path: "/projects", icon: FolderOpen },
-    { name: "Testimonials", path: "/testimonials", icon: MessageSquare },
     { name: "Contact", path: "/contact", icon: Mail },
   ];
 
