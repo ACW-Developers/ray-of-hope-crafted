@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import logo from "@/assets/logos/logo.png";
+import logo from "@/assets/logos/logo2.png";
 
 const LoadingScreen = ({ onLoadingComplete }: { onLoadingComplete: () => void }) => {
   const [progress, setProgress] = useState(0);
@@ -65,7 +65,7 @@ const LoadingScreen = ({ onLoadingComplete }: { onLoadingComplete: () => void })
           transition={{ delay: 0.3 }}
           className="text-4xl md:text-5xl font-bold text-white font-['Playfair_Display'] mb-8"
         >
-          Ray of Hope Community
+          Ray of Hope Foundation
         </motion.h1>
 
         {/* Loading Circle */}

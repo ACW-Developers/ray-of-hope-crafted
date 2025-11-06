@@ -222,7 +222,7 @@ export const Mission = () => {
   }, []);
 
   return (
-    <section className="relative min-h-screen py-24 bg-gradient-to-br from-slate-50 via-blue-50/20 to-indigo-50/10 overflow-hidden">
+    <section className="relative min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/20 to-indigo-50/10 overflow-hidden">
       {/* Animated Bubble Background */}
       <canvas
         ref={canvasRef}
@@ -231,7 +231,7 @@ export const Mission = () => {
       
       {/* Background decorative elements */}
       <div className="absolute inset-0">
-        <div className="absolute top-20 left-10 w-80 h-80 bg-blue-200/10 rounded-full blur-3xl animate-float"></div>
+        <div className="absolute top-10 left-10 w-80 h-80 bg-blue-200/10 rounded-full blur-3xl animate-float"></div>
         <div className="absolute bottom-20 right-10 w-96 h-96 bg-indigo-200/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }}></div>
         <div className="absolute top-1/2 left-1/3 w-64 h-64 bg-cyan-200/10 rounded-full blur-3xl animate-pulse"></div>
         
@@ -249,6 +249,32 @@ export const Mission = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Main Title Section - Added at Top Center */}
+        <motion.div 
+          className="text-center mb-8"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={{
+            hidden: { opacity: 0, y: 50 },
+            visible: {
+              opacity: 1,
+              y: 0,
+              transition: { duration: 0.8, ease: "easeOut" }
+            }
+          }}
+        >
+          <motion.div
+            className="inline-flex items-center gap-3 bg-white/80 backdrop-blur-sm rounded-full px-6 py-1 border border-blue-200/50 shadow-lg"
+            whileHover={{ scale: 1.05, boxShadow: "0 20px 25px -5px rgba(59, 130, 246, 0.1)" }}
+          >
+            <Sparkles className="w-5 h-5 text-blue-600 animate-spin" />
+            <span className="text-blue-600 font-semibold text-sm uppercase tracking-wider">
+              Who We Are
+            </span>
+          </motion.div>
+        </motion.div>
+
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -256,7 +282,7 @@ export const Mission = () => {
           viewport={{ once: true, margin: "-100px" }}
         >
           {/* Hero Section */}
-          <div className="grid lg:grid-cols-2 gap-16 items-center mb-24">
+          <div className="grid lg:grid-cols-2 gap-16 items-center mb-14">
             <motion.div variants={itemVariants} className="relative h-[500px] rounded-3xl overflow-hidden shadow-2xl group">
               {galleryImages.map((image, index) => (
                 <div
@@ -275,7 +301,7 @@ export const Mission = () => {
               ))}
 
               {/* Gallery indicators */}
-              <div className="absolute bottom-8 left-8 z-10 flex space-x-2">
+              <div className="absolute bottom-2 left-8 z-10 flex space-x-2">
                 {galleryImages.map((_, index) => (
                   <button
                     key={index}
@@ -305,12 +331,6 @@ export const Mission = () => {
             </motion.div>
 
             <motion.div variants={itemVariants} className="space-y-8">
-              <div className="inline-flex items-center gap-3 bg-white/80 backdrop-blur-sm rounded-full px-6 py-3 border border-blue-200/50 shadow-sm">
-                <Sparkles className="w-5 h-5 text-blue-600 animate-pulse" />
-                <span className="text-blue-600 font-semibold text-sm uppercase tracking-wider">
-                  ABOUT RAY OF HOPE COMMUNITY
-                </span>
-              </div>
 
               <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
                 Restoring Hope{' '}
