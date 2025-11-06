@@ -38,16 +38,18 @@ export const Navbar = () => {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.6 }}
-        className={`fixed top-2 left-4 right-4 z-50 transition-all duration-500 ${
-          scrolled ? "glass-premium shadow-elegant" : "glass-premium"
-        }`}
+        className={`fixed top-2 left-4 right-4 z-50 transition-all duration-500
+          bg-white shadow-sm md:bg-transparent 
+          ${scrolled ? "md:glass-premium md:shadow-elegant" : "md:glass-premium"}
+        `}
         style={{
           backdropFilter: useTransform(navbarBlur, (v) => `blur(${v}px)`),
           borderRadius: "2rem",
         }}
       >
+
         <div className="container mx-auto px-6 lg:px-8">
-          <div className="flex items-center justify-between py-1">
+          <div className="flex items-center justify-between">
             {/* Logo */}
             <Link to="/" className="flex items-center space-x-3 group">
               <motion.div
@@ -75,7 +77,7 @@ export const Navbar = () => {
                       className="relative group"
                     >
                       <div
-                        className={`flex items-center space-x-2 px-4 py-2 rounded-full transition-all ${
+                        className={`flex items-center space-x-2 px-4 py-1 rounded-full transition-all ${
                           location.pathname === item.path
                             ? "bg-primary/20 text-primary"
                             : "text-muted-foreground hover:bg-primary/10 hover:text-primary"

@@ -2,6 +2,7 @@ import { Award, TrendingUp, Target, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
 import childImage from "@/assets/child-reading.jpg";
 import heroImage from "@/assets/hero-children.jpg";
+import backgroundImage from "@/assets/general/bg1.jpeg";
 
 const successStories = [
   {
@@ -45,6 +46,30 @@ const successStories = [
   },
 ];
 
+// Regular bubbles configuration for main background
+const bubbles = Array.from({ length: 15 }, (_, i) => ({
+  id: i,
+  size: Math.random() * 60 + 20, // 20-80px
+  color: `rgba(${Math.random() * 100 + 155}, ${Math.random() * 100 + 155}, ${
+    Math.random() * 100 + 155
+  }, ${Math.random() * 0.3 + 0.1})`,
+  left: Math.random() * 100,
+  duration: Math.random() * 10 + 10, // 10-20 seconds
+  delay: Math.random() * 5,
+}));
+
+// Bigger, slower bubbles for hero section
+const heroBubbles = Array.from({ length: 8 }, (_, i) => ({
+  id: i + 100, // Different ID range
+  size: Math.random() * 120 + 80, // 80-200px - Much bigger
+  color: `rgba(${Math.random() * 100 + 155}, ${Math.random() * 100 + 155}, ${
+    Math.random() * 100 + 155
+  }, ${Math.random() * 0.2 + 0.05})`, // More transparent
+  left: Math.random() * 100,
+  duration: Math.random() * 20 + 25, // 25-45 seconds - Much slower
+  delay: Math.random() * 10,
+}));
+
 const Projects = () => {
   const fadeInUp = {
     initial: { opacity: 0, y: 40 },
@@ -61,9 +86,80 @@ const Projects = () => {
   };
 
   return (
-    <main className="min-h-screen pt-20">
+    <main className="min-h-screen pt-20 relative overflow-hidden">
+      {/* Static Background Image */}
+      <div 
+        className="fixed inset-0 z-0"
+        style={{
+          backgroundImage: `url(${backgroundImage})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundAttachment: 'fixed',
+          opacity: 0.1,
+        }}
+      />
+      
+      {/* Bouncing Bubbles Animation - Global */}
+      <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
+        {bubbles.map((bubble) => (
+          <motion.div
+            key={bubble.id}
+            className="absolute rounded-full"
+            style={{
+              width: bubble.size,
+              height: bubble.size,
+              left: `${bubble.left}%`,
+              backgroundColor: bubble.color,
+              bottom: '-100px',
+            }}
+            animate={{
+              y: [-100, -1200],
+              x: [0, Math.random() * 100 - 50],
+              scale: [1, 1.1, 0.9],
+            }}
+            transition={{
+              duration: bubble.duration,
+              delay: bubble.delay,
+              repeat: Infinity,
+              repeatType: "loop",
+              ease: "easeInOut",
+            }}
+          />
+        ))}
+      </div>
+
       {/* Hero Section */}
       <section className="py-24 bg-gradient-to-br from-slate-900 via-purple-900 to-blue-900 text-white relative overflow-hidden">
+        {/* Bigger, Slower Bubbles - Hero Section Only */}
+        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+          {heroBubbles.map((bubble) => (
+            <motion.div
+              key={bubble.id}
+              className="absolute rounded-full"
+              style={{
+                width: bubble.size,
+                height: bubble.size,
+                left: `${bubble.left}%`,
+                backgroundColor: bubble.color,
+                bottom: '-200px', // Start further down for bigger bubbles
+              }}
+              animate={{
+                y: [-200, -1500], // Travel further
+                x: [0, Math.random() * 200 - 100], // More horizontal movement
+                scale: [1, 1.2, 0.8], // More dramatic scale change
+                rotate: [0, 180, 360], // Add rotation for bigger bubbles
+              }}
+              transition={{
+                duration: bubble.duration,
+                delay: bubble.delay,
+                repeat: Infinity,
+                repeatType: "loop",
+                ease: "easeInOut",
+              }}
+            />
+          ))}
+        </div>
+
         {/* Animated Background */}
         <div className="absolute inset-0 opacity-20">
           <motion.div
@@ -106,7 +202,7 @@ const Projects = () => {
       </section>
 
       {/* Success Stories */}
-      <section className="py-24 bg-background">
+      <section className="py-24 bg-background/80 backdrop-blur-sm relative z-10">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto space-y-24">
             {successStories.map((story, index) => (
@@ -207,7 +303,7 @@ const Projects = () => {
       </section>
 
       {/* Future Goals Section */}
-      <section className="py-24 bg-gradient-subtle relative overflow-hidden">
+      <section className="py-24 bg-gradient-subtle/80 backdrop-blur-sm relative overflow-hidden z-10">
         <div className="absolute inset-0 opacity-5">
           <div className="absolute top-20 left-20 w-64 h-64 bg-primary rounded-full blur-3xl" />
           <div className="absolute bottom-20 right-20 w-64 h-64 bg-accent rounded-full blur-3xl" />

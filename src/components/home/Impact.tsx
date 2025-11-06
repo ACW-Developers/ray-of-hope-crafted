@@ -53,7 +53,7 @@ export const Impact = () => {
       ref={sectionRef} 
       className="relative min-h-screen flex items-center justify-center overflow-hidden bg-cover bg-center bg-fixed"
       style={{
-        backgroundImage: `linear-gradient(rgba(15, 23, 42, 0.9), rgba(30, 41, 59, 0.8)), url('https://images.unsplash.com/photo-1529390079861-591de354faf5?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')`,
+        backgroundImage: `url('https://images.unsplash.com/photo-1529390079861-591de354faf5?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')`,
       }}
     >
       {/* Enhanced Water Canvas */}

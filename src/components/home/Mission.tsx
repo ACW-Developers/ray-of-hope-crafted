@@ -24,11 +24,11 @@ import {
   Cross
 } from 'lucide-react';
 
-import aboutHero from '@/assets/general/g3.jpg';
-import missionImage from '@/assets/general/hero-children.jpg';
-import teamImage from '@/assets/general/c31.jpg';
-import valuesImage from '@/assets/general/g.jpg';
-import africaService from '@/assets/general/f3.jpg';
+import aboutHero from '@/assets/general/bg6.jpg';
+import missionImage from '@/assets/general/school1.webp';
+import teamImage from '@/assets/general/child2.jpeg';
+import valuesImage from '@/assets/general/child3.jpg';
+import africaService from '@/assets/general/bg3.jpg';
 
 export const Mission = () => {
   const [currentImage, setCurrentImage] = useState(0);

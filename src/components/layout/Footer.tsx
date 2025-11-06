@@ -5,6 +5,9 @@ import {
 } from "lucide-react";
 import { motion } from "framer-motion";
 
+// Import local logo
+import logo from "@/assets/logos/logo2.png"; 
+
 // Wave Divider Component
 const WaveDivider = ({ className, color }) => (
   <div className={className}>
@@ -57,12 +60,11 @@ const itemVariants = {
   }
 };
 
-
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-gradient-to-br from-primary to-primary/90 text-primary-foreground relative overflow-hidden">
+    <footer className="bg-sky-900 text-white relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{
@@ -72,35 +74,31 @@ export const Footer = () => {
         }}></div>
       </div>
 
-      <WaveDivider className="-mb-1" color="hsl(var(--primary))" />
+      <WaveDivider className="-mb-1" color="#1e3a8a" />
       
       <motion.div
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-50px" }}
         variants={containerVariants}
-        className="container mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-8 relative z-10"
+        className="container mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-8 relative z-10"
       >
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           {/* Brand Section */}
           <motion.div variants={itemVariants} className="space-y-6">
             <Link to="/" className="flex items-center space-x-4 group">
               <motion.div
-                whileHover={{ scale: 1.1, rotate: 5 }}
+                whileHover={{ scale: 1.1 }}
                 className="relative"
               >
                 <motion.div
-                  animate={{
-                    rotate: [0, 10, -10, 0],
-                  }}
-                  transition={{
-                    duration: 4,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                  }}
-                  className="w-16 h-16 rounded-2xl bg-gradient-to-br from-accent to-accent/70 flex items-center justify-center shadow-lg"
+                  className="w-16 h-16 rounded-2xl bg-white flex items-center justify-center shadow-lg backdrop-blur-sm border border-white/20"
                 >
-                  <Heart className="w-8 h-8 text-white" fill="currentColor" />
+                  <img 
+                    src={logo} 
+                    alt="Ray of Hope Community Foundation Logo" 
+                    className="w-14 h-14 object-contain"
+                  />
                 </motion.div>
                 <motion.div
                   className="absolute -inset-2 bg-accent/20 rounded-2xl blur-lg opacity-0 group-hover:opacity-100"
@@ -111,7 +109,7 @@ export const Footer = () => {
                 <h2 className="text-2xl font-bold font-['Playfair_Display'] text-white tracking-tight">
                   Ray of Hope
                 </h2>
-                <p className="text-sm text-white/70 font-light tracking-wider">COMMUNITY FOUNDATION</p>
+                <p className="text-sm text-white/70 font-light tracking-wider">FOUNDATION</p>
               </div>
             </Link>
             
@@ -135,7 +133,7 @@ export const Footer = () => {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    whileHover={{ scale: 1.2, rotate: 360 }}
+                    whileHover={{ scale: 1.2 }}
                     whileTap={{ scale: 0.9 }}
                     transition={{ type: "spring" as const, stiffness: 400, damping: 10 }}
                     className={`relative group ${social.color}`}
@@ -154,7 +152,7 @@ export const Footer = () => {
                         delay: index * 0.1
                       }}
                     />
-                    <Icon className="w-5 h-5 relative z-10 transition-colors duration-300" />
+                    <Icon className="w-5 h-5 relative z-10 transition-colors duration-300 text-white/80" />
                   </motion.a>
                 );
               })}
@@ -164,7 +162,7 @@ export const Footer = () => {
           {/* Quick Links */}
           <motion.div variants={itemVariants}>
             <h3 className="text-lg font-semibold mb-6 text-white flex items-center">
-              <Home className="w-5 h-5 mr-2 text-accent" />
+              <Home className="w-5 h-5 mr-2 text-blue-300" />
               Quick Links
             </h3>
             <ul className="space-y-3">
@@ -177,9 +175,9 @@ export const Footer = () => {
                 <li key={item.name}>
                   <Link
                     to={`/${item.name.toLowerCase()}`}
-                    className="group flex items-center text-sm text-white/80 hover:text-accent transition-all duration-300"
+                    className="group flex items-center text-sm text-white/80 hover:text-blue-300 transition-all duration-300"
                   >
-                    <item.icon className="w-4 h-4 mr-3 text-accent/70 group-hover:text-accent transition-colors" />
+                    <item.icon className="w-4 h-4 mr-3 text-blue-300/70 group-hover:text-blue-300 transition-colors" />
                     <span className="flex-1 group-hover:translate-x-1 transition-transform">
                       {item.name}
                     </span>
@@ -193,7 +191,7 @@ export const Footer = () => {
           {/* Programs */}
           <motion.div variants={itemVariants}>
             <h3 className="text-lg font-semibold mb-6 text-white flex items-center">
-              <BookOpen className="w-5 h-5 mr-2 text-accent" />
+              <BookOpen className="w-5 h-5 mr-2 text-blue-300" />
               Our Programs
             </h3>
             <ul className="space-y-3">
@@ -217,7 +215,7 @@ export const Footer = () => {
                       repeat: Infinity,
                       delay: index * 0.2 
                     }}
-                    className="w-1.5 h-1.5 rounded-full bg-accent mt-2 mr-3 flex-shrink-0"
+                    className="w-1.5 h-1.5 rounded-full bg-blue-300 mt-2 mr-3 flex-shrink-0"
                   />
                   <span className="text-sm text-white/80 font-light leading-relaxed">
                     {program}
@@ -230,7 +228,7 @@ export const Footer = () => {
           {/* Contact Info */}
           <motion.div variants={itemVariants}>
             <h3 className="text-lg font-semibold mb-6 text-white flex items-center">
-              <Mail className="w-5 h-5 mr-2 text-accent" />
+              <Mail className="w-5 h-5 mr-2 text-blue-300" />
               Get in Touch
             </h3>
             <ul className="space-y-4">
@@ -238,7 +236,7 @@ export const Footer = () => {
                 className="flex items-start space-x-3 group"
                 whileHover={{ x: 5 }}
               >
-                <MapPin className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
+                <MapPin className="w-5 h-5 text-blue-300 flex-shrink-0 mt-0.5" />
                 <span className="text-sm text-white/80 font-light">
                   East & Central Africa Region
                 </span>
@@ -248,10 +246,10 @@ export const Footer = () => {
                 className="flex items-start space-x-3 group"
                 whileHover={{ x: 5 }}
               >
-                <Mail className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
+                <Mail className="w-5 h-5 text-blue-300 flex-shrink-0 mt-0.5" />
                 <a
                   href="mailto:info@rayofhope.org"
-                  className="text-sm text-white/80 hover:text-accent transition-colors duration-300 font-light group-hover:underline"
+                  className="text-sm text-white/80 hover:text-blue-300 transition-colors duration-300 font-light group-hover:underline"
                 >
                   info@rayofhope.org
                 </a>
@@ -261,10 +259,10 @@ export const Footer = () => {
                 className="flex items-start space-x-3 group"
                 whileHover={{ x: 5 }}
               >
-                <Phone className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
+                <Phone className="w-5 h-5 text-blue-300 flex-shrink-0 mt-0.5" />
                 <a
                   href="tel:+254700000000"
-                  className="text-sm text-white/80 hover:text-accent transition-colors duration-300 font-light group-hover:underline"
+                  className="text-sm text-white/80 hover:text-blue-300 transition-colors duration-300 font-light group-hover:underline"
                 >
                   +254 700 000 000
                 </a>
@@ -278,16 +276,16 @@ export const Footer = () => {
               transition={{ type: "spring", stiffness: 400 }}
             >
               <p className="text-sm font-medium text-white mb-2">Stay Updated</p>
-              <div className="flex space-x-2">
+              <div className="flex space-x-1">
                 <input
                   type="email"
                   placeholder="Your email"
-                  className="flex-1 px-3 py-2 text-sm bg-white/10 border border-white/20 rounded focus:outline-none focus:border-accent text-white placeholder-white/50"
+                  className="flex-1 px-1 py-2 text-sm bg-white/10 border w-1/2 border-white/20 rounded focus:outline-none focus:border-blue-300 text-white placeholder-white/50"
                 />
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="px-4 py-2 bg-accent text-white text-sm font-medium rounded hover:bg-accent/90 transition-colors"
+                  className="px-2 py-2 bg-blue-600 text-white text-sm font-medium rounded hover:bg-blue-500 transition-colors"
                 >
                   Join
                 </motion.button>
@@ -310,14 +308,14 @@ export const Footer = () => {
             <div className="flex items-center space-x-6">
               <Link
                 to="/privacy"
-                className="text-sm text-white/70 hover:text-accent transition-colors duration-300 hover:underline flex items-center"
+                className="text-sm text-white/70 hover:text-blue-300 transition-colors duration-300 hover:underline flex items-center"
               >
                 <Shield className="w-3 h-3 mr-1" />
                 Privacy Policy
               </Link>
               <Link
                 to="/terms"
-                className="text-sm text-white/70 hover:text-accent transition-colors duration-300 hover:underline"
+                className="text-sm text-white/70 hover:text-blue-300 transition-colors duration-300 hover:underline"
               >
                 Terms of Service
               </Link>
