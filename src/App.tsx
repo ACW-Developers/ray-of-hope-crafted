@@ -5,6 +5,8 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import ScrollToTop from "@/components/ui/ScrollToTop";
+import ScrollToTopButton from "@/components/ui/ScrollToTopButton";
 import Index from "./pages/Index";
 import About from "./pages/About";
 import Programs from "./pages/Programs";
@@ -22,6 +24,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+        <ScrollToTop />
         <div className="min-h-screen flex flex-col">
           <Navbar />
           <div className="flex-1">
@@ -38,6 +41,7 @@ const App = () => (
             </Routes>
           </div>
           <Footer />
+          <ScrollToTopButton />
         </div>
       </BrowserRouter>
     </TooltipProvider>

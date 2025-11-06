@@ -1,12 +1,19 @@
-import { BookOpen, Shield, Users, Heart, Globe, Sparkles } from "lucide-react";
-import { motion } from "framer-motion";
+import { BookOpen, Shield, Users, Heart, Globe, Sparkles, ArrowRight, CheckCircle2 } from "lucide-react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
+import childReading from "@/assets/child-reading.jpg";
+import child1 from "@/assets/general/child1.jpeg";
+import child2 from "@/assets/general/child2.jpeg";
+import child3 from "@/assets/general/child3.jpg";
+import school from "@/assets/general/school.webp";
+import bg5 from "@/assets/general/bg5.jpeg";
 
 const programs = [
   {
     icon: BookOpen,
     title: "Education Support",
-    description:
-      "We believe education is the key to breaking the cycle of poverty. Our education program provides:",
+    tagline: "Unlocking Potential Through Learning",
+    description: "We believe education is the key to breaking the cycle of poverty. Our comprehensive education program transforms lives through knowledge and opportunity.",
     features: [
       "Full or partial school fee sponsorships",
       "School supplies and uniforms",
@@ -14,13 +21,14 @@ const programs = [
       "Vocational training opportunities",
       "Scholarship programs for higher education",
     ],
-    color: "primary",
+    image: childReading,
+    stat: { value: "120+", label: "Students Sponsored" },
   },
   {
     icon: Shield,
     title: "Child Protection",
-    description:
-      "Every child deserves to feel safe and protected. Our protection initiatives include:",
+    tagline: "Safety, Security, Peace of Mind",
+    description: "Every child deserves to feel safe and protected. Our protection initiatives create havens where children can heal, grow, and thrive without fear.",
     features: [
       "Safe house facilities for at-risk children",
       "Child protection policy implementation",
@@ -28,13 +36,14 @@ const programs = [
       "Legal advocacy for children's rights",
       "Community awareness campaigns",
     ],
-    color: "secondary",
+    image: child1,
+    stat: { value: "50+", label: "Children Protected" },
   },
   {
     icon: Users,
     title: "Mentorship Programs",
-    description:
-      "Positive role models can transform a child's trajectory. Our mentorship program offers:",
+    tagline: "Guiding Futures, Building Leaders",
+    description: "Positive role models can transform a child's trajectory. Our mentorship program connects vulnerable youth with caring adults who inspire and guide.",
     features: [
       "One-on-one mentoring relationships",
       "Group mentorship activities",
@@ -42,13 +51,14 @@ const programs = [
       "Career guidance and planning",
       "Leadership development programs",
     ],
-    color: "accent",
+    image: child2,
+    stat: { value: "80", label: "Active Mentorship Pairs" },
   },
   {
     icon: Heart,
     title: "Holistic Care",
-    description:
-      "We address the whole child - body, mind, and spirit. Our holistic care includes:",
+    tagline: "Nurturing Body, Mind & Spirit",
+    description: "We address the whole child - physical, emotional, and spiritual needs. True transformation happens when all aspects of a child's wellbeing are nurtured.",
     features: [
       "Nutritional support and food assistance",
       "Healthcare access and medical support",
@@ -56,13 +66,14 @@ const programs = [
       "Recreational and sports activities",
       "Emotional wellbeing support",
     ],
-    color: "primary",
+    image: child3,
+    stat: { value: "200+", label: "Children Receiving Care" },
   },
   {
     icon: Globe,
     title: "Refugee Camp Support",
-    description:
-      "Currently active in Kenya and Uganda refugee camps, providing:",
+    tagline: "Hope in the Hardest Places",
+    description: "Active in Kenya and Uganda refugee camps, we bring light to the darkest situations, providing comprehensive support where it's needed most.",
     features: [
       "Emergency relief and supplies",
       "Education in challenging environments",
@@ -70,43 +81,230 @@ const programs = [
       "Caregiver training and support",
       "Community development initiatives",
     ],
-    color: "secondary",
-  },
-  {
-    icon: Sparkles,
-    title: "Future Initiatives",
-    description: "We're expanding our reach with plans to:",
-    features: [
-      "Establish operations in Burundi and DRC",
-      "Build a Child Development Centre",
-      "Launch sustainable income-generating projects",
-      "Create skills training centers",
-      "Expand our mentorship network",
-    ],
-    color: "accent",
+    image: school,
+    stat: { value: "5", label: "Active Camp Locations" },
   },
 ];
 
 const Programs = () => {
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end end"]
+  });
+
+  const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
+
   const fadeInUp = {
-    initial: { opacity: 0, y: 40 },
+    initial: { opacity: 0, y: 60 },
     animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.6 }
+    transition: { duration: 0.7 }
   };
 
   const staggerContainer = {
     animate: {
       transition: {
-        staggerChildren: 0.15
+        staggerChildren: 0.2
       }
     }
   };
 
   return (
-    <main className="min-h-screen pt-20">
+    <main ref={containerRef} className="min-h-screen pt-20 relative overflow-hidden">
+      {/* Parallax Hero Background */}
+      <motion.div
+        className="fixed inset-0 z-0"
+        style={{ y: backgroundY }}
+      >
+        <div 
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `url(${bg5})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-background" />
+      </motion.div>
+
+      {/* Floating Elements */}
+      <div className="fixed inset-0 z-[1] pointer-events-none">
+        {[...Array(20)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-2 h-2 bg-white/30 rounded-full"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+            }}
+            animate={{
+              y: [0, -100, 0],
+              opacity: [0, 1, 0],
+              scale: [0, 1, 0],
+            }}
+            transition={{
+              duration: 5 + Math.random() * 3,
+              repeat: Infinity,
+              delay: Math.random() * 5,
+            }}
+          />
+        ))}
+      </div>
+
       {/* Hero Section */}
-      <section className="py-24 bg-gradient-to-br from-slate-900 via-purple-900 to-blue-900 text-white relative overflow-hidden">
-        {/* Animated Background */}
+      <section className="relative min-h-[80vh] flex items-center justify-center z-10">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div 
+            className="max-w-5xl mx-auto text-center"
+            initial="initial"
+            animate="animate"
+            variants={staggerContainer}
+          >
+            <motion.div variants={fadeInUp} className="inline-flex items-center gap-3 glass-premium px-6 py-3 rounded-full mb-8">
+              <Sparkles className="w-5 h-5 text-accent" fill="currentColor" />
+              <span className="text-sm font-semibold tracking-wider text-white">TRANSFORMING LIVES</span>
+            </motion.div>
+            <motion.h1 
+              variants={fadeInUp} 
+              className="text-6xl md:text-7xl lg:text-8xl font-bold font-['Playfair_Display'] mb-6 text-white leading-tight"
+            >
+              Our Programs
+            </motion.h1>
+            <motion.p variants={fadeInUp} className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto leading-relaxed">
+              Comprehensive support systems designed to empower children and transform communities across East and Central Africa
+            </motion.p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Programs Showcase - Alternating Layout */}
+      <section className="relative z-10 py-32 bg-background">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto space-y-32">
+            {programs.map((program, index) => {
+              const Icon = program.icon;
+              const isEven = index % 2 === 0;
+              
+              return (
+                <motion.div
+                  key={program.title}
+                  className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center"
+                  initial={{ opacity: 0, y: 80 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                >
+                  {/* Image Side */}
+                  <motion.div 
+                    className={`relative ${isEven ? 'lg:order-1' : 'lg:order-2'}`}
+                    whileHover={{ scale: 1.03 }}
+                    transition={{ duration: 0.4 }}
+                  >
+                    <div className="relative rounded-3xl overflow-hidden shadow-strong group">
+                      {/* Image */}
+                      <div className="aspect-[4/3] overflow-hidden">
+                        <motion.img
+                          src={program.image}
+                          alt={program.title}
+                          className="w-full h-full object-cover"
+                          whileHover={{ scale: 1.1 }}
+                          transition={{ duration: 0.6 }}
+                        />
+                      </div>
+                      
+                      {/* Overlay Gradient */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-smooth" />
+                      
+                      {/* Floating Stat Badge */}
+                      <motion.div
+                        className="absolute -bottom-6 -right-6 glass-premium rounded-2xl p-6 shadow-elegant"
+                        initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
+                        whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+                        transition={{ delay: 0.5 }}
+                      >
+                        <div className="text-center">
+                          <div className="text-3xl font-bold text-primary mb-1">{program.stat.value}</div>
+                          <div className="text-xs text-muted-foreground whitespace-nowrap">{program.stat.label}</div>
+                        </div>
+                      </motion.div>
+                    </div>
+
+                    {/* Decorative Element */}
+                    <motion.div
+                      className="absolute -z-10 top-8 left-8 w-full h-full bg-gradient-primary opacity-10 rounded-3xl"
+                      animate={{ x: [0, 10, 0], y: [0, 10, 0] }}
+                      transition={{ duration: 5, repeat: Infinity }}
+                    />
+                  </motion.div>
+
+                  {/* Content Side */}
+                  <div className={isEven ? 'lg:order-2' : 'lg:order-1'}>
+                    <motion.div
+                      initial={{ opacity: 0, x: isEven ? -30 : 30 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.3, duration: 0.6 }}
+                    >
+                      {/* Icon */}
+                      <motion.div 
+                        className="w-20 h-20 rounded-2xl bg-gradient-primary flex items-center justify-center mb-6 shadow-soft"
+                        whileHover={{ rotate: 360, scale: 1.1 }}
+                        transition={{ duration: 0.6 }}
+                      >
+                        <Icon className="w-10 h-10 text-primary-foreground" />
+                      </motion.div>
+
+                      {/* Tagline */}
+                      <div className="inline-block px-4 py-2 rounded-full bg-accent/10 text-accent text-sm font-semibold mb-4">
+                        {program.tagline}
+                      </div>
+
+                      {/* Title */}
+                      <h3 className="text-5xl font-bold font-['Playfair_Display'] mb-6 gradient-text">
+                        {program.title}
+                      </h3>
+
+                      {/* Description */}
+                      <p className="text-lg text-muted-foreground leading-relaxed mb-8">
+                        {program.description}
+                      </p>
+
+                      {/* Features List */}
+                      <div className="space-y-4 mb-8">
+                        {program.features.map((feature, idx) => (
+                          <motion.div
+                            key={feature}
+                            className="flex items-start space-x-3 group"
+                            initial={{ opacity: 0, x: -20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            transition={{ delay: 0.4 + idx * 0.1 }}
+                          >
+                            <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5 group-hover:scale-110 transition-smooth" />
+                            <span className="text-muted-foreground">{feature}</span>
+                          </motion.div>
+                        ))}
+                      </div>
+
+                      {/* CTA Button */}
+                      <motion.a 
+                        href="/donate"
+                        className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-primary text-primary-foreground rounded-xl font-semibold shadow-soft hover:shadow-strong transition-smooth group"
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        Support This Program
+                        <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-smooth" />
+                      </motion.a>
+                    </motion.div>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Future Initiatives Teaser */}
+      <section className="relative z-10 py-32 bg-gradient-to-br from-slate-900 via-purple-900 to-blue-900 text-white">
         <div className="absolute inset-0 opacity-20">
           <motion.div
             className="absolute top-0 left-0 w-96 h-96 bg-gradient-to-r from-accent/30 to-purple-500/30 rounded-full blur-3xl"
@@ -116,101 +314,6 @@ const Programs = () => {
             }}
             transition={{ duration: 8, repeat: Infinity }}
           />
-          <motion.div
-            className="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-r from-blue-500/30 to-cyan-500/30 rounded-full blur-3xl"
-            animate={{
-              scale: [1.2, 1, 1.2],
-              opacity: [0.4, 0.2, 0.4],
-            }}
-            transition={{ duration: 6, repeat: Infinity, delay: 1 }}
-          />
-        </div>
-
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <motion.div 
-            className="max-w-4xl mx-auto text-center"
-            initial="initial"
-            animate="animate"
-            variants={staggerContainer}
-          >
-            <motion.h1 variants={fadeInUp} className="text-5xl md:text-6xl font-bold font-['Playfair_Display'] mb-6 gradient-animated-text">
-              Our Programs
-            </motion.h1>
-            <motion.p variants={fadeInUp} className="text-xl md:text-2xl text-white/90">
-              Comprehensive support systems designed to empower children and transform communities
-            </motion.p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Programs Grid */}
-      <section className="py-24 bg-background relative">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div 
-            className="max-w-7xl mx-auto"
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={staggerContainer}
-          >
-            <div className="grid md:grid-cols-2 gap-8">
-              {programs.map((program, index) => {
-                const Icon = program.icon;
-                return (
-                  <motion.div
-                    key={program.title}
-                    variants={fadeInUp}
-                    className="glass-premium floating-card rounded-3xl p-8 md:p-10 hover:shadow-strong transition-smooth group"
-                    whileHover={{ y: -8, scale: 1.02 }}
-                  >
-                    <motion.div 
-                      className={`w-16 h-16 rounded-2xl bg-gradient-${program.color} flex items-center justify-center mb-6 shadow-soft`}
-                      whileHover={{ rotate: 360, scale: 1.1 }}
-                      transition={{ duration: 0.6 }}
-                    >
-                      <Icon className="w-8 h-8 text-primary-foreground" />
-                    </motion.div>
-
-                    <h3 className="text-3xl font-bold mb-4 font-['Playfair_Display'] group-hover:text-primary transition-smooth">
-                      {program.title}
-                    </h3>
-
-                    <p className="text-muted-foreground mb-6 leading-relaxed">
-                      {program.description}
-                    </p>
-
-                    <ul className="space-y-3">
-                      {program.features.map((feature, idx) => (
-                        <motion.li 
-                          key={feature} 
-                          className="flex items-start space-x-3"
-                          initial={{ opacity: 0, x: -10 }}
-                          whileInView={{ opacity: 1, x: 0 }}
-                          transition={{ delay: idx * 0.05 }}
-                        >
-                          <motion.div 
-                            className="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5"
-                            whileHover={{ scale: 1.3 }}
-                          >
-                            <div className="w-2 h-2 rounded-full bg-primary" />
-                          </motion.div>
-                          <span className="text-sm text-muted-foreground">{feature}</span>
-                        </motion.li>
-                      ))}
-                    </ul>
-                  </motion.div>
-                );
-              })}
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-24 bg-gradient-subtle relative overflow-hidden">
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-20 left-20 w-64 h-64 bg-primary rounded-full blur-3xl" />
-          <div className="absolute bottom-20 right-20 w-64 h-64 bg-accent rounded-full blur-3xl" />
         </div>
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -221,32 +324,32 @@ const Programs = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-4xl font-bold font-['Playfair_Display'] mb-6">
-              Support Our Programs
+            <Sparkles className="w-12 h-12 mx-auto mb-6 text-accent" fill="currentColor" />
+            <h2 className="text-5xl font-bold font-['Playfair_Display'] mb-6">
+              Future Initiatives
             </h2>
-            <p className="text-xl text-muted-foreground mb-8">
-              Your contribution directly impacts the lives of vulnerable children. Choose a program
-              to support or make a general donation.
+            <p className="text-xl text-white/90 mb-8 leading-relaxed">
+              We're expanding our reach with ambitious plans to establish operations in Burundi and DRC, 
+              build a comprehensive Child Development Centre, launch sustainable income-generating projects, 
+              and create skills training centers that will transform entire communities.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="/donate">
-                <motion.button 
-                  className="h-14 rounded-lg px-10 text-base inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium ring-offset-background transition-smooth focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-gradient-accent text-accent-foreground shadow-soft font-semibold glow-pulse"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  Donate Now
-                </motion.button>
-              </a>
-              <a href="/contact">
-                <motion.button 
-                  className="h-14 rounded-lg px-10 text-base inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium ring-offset-background transition-smooth focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  Get Involved
-                </motion.button>
-              </a>
+              <motion.a 
+                href="/projects"
+                className="px-10 py-4 bg-white text-primary rounded-xl font-semibold shadow-soft hover:shadow-strong transition-smooth"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Explore Our Vision
+              </motion.a>
+              <motion.a 
+                href="/donate"
+                className="px-10 py-4 border-2 border-white text-white rounded-xl font-semibold hover:bg-white hover:text-primary transition-smooth"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Fund the Future
+              </motion.a>
             </div>
           </motion.div>
         </div>
