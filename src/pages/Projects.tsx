@@ -61,28 +61,32 @@ const futureGoals = [
     description: "Establish comprehensive programs in new countries, extending our reach to thousands more vulnerable children in underserved regions.", 
     timeline: "2025-2026", 
     icon: MapPin,
-    color: "from-blue-500 to-purple-500"
+    color: "from-blue-500 to-purple-500",
+    bgColor: "bg-blue-500"
   },
   { 
     title: "Child Development Centre", 
     description: "Create a state-of-the-art facility offering integrated services including education, healthcare, and recreational activities for holistic child development.", 
     timeline: "2026-2027", 
     icon: BookOpen,
-    color: "from-green-500 to-emerald-500"
+    color: "from-green-500 to-emerald-500",
+    bgColor: "bg-green-500"
   },
   { 
     title: "Sustainable Initiatives", 
     description: "Develop income-generating projects that ensure long-term program sustainability while empowering local communities through economic opportunities.", 
     timeline: "2025-2028", 
     icon: Target,
-    color: "from-orange-500 to-red-500"
+    color: "from-orange-500 to-red-500",
+    bgColor: "bg-orange-500"
   },
   { 
     title: "Vocational Training Centers", 
     description: "Establish comprehensive skills development facilities to empower youth with practical abilities for economic independence and career success.", 
     timeline: "2026-2028", 
     icon: Zap,
-    color: "from-pink-500 to-purple-500"
+    color: "from-pink-500 to-purple-500",
+    bgColor: "bg-pink-500"
   },
 ];
 
@@ -195,15 +199,6 @@ const Projects = () => {
             >
               Stories of hope, resilience, and lasting change
             </motion.p>
-
-            {/* Impact Highlights */}
-            <motion.div 
-              className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16"
-              variants={containerVariants}
-              initial="hidden"
-              animate="visible"
-            >
-            </motion.div>
           </motion.div>
         </div>
       </motion.section>
@@ -357,7 +352,7 @@ const Projects = () => {
         </div>
       </section>
 
-      {/* Future Vision Section */}
+      {/* Future Vision Timeline Section */}
       <section className="relative py-32 overflow-hidden">
         {/* Background */}
         <div className="absolute inset-0 z-0">
@@ -398,58 +393,114 @@ const Projects = () => {
             </p>
           </motion.div>
 
-          <motion.div
-            className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto"
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-          >
-            {futureGoals.map((goal, index) => (
-              <motion.div
-                key={goal.title}
-                variants={itemVariants}
-                className="group relative"
-                whileHover={{ y: -8 }}
-              >
-                <div className="glass-premium rounded-2xl p-8 h-full hover:shadow-strong transition-smooth relative overflow-hidden">
-                  {/* Subtle Background Gradient */}
-                  <motion.div
-                    className={`absolute inset-0 bg-gradient-to-br ${goal.color} opacity-0 group-hover:opacity-5 transition-smooth`}
-                    initial={false}
-                  />
-
-                  {/* Number Indicator */}
-                  <div className="relative mb-6">
+          {/* Timeline Container */}
+          <div className="relative max-w-6xl mx-auto">
+            {/* Central Timeline Line */}
+            <div className="absolute left-1/2 transform -translate-x-1/2 w-1 bg-gradient-to-b from-primary via-accent to-purple-500 h-full hidden lg:block" />
+            
+            {/* Timeline Items */}
+            <div className="space-y-12 lg:space-y-24">
+              {futureGoals.map((goal, index) => (
+                <motion.div
+                  key={goal.title}
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  className={`relative flex flex-col lg:flex-row items-center gap-8 ${
+                    index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'
+                  }`}
+                >
+                  {/* Timeline Node - Desktop */}
+                  <div className="hidden lg:flex absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 top-1/2 z-20">
                     <motion.div
-                      className={`inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br ${goal.color} text-white font-bold text-lg shadow-soft`}
-                      whileHover={{ rotate: 360, scale: 1.1 }}
-                      transition={{ duration: 0.6 }}
-                    >
-                      {index + 1}
-                    </motion.div>
+                      className={`w-8 h-8 rounded-full ${goal.bgColor} shadow-lg border-4 border-white`}
+                      whileHover={{ scale: 1.3 }}
+                      transition={{ type: "spring", stiffness: 300 }}
+                    />
                   </div>
 
-                  {/* Icon */}
-                  <goal.icon className="w-10 h-10 text-primary mb-4 group-hover:scale-110 transition-smooth" />
-
-                  <h3 className="text-2xl font-bold mb-4 font-['Playfair_Display'] group-hover:gradient-text transition-smooth">
-                    {goal.title}
-                  </h3>
-
-                  <p className="text-muted-foreground leading-relaxed mb-6">
-                    {goal.description}
-                  </p>
-
-                  {/* Timeline */}
-                  <div className="flex items-center gap-2">
-                    <Calendar className="w-4 h-4 text-primary" />
-                    <span className="text-sm font-semibold text-primary">{goal.timeline}</span>
+                  {/* Timeline Node - Mobile */}
+                  <div className="lg:hidden absolute left-0 top-6 transform -translate-x-1/2 z-20">
+                    <div className={`w-6 h-6 rounded-full ${goal.bgColor} shadow-lg border-3 border-white`} />
                   </div>
-                </div>
+
+                  {/* Content Card */}
+                  <div className={`glass-premium rounded-2xl p-6 lg:p-8 shadow-strong hover:shadow-elegant transition-smooth relative lg:w-5/12 ${
+                    index % 2 === 0 ? 'lg:mr-auto lg:pr-12' : 'lg:ml-auto lg:pl-12'
+                  } ml-8 lg:ml-0`}>
+                    {/* Mobile Timeline Line */}
+                    <div className="absolute left-0 top-6 w-4 h-0.5 bg-gradient-to-r from-primary/50 to-transparent lg:hidden" />
+
+                    {/* Timeline Label - Mobile */}
+                    <div className="lg:hidden mb-4">
+                      <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-semibold">
+                        <Calendar className="w-3 h-3" />
+                        {goal.timeline}
+                      </div>
+                    </div>
+
+                    {/* Icon and Header */}
+                    <div className="flex items-center gap-4 mb-4">
+                      <motion.div
+                        className={`p-3 rounded-xl bg-gradient-to-br ${goal.color} text-white shadow-soft`}
+                        whileHover={{ rotate: 360, scale: 1.1 }}
+                        transition={{ duration: 0.6 }}
+                      >
+                        <goal.icon className="w-6 h-6" />
+                      </motion.div>
+                      <div>
+                        <h3 className="text-xl lg:text-2xl font-bold font-['Playfair_Display']">
+                          {goal.title}
+                        </h3>
+                        {/* Timeline Label - Desktop */}
+                        <div className="hidden lg:flex items-center gap-2 mt-1">
+                          <Calendar className="w-3 h-3 text-primary" />
+                          <span className="text-sm font-semibold text-primary">{goal.timeline}</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <p className="text-muted-foreground leading-relaxed">
+                      {goal.description}
+                    </p>
+
+                    {/* Progress Indicator */}
+                    <div className="mt-4 flex items-center gap-2">
+                      <div className="flex-1 h-2 bg-gray-200 rounded-full overflow-hidden">
+                        <motion.div
+                          className={`h-full bg-gradient-to-r ${goal.color} rounded-full`}
+                          initial={{ width: 0 }}
+                          whileInView={{ width: `${(index + 1) * 25}%` }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 1, delay: index * 0.2 }}
+                        />
+                      </div>
+                      <span className="text-xs font-medium text-muted-foreground">
+                        Phase {index + 1}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Spacer for alternating sides */}
+                  <div className="hidden lg:block lg:w-5/12" />
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Timeline End Cap */}
+            <div className="hidden lg:flex justify-center mt-12">
+              <motion.div
+                className="w-12 h-12 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 shadow-lg border-4 border-white flex items-center justify-center"
+                initial={{ scale: 0 }}
+                whileInView={{ scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ type: "spring", stiffness: 200, delay: 0.5 }}
+              >
+                <Trophy className="w-5 h-5 text-white" />
               </motion.div>
-            ))}
-          </motion.div>
+            </div>
+          </div>
 
           {/* Call to Action */}
           <motion.div
