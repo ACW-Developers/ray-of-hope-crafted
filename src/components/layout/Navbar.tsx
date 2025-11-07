@@ -4,9 +4,10 @@ import { Menu, X, Home, Users, BookOpen, FolderOpen, Mail } from "lucide-react";
 import { useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ScrollProgress } from "@/components/ui/ScrollProgress";
+import { ThemeToggle } from "@/components/ui/ThemeToggle";
 
 // Import your actual logo from assets
-import logo from "@/assets/logos/logo2.png"; // Adjust the path to your actual logo file
+import logo from "@/assets/logos/logo2.png";
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -77,28 +78,34 @@ export const Navbar = () => {
                       className="relative group"
                     >
                       <div
-                        className={`flex items-center space-x-2 px-4 py-1 rounded-full transition-all ${
+                        className={`flex items-center space-x-2 px-4 py-2 rounded-full transition-all font-medium ${
                           location.pathname === item.path
-                            ? "bg-primary/20 text-primary"
-                            : "text-muted-foreground hover:bg-primary/10 hover:text-primary"
+                            ? "bg-primary text-primary-foreground shadow-soft"
+                            : "text-foreground hover:bg-primary/10 hover:text-primary"
                         }`}
                       >
                         <Icon className="w-4 h-4" />
-                        <span className="text-sm font-medium">{item.name}</span>
+                        <span className="text-sm">{item.name}</span>
                       </div>
-                      <motion.div
-                        className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-primary rounded-full"
-                        initial={{ scaleX: 0 }}
-                        whileHover={{ scaleX: 1 }}
-                        transition={{ duration: 0.3 }}
-                      />
+                      {location.pathname === item.path && (
+                        <motion.div
+                          layoutId="activeNav"
+                          className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-primary rounded-full"
+                          transition={{ duration: 0.3 }}
+                        />
+                      )}
                     </motion.div>
                   </Link>
                 );
               })}
+              
+              <div className="h-8 w-px bg-border/50 mx-2" />
+              
+              <ThemeToggle />
+              
               <Link to="/donate">
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                  <Button variant="accent" size="sm" className="ml-4 glow-pulse">
+                  <Button variant="accent" size="sm" className="ml-2 glow-pulse font-semibold">
                     <span className="mr-2">❤️</span>
                     Donate Now
                   </Button>
@@ -127,7 +134,7 @@ export const Navbar = () => {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
-              className="md:hidden py-4 space-y-2 border-t border-white/10"
+              className="md:hidden py-4 space-y-2 border-t border-border/50"
             >
               {navItems.map((item) => {
                 const Icon = item.icon;
@@ -139,20 +146,26 @@ export const Navbar = () => {
                   >
                     <motion.div
                       whileHover={{ x: 5 }}
-                      className={`flex items-center space-x-3 px-4 py-3 rounded-xl transition-all ${
+                      className={`flex items-center space-x-3 px-4 py-3 rounded-xl transition-all font-medium ${
                         location.pathname === item.path
-                          ? "bg-primary/20 text-primary"
-                          : "text-muted-foreground hover:bg-primary/10"
+                          ? "bg-primary text-primary-foreground"
+                          : "text-foreground hover:bg-primary/10"
                       }`}
                     >
                       <Icon className="w-5 h-5" />
-                      <span className="text-sm font-medium">{item.name}</span>
+                      <span className="text-sm">{item.name}</span>
                     </motion.div>
                   </Link>
                 );
               })}
+              
+              <div className="flex items-center justify-between px-4 py-3">
+                <span className="text-sm font-medium text-foreground">Theme</span>
+                <ThemeToggle />
+              </div>
+              
               <Link to="/donate" onClick={() => setIsOpen(false)}>
-                <Button variant="accent" size="sm" className="w-full mt-2">
+                <Button variant="accent" size="sm" className="w-full mt-2 font-semibold">
                   <span className="mr-2">❤️</span>
                   Donate Now
                 </Button>
