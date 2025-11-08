@@ -8,17 +8,23 @@ const LoadingScreen = ({ onLoadingComplete }: { onLoadingComplete: () => void })
   useEffect(() => {
     const interval = setInterval(() => {
       setProgress((prev) => {
-        if (prev >= 100) {
-          clearInterval(interval);
-          setTimeout(onLoadingComplete, 500);
-          return 100;
+        if (prev >= 95) {
+          return 95; // Hold at 95% until actual completion
         }
-        return prev + 10;
+        return prev + 5;
       });
-    }, 150);
+    }, 100);
 
     return () => clearInterval(interval);
-  }, [onLoadingComplete]);
+  }, []);
+
+  useEffect(() => {
+    // When parent signals completion
+    if (progress >= 95) {
+      setProgress(100);
+      setTimeout(onLoadingComplete, 300);
+    }
+  }, [onLoadingComplete, progress]);
 
   return (
     <motion.div
@@ -68,44 +74,104 @@ const LoadingScreen = ({ onLoadingComplete }: { onLoadingComplete: () => void })
           Ray of Hope Foundation
         </motion.h1>
 
-        {/* Loading Circle */}
-        <div className="relative w-24 h-24 mx-auto mb-6">
-          <svg className="w-24 h-24 transform -rotate-90">
+        {/* Beautiful Loading Circle with Particles */}
+        <div className="relative w-32 h-32 mx-auto mb-6">
+          {/* Outer glow ring */}
+          <motion.div
+            className="absolute inset-0 rounded-full bg-gradient-to-r from-accent via-primary to-purple-500 opacity-20 blur-xl"
+            animate={{
+              scale: [1, 1.2, 1],
+              opacity: [0.2, 0.4, 0.2],
+            }}
+            transition={{ duration: 2, repeat: Infinity }}
+          />
+          
+          {/* Rotating particles */}
+          {[...Array(8)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute w-2 h-2 rounded-full bg-gradient-to-r from-accent to-primary"
+              style={{
+                top: '50%',
+                left: '50%',
+                transformOrigin: '0 0',
+              }}
+              animate={{
+                rotate: [i * 45, i * 45 + 360],
+                scale: [1, 1.5, 1],
+                opacity: [0.3, 1, 0.3],
+              }}
+              transition={{
+                duration: 3,
+                repeat: Infinity,
+                delay: i * 0.125,
+                ease: "linear",
+              }}
+            />
+          ))}
+          
+          {/* Main circle */}
+          <svg className="w-32 h-32 transform -rotate-90 relative z-10">
+            {/* Background circle */}
             <circle
-              cx="48"
-              cy="48"
-              r="44"
-              stroke="rgba(255,255,255,0.1)"
-              strokeWidth="4"
+              cx="64"
+              cy="64"
+              r="56"
+              stroke="rgba(255,255,255,0.08)"
+              strokeWidth="6"
               fill="none"
             />
+            
+            {/* Progress circle with animated gradient */}
             <motion.circle
-              cx="48"
-              cy="48"
-              r="44"
-              stroke="url(#gradient)"
-              strokeWidth="4"
+              cx="64"
+              cy="64"
+              r="56"
+              stroke="url(#beautifulGradient)"
+              strokeWidth="6"
               fill="none"
               strokeLinecap="round"
-              initial={{ strokeDasharray: "0 276" }}
-              animate={{ strokeDasharray: `${(progress / 100) * 276} 276` }}
-              transition={{ duration: 0.3 }}
+              style={{
+                filter: 'drop-shadow(0 0 8px rgba(251, 146, 60, 0.5))',
+              }}
+              initial={{ strokeDasharray: "0 352" }}
+              animate={{ strokeDasharray: `${(progress / 100) * 352} 352` }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
             />
+            
             <defs>
-              <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#f59e0b" />
-                <stop offset="100%" stopColor="#ec4899" />
+              <linearGradient id="beautifulGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="hsl(var(--accent))" />
+                <stop offset="50%" stopColor="hsl(var(--primary))" />
+                <stop offset="100%" stopColor="#a855f7" />
               </linearGradient>
             </defs>
           </svg>
+          
+          {/* Percentage in center with pulse effect */}
           <motion.div
-            className="absolute inset-0 flex items-center justify-center text-white text-xl font-bold"
+            className="absolute inset-0 flex items-center justify-center"
             key={progress}
-            initial={{ scale: 1.2, opacity: 0 }}
+            initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.2 }}
+            transition={{ duration: 0.3, type: "spring" }}
           >
-            {progress}%
+            <div className="text-center">
+              <motion.span 
+                className="text-3xl font-bold bg-gradient-to-r from-accent via-primary to-purple-400 bg-clip-text text-transparent"
+                animate={{ 
+                  textShadow: [
+                    '0 0 8px rgba(251, 146, 60, 0.3)',
+                    '0 0 16px rgba(251, 146, 60, 0.5)',
+                    '0 0 8px rgba(251, 146, 60, 0.3)',
+                  ]
+                }}
+                transition={{ duration: 2, repeat: Infinity }}
+              >
+                {progress}
+              </motion.span>
+              <span className="text-xl text-white/60">%</span>
+            </div>
           </motion.div>
         </div>
 

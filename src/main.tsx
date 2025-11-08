@@ -9,12 +9,20 @@ const Root = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Ensure minimum loading time for smooth experience
-    const minLoadTime = setTimeout(() => {
-      setIsLoading(false);
-    }, 2000);
+    // Wait for all resources to be loaded
+    const handleLoad = () => {
+      // Add a small delay to ensure smooth transition
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 500);
+    };
 
-    return () => clearTimeout(minLoadTime);
+    if (document.readyState === 'complete') {
+      handleLoad();
+    } else {
+      window.addEventListener('load', handleLoad);
+      return () => window.removeEventListener('load', handleLoad);
+    }
   }, []);
 
   return (
