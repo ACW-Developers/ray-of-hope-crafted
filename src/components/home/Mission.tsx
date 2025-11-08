@@ -16,7 +16,6 @@ import {
   ChevronRight,
   Ribbon,
   Gem,
-  Home,
   HandHelping,
   ArrowRight,
   Globe,
@@ -60,8 +59,9 @@ export const Mission = () => {
       title: 'Compassion & Dignity',
       description: 'Every child is created in the image of God and deserves love, dignity, and care.',
       color: 'from-rose-500 to-pink-500',
-      bgColor: 'bg-rose-500/10',
-      borderColor: 'border-rose-200',
+      bgColor: 'bg-rose-500/10 dark:bg-rose-500/20',
+      borderColor: 'border-rose-200 dark:border-rose-500/30',
+      textColor: 'text-rose-700 dark:text-rose-300',
       initial: 'C'
     },
     {
@@ -69,8 +69,9 @@ export const Mission = () => {
       title: 'Child Protection',
       description: 'We uphold the safety and protection of all children through trauma-informed and anti-abuse policies.',
       color: 'from-blue-500 to-cyan-500',
-      bgColor: 'bg-blue-500/10',
-      borderColor: 'border-blue-200',
+      bgColor: 'bg-blue-500/10 dark:bg-blue-500/20',
+      borderColor: 'border-blue-200 dark:border-blue-500/30',
+      textColor: 'text-blue-700 dark:text-blue-300',
       initial: 'P'
     },
     {
@@ -78,8 +79,9 @@ export const Mission = () => {
       title: 'Community Empowerment',
       description: 'We build lasting change by equipping and partnering with local communities.',
       color: 'from-emerald-500 to-green-500',
-      bgColor: 'bg-emerald-500/10',
-      borderColor: 'border-emerald-200',
+      bgColor: 'bg-emerald-500/10 dark:bg-emerald-500/20',
+      borderColor: 'border-emerald-200 dark:border-emerald-500/30',
+      textColor: 'text-emerald-700 dark:text-emerald-300',
       initial: 'E'
     },
     {
@@ -87,8 +89,9 @@ export const Mission = () => {
       title: 'Integrity & Transparency',
       description: 'We operate with honesty and provide transparent reporting to all stakeholders.',
       color: 'from-amber-500 to-yellow-500',
-      bgColor: 'bg-amber-500/10',
-      borderColor: 'border-amber-200',
+      bgColor: 'bg-amber-500/10 dark:bg-amber-500/20',
+      borderColor: 'border-amber-200 dark:border-amber-500/30',
+      textColor: 'text-amber-700 dark:text-amber-300',
       initial: 'I'
     },
     {
@@ -96,8 +99,9 @@ export const Mission = () => {
       title: 'Education & Development',
       description: 'Empowering children through quality education and holistic development programs.',
       color: 'from-purple-500 to-violet-500',
-      bgColor: 'bg-purple-500/10',
-      borderColor: 'border-purple-200',
+      bgColor: 'bg-purple-500/10 dark:bg-purple-500/20',
+      borderColor: 'border-purple-200 dark:border-purple-500/30',
+      textColor: 'text-purple-700 dark:text-purple-300',
       initial: 'E'
     },
     {
@@ -105,8 +109,9 @@ export const Mission = () => {
       title: 'Stewardship',
       description: 'We use all resources wisely, ensuring compliance with Canadian nonprofit laws.',
       color: 'from-indigo-500 to-blue-500',
-      bgColor: 'bg-indigo-500/10',
-      borderColor: 'border-indigo-200',
+      bgColor: 'bg-indigo-500/10 dark:bg-indigo-500/20',
+      borderColor: 'border-indigo-200 dark:border-indigo-500/30',
+      textColor: 'text-indigo-700 dark:text-indigo-300',
       initial: 'S'
     },
     {
@@ -114,8 +119,9 @@ export const Mission = () => {
       title: 'Inclusion & Respect',
       description: 'We serve all children regardless of background, reflecting Christ\'s inclusive love.',
       color: 'from-teal-500 to-cyan-500',
-      bgColor: 'bg-teal-500/10',
-      borderColor: 'border-teal-200',
+      bgColor: 'bg-teal-500/10 dark:bg-teal-500/20',
+      borderColor: 'border-teal-200 dark:border-teal-500/30',
+      textColor: 'text-teal-700 dark:text-teal-300',
       initial: 'I'
     },
     {
@@ -123,8 +129,9 @@ export const Mission = () => {
       title: 'Faith & Servant Leadership',
       description: 'We lead with humility and serve others in the love and example of Jesus Christ.',
       color: 'from-orange-500 to-amber-500',
-      bgColor: 'bg-orange-500/10',
-      borderColor: 'border-orange-200',
+      bgColor: 'bg-orange-500/10 dark:bg-orange-500/20',
+      borderColor: 'border-orange-200 dark:border-orange-500/30',
+      textColor: 'text-orange-700 dark:text-orange-300',
       initial: 'F'
     }
   ];
@@ -222,7 +229,7 @@ export const Mission = () => {
   }, []);
 
   return (
-    <section className="relative min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/20 to-indigo-50/10 overflow-hidden">
+    <section className="relative min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/20 to-indigo-50/10 dark:bg-gradient-to-br dark:from-slate-900 dark:via-blue-900/20 dark:to-indigo-900/10 overflow-hidden">
       {/* Animated Bubble Background */}
       <canvas
         ref={canvasRef}
@@ -231,25 +238,25 @@ export const Mission = () => {
       
       {/* Background decorative elements */}
       <div className="absolute inset-0">
-        <div className="absolute top-10 left-10 w-80 h-80 bg-blue-200/10 rounded-full blur-3xl animate-float"></div>
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-indigo-200/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }}></div>
-        <div className="absolute top-1/2 left-1/3 w-64 h-64 bg-cyan-200/10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute top-10 left-10 w-80 h-80 bg-blue-200/10 dark:bg-blue-800/10 rounded-full blur-3xl animate-float"></div>
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-indigo-200/10 dark:bg-indigo-800/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute top-1/2 left-1/3 w-64 h-64 bg-cyan-200/10 dark:bg-cyan-800/10 rounded-full blur-3xl animate-pulse"></div>
         
         {/* Geometric shapes */}
-        <div className="absolute left-0 top-1/4 w-32 h-32 opacity-5">
-          <svg viewBox="0 0 200 200" className="text-blue-500 w-full h-full">
+        <div className="absolute left-0 top-1/4 w-32 h-32 opacity-5 dark:opacity-10">
+          <svg viewBox="0 0 200 200" className="text-blue-500 dark:text-blue-400 w-full h-full">
             <polygon points="100,0 0,200 200,200" fill="currentColor" />
           </svg>
         </div>
-        <div className="absolute right-0 bottom-1/3 w-40 h-40 opacity-5">
-          <svg viewBox="0 0 200 200" className="text-indigo-500 w-full h-full">
+        <div className="absolute right-0 bottom-1/3 w-40 h-40 opacity-5 dark:opacity-10">
+          <svg viewBox="0 0 200 200" className="text-indigo-500 dark:text-indigo-400 w-full h-full">
             <circle cx="100" cy="100" r="90" fill="currentColor" />
           </svg>
         </div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Main Title Section - Added at Top Center */}
+        {/* Main Title Section */}
         <motion.div 
           className="text-center mb-8"
           initial="hidden"
@@ -265,11 +272,11 @@ export const Mission = () => {
           }}
         >
           <motion.div
-            className="inline-flex items-center gap-3 bg-white/80 backdrop-blur-sm rounded-full px-6 py-1 border border-blue-200/50 shadow-lg"
+            className="inline-flex items-center gap-3 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-full px-6 py-1 border border-blue-200/50 dark:border-blue-600/30 shadow-lg"
             whileHover={{ scale: 1.05, boxShadow: "0 20px 25px -5px rgba(59, 130, 246, 0.1)" }}
           >
-            <Sparkles className="w-5 h-5 text-blue-600 animate-spin" />
-            <span className="text-blue-600 font-semibold text-sm uppercase tracking-wider">
+            <Sparkles className="w-5 h-5 text-blue-600 dark:text-blue-400 animate-spin" />
+            <span className="text-blue-600 dark:text-blue-400 font-semibold text-sm uppercase tracking-wider">
               Who We Are
             </span>
           </motion.div>
@@ -316,8 +323,8 @@ export const Mission = () => {
               </div>
 
               {/* Floating badges */}
-              <div className="absolute top-8 right-8 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full shadow-lg">
-                <span className="text-sm font-medium text-blue-600 flex items-center gap-2">
+              <div className="absolute top-8 right-8 bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm px-4 py-2 rounded-full shadow-lg">
+                <span className="text-sm font-medium text-blue-600 dark:text-blue-400 flex items-center gap-2">
                   <Globe className="w-4 h-4" />
                   East & Central Africa
                 </span>
@@ -331,17 +338,16 @@ export const Mission = () => {
             </motion.div>
 
             <motion.div variants={itemVariants} className="space-y-8">
-
-              <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
+              <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white leading-tight">
                 Restoring Hope{' '}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400">
                   For Vulnerable Children
                 </span>
               </h2>
 
-              <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full"></div>
+              <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 rounded-full"></div>
 
-              <p className="text-xl text-gray-600 leading-relaxed">
+              <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed font-light">
                 Ray of Hope Community is a faith-based humanitarian organization dedicated to supporting 
                 orphaned and vulnerable children—especially those impacted by war, displacement, and poverty. 
                 We are driven by love, guided by Christian compassion, and committed to rebuilding lives through 
@@ -355,7 +361,7 @@ export const Mission = () => {
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-8 py-4 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 group flex items-center font-semibold"
+                    className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 dark:from-blue-500 dark:to-indigo-500 dark:hover:from-blue-600 dark:hover:to-indigo-600 text-white px-8 py-4 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 group flex items-center font-semibold"
                   >
                     Our Full Story
                     <ChevronRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -366,7 +372,7 @@ export const Mission = () => {
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="border-2 border-blue-600 text-blue-600 hover:bg-blue-50 px-8 py-4 rounded-lg group flex items-center font-semibold transition-all duration-300"
+                    className="border-2 border-blue-600 dark:border-blue-400 text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 px-8 py-4 rounded-lg group flex items-center font-semibold transition-all duration-300"
                   >
                     Our Programs
                     <School className="ml-2 w-5 h-5 group-hover:scale-110 transition-transform" />
@@ -378,36 +384,36 @@ export const Mission = () => {
 
           {/* Mission & Vision Section */}
           <div className="grid lg:grid-cols-2 gap-12 mb-24">
-            <motion.div variants={itemVariants} className="bg-white/80 backdrop-blur-lg rounded-3xl p-8 shadow-2xl shadow-blue-100/50 border border-blue-100/50 hover:shadow-3xl hover:shadow-blue-200/30 transition-all duration-500 h-full group">
+            <motion.div variants={itemVariants} className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-lg rounded-3xl p-8 shadow-2xl shadow-blue-100/50 dark:shadow-blue-900/20 border border-blue-100/50 dark:border-blue-800/30 hover:shadow-3xl hover:shadow-blue-200/30 dark:hover:shadow-blue-800/20 transition-all duration-500 h-full group">
               <div className="flex items-center mb-8">
                 <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center mr-6 shadow-lg group-hover:scale-110 transition-transform duration-300">
                   <Target className="w-8 h-8 text-white" />
                 </div>
                 <div>
-                  <h3 className="text-2xl lg:text-3xl font-bold text-gray-900">Our Mission</h3>
+                  <h3 className="text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white">Our Mission</h3>
                   <div className="w-12 h-1 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full mt-2"></div>
                 </div>
               </div>
-              <p className="text-lg text-gray-700 leading-relaxed">
+              <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
                 To support, educate, and protect orphaned and vulnerable children by providing holistic care, 
                 educational opportunities, and safe, loving environments—empowering them to become who God 
                 created them to be.
               </p>
               
-              <div className="flex items-center gap-4 mt-6 pt-6 border-t border-blue-100/50">
-                <div className="flex items-center gap-2 text-sm text-gray-600">
-                  <Heart className="w-4 h-4 text-rose-600" />
+              <div className="flex items-center gap-4 mt-6 pt-6 border-t border-blue-100/50 dark:border-blue-800/30">
+                <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
+                  <Heart className="w-4 h-4 text-rose-600 dark:text-rose-400" />
                   <span>Holistic Care</span>
                 </div>
-                <div className="flex items-center gap-2 text-sm text-gray-600">
-                  <BookOpen className="w-4 h-4 text-green-600" />
+                <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
+                  <BookOpen className="w-4 h-4 text-green-600 dark:text-green-400" />
                   <span>Education Focus</span>
                 </div>
               </div>
             </motion.div>
 
             <motion.div variants={itemVariants} className="relative group">
-              <div className="bg-gradient-to-br from-indigo-600 to-purple-600 rounded-3xl p-8 text-white shadow-2xl hover:shadow-3xl transition-all duration-500 h-full flex flex-col">
+              <div className="bg-gradient-to-br from-indigo-600 to-purple-600 dark:from-indigo-700 dark:to-purple-700 rounded-3xl p-8 text-white shadow-2xl hover:shadow-3xl transition-all duration-500 h-full flex flex-col">
                 <div className="flex items-center mb-8">
                   <div className="w-16 h-16 rounded-2xl bg-white/20 backdrop-blur-sm flex items-center justify-center mr-6 border border-white/30 group-hover:scale-110 transition-transform duration-300">
                     <Eye className="w-8 h-8 text-white" />
@@ -444,21 +450,21 @@ export const Mission = () => {
           {/* Core Values Section */}
           <motion.div variants={itemVariants} className="mb-24">
             <div className="text-center mb-16">
-              <div className="inline-flex items-center gap-3 bg-white/80 backdrop-blur-sm rounded-full px-6 py-3 mb-6 border border-blue-200/50">
-                <Ribbon className="w-5 h-5 text-blue-600" />
-                <span className="text-blue-600 font-semibold text-sm uppercase tracking-wider">
+              <div className="inline-flex items-center gap-3 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-full px-6 py-3 mb-6 border border-blue-200/50 dark:border-blue-600/30">
+                <Ribbon className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+                <span className="text-blue-600 dark:text-blue-400 font-semibold text-sm uppercase tracking-wider">
                   OUR FOUNDATION
                 </span>
               </div>
 
-              <h3 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+              <h3 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6">
                 Our{' '}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400">
                   Core Values
                 </span>
               </h3>
 
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
                 These fundamental principles guide every aspect of our work and define who we are as a faith-based 
                 humanitarian organization serving vulnerable children in East and Central Africa.
               </p>
@@ -475,10 +481,10 @@ export const Mission = () => {
                       return <IconComponent className="w-12 h-12 text-white" />;
                     })()}
                   </div>
-                  <h4 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-4">
+                  <h4 className="text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white mb-4">
                     {coreValues[activeValue].title}
                   </h4>
-                  <p className="text-lg text-gray-600 leading-relaxed">
+                  <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
                     {coreValues[activeValue].description}
                   </p>
                 </div>
@@ -496,7 +502,7 @@ export const Mission = () => {
                     key={value.title}
                     className={`absolute w-24 h-24 lg:w-28 lg:h-28 rounded-2xl ${value.bgColor} border-2 ${value.borderColor} backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-500 cursor-pointer group flex items-center justify-center ${
                       index === activeValue 
-                        ? 'scale-125 z-20 shadow-2xl border-white ring-4 ring-blue-200' 
+                        ? 'scale-125 z-20 shadow-2xl border-white dark:border-blue-300 ring-4 ring-blue-200 dark:ring-blue-500/30' 
                         : 'scale-100 hover:scale-110'
                     }`}
                     style={{
@@ -511,7 +517,7 @@ export const Mission = () => {
                       <div className={`w-12 h-12 mx-auto mb-1 rounded-full bg-gradient-to-r ${value.color} flex items-center justify-center shadow-md group-hover:shadow-lg transition-shadow`}>
                         <value.icon className="w-5 h-5 text-white" />
                       </div>
-                      <span className="text-xs font-semibold text-gray-700 group-hover:text-gray-900 transition-colors">
+                      <span className={`text-xs font-semibold ${value.textColor} group-hover:${value.textColor} transition-colors`}>
                         {value.title.split(' ')[0]}
                       </span>
                     </div>
@@ -542,7 +548,7 @@ export const Mission = () => {
 
               {/* Central Orb */}
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-48 h-48 rounded-full bg-gradient-to-r from-blue-100 to-indigo-100 opacity-30 blur-xl animate-pulse"></div>
+                <div className="w-48 h-48 rounded-full bg-gradient-to-r from-blue-100 to-indigo-100 dark:from-blue-900 dark:to-indigo-900 opacity-30 blur-xl animate-pulse"></div>
               </div>
             </div>
 
@@ -554,10 +560,10 @@ export const Mission = () => {
                   return <IconComponent className="w-8 h-8 text-white" />;
                 })()}
               </div>
-              <h4 className="text-xl font-bold text-gray-900 mb-2">
+              <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
                 {coreValues[activeValue].title}
               </h4>
-              <p className="text-gray-600 leading-relaxed">
+              <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
                 {coreValues[activeValue].description}
               </p>
             </div>
@@ -570,8 +576,8 @@ export const Mission = () => {
                   onClick={() => setActiveValue(index)}
                   className={`w-3 h-3 rounded-full transition-all duration-300 ${
                     index === activeValue
-                      ? 'bg-gradient-to-r from-blue-600 to-indigo-600 w-8'
-                      : 'bg-gray-300 hover:bg-gray-400'
+                      ? 'bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 w-8'
+                      : 'bg-gray-300 dark:bg-gray-600 hover:bg-gray-400 dark:hover:bg-gray-500'
                   }`}
                   whileHover={{ scale: 1.2 }}
                   whileTap={{ scale: 0.9 }}
@@ -581,8 +587,8 @@ export const Mission = () => {
           </motion.div>
 
           {/* Africa Service Section */}
-          <motion.div variants={itemVariants} className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-3xl p-12 backdrop-blur-sm border border-blue-100/50 relative overflow-hidden">
-            <div className="absolute inset-0 opacity-10">
+          <motion.div variants={itemVariants} className="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-3xl p-12 backdrop-blur-sm border border-blue-100/50 dark:border-blue-800/30 relative overflow-hidden">
+            <div className="absolute inset-0 opacity-10 dark:opacity-5">
               <div className="absolute top-0 left-0 w-32 h-32 bg-blue-600 rounded-full animate-float"></div>
               <div className="absolute bottom-0 right-0 w-24 h-24 bg-indigo-600 rounded-full animate-float" style={{ animationDelay: '2s' }}></div>
             </div>
@@ -590,29 +596,29 @@ export const Mission = () => {
             <div className="relative z-10">
               <div className="grid lg:grid-cols-2 gap-12 items-center">
                 <div>
-                  <h3 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
+                  <h3 className="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-6">
                     Serving{' '}
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400">
                       East & Central Africa
                     </span>
                   </h3>
-                  <p className="text-lg text-gray-600 leading-relaxed mb-6">
+                  <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
                     We are actively working in refugee camps in Kenya and Uganda, supporting vulnerable children 
                     with education, mentorship, and essential resources. Our future goals include expanding to 
                     post-conflict areas in Burundi and establishing a permanent Child Development Centre in the 
                     Democratic Republic of Congo.
                   </p>
                   <div className="flex flex-wrap gap-4">
-                    <div className="flex items-center gap-2 text-gray-600">
-                      <MapPin className="w-5 h-5 text-blue-600" />
+                    <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
+                      <MapPin className="w-5 h-5 text-blue-600 dark:text-blue-400" />
                       <span>Kenya & Uganda</span>
                     </div>
-                    <div className="flex items-center gap-2 text-gray-600">
-                      <Award className="w-5 h-5 text-amber-600" />
+                    <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
+                      <Award className="w-5 h-5 text-amber-600 dark:text-amber-400" />
                       <span>Future Expansion</span>
                     </div>
-                    <div className="flex items-center gap-2 text-gray-600">
-                      <Shield className="w-5 h-5 text-green-600" />
+                    <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
+                      <Shield className="w-5 h-5 text-green-600 dark:text-green-400" />
                       <span>Child Protection Focus</span>
                     </div>
                   </div>
@@ -639,7 +645,7 @@ export const Mission = () => {
               <motion.button
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-8 py-4 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 group flex items-center font-semibold mx-auto"
+                className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 dark:from-blue-500 dark:to-indigo-500 dark:hover:from-blue-600 dark:hover:to-indigo-600 text-white px-8 py-4 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 group flex items-center font-semibold mx-auto"
               >
                 Join Our Mission
                 <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />

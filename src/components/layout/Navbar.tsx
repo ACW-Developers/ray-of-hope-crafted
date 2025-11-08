@@ -87,13 +87,6 @@ export const Navbar = () => {
                         <Icon className="w-4 h-4" />
                         <span className="text-sm">{item.name}</span>
                       </div>
-                      {location.pathname === item.path && (
-                        <motion.div
-                          layoutId="activeNav"
-                          className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-primary rounded-full"
-                          transition={{ duration: 0.3 }}
-                        />
-                      )}
                     </motion.div>
                   </Link>
                 );

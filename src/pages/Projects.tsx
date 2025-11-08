@@ -154,10 +154,12 @@ const Projects = () => {
           <motion.div 
             className="absolute inset-0"
             style={{
-              backgroundImage: `linear-gradient(135deg, rgba(99, 102, 241, 0.9), rgba(168, 85, 247, 0.8), rgba(236, 72, 153, 0.9)), url(${bg1})`,
+              backgroundImage: `linear-gradient(135deg, rgba(99, 102, 241, 0.4), rgba(168, 85, 247, 0.3)), url(${bg1})`,
               backgroundSize: 'cover',
               backgroundPosition: 'center',
+              backgroundAttachment: 'fixed',
             }}
+
             initial={{ scale: 1.2 }}
             animate={{ scale: 1 }}
             transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}

@@ -45,14 +45,6 @@ const Contact = () => {
       color: "from-purple-500 to-pink-500"
     },
     { 
-      icon: MapPin, 
-      label: "Regional Offices", 
-      value: "Kenya, Uganda, Burundi, DRC",
-      description: "Serving East Africa communities",
-      href: "#",
-      color: "from-orange-500 to-red-500"
-    },
-    { 
       icon: Users, 
       label: "Partnerships", 
       value: "partners@rayofhope.org",
@@ -84,7 +76,7 @@ const Contact = () => {
       {/* Subtle Background Elements */}
       <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
         <motion.div 
-          className="absolute top-20 right-20 w-96 h-96 bg-primary/10 rounded-full blur-3xl"
+          className="absolute top-20 right-20 w-96 h-96 bg-primary/10 dark:bg-primary/20 rounded-full blur-3xl"
           animate={{ 
             scale: [1, 1.2, 1],
             x: [0, 50, 0],
@@ -92,7 +84,7 @@ const Contact = () => {
           transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
         />
         <motion.div 
-          className="absolute bottom-20 left-20 w-80 h-80 bg-accent/10 rounded-full blur-3xl"
+          className="absolute bottom-20 left-20 w-80 h-80 bg-accent/10 dark:bg-accent/20 rounded-full blur-3xl"
           animate={{ 
             scale: [1, 1.3, 1],
             x: [0, -50, 0],
@@ -116,7 +108,7 @@ const Contact = () => {
               backgroundPosition: 'center',
             }}
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background/80" />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background/80 dark:to-background/90" />
         </div>
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -127,7 +119,7 @@ const Contact = () => {
             transition={{ duration: 0.8 }}
           >
             <motion.div
-              className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full mb-6 border border-white/20"
+              className="inline-flex items-center gap-3 bg-white/10 dark:bg-black/20 backdrop-blur-sm px-6 py-3 rounded-full mb-6 border border-white/20 dark:border-white/10"
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               transition={{ delay: 0.2, type: "spring" }}
@@ -187,7 +179,7 @@ const Contact = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
               >
-                <div className="bg-white rounded-2xl p-8 md:p-10 shadow-lg border border-gray-100">
+                <div className="bg-white dark:bg-slate-800 rounded-2xl p-8 md:p-10 shadow-lg border border-gray-100 dark:border-slate-700">
                   <div className="mb-8">
                     <h3 className="text-3xl font-bold font-['Playfair_Display'] text-foreground mb-3">
                       Send Us a Message
@@ -200,21 +192,21 @@ const Contact = () => {
                   <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="grid md:grid-cols-2 gap-6">
                       <div>
-                        <Label htmlFor="name" className="text-base font-semibold mb-2 block">
+                        <Label htmlFor="name" className="text-base font-semibold mb-2 block text-foreground">
                           Full Name *
                         </Label>
                         <Input
                           id="name"
                           placeholder="John Doe"
                           required
-                          className="h-12 text-base"
+                          className="h-12 text-base bg-background dark:bg-slate-900 border-gray-200 dark:border-slate-600 text-foreground"
                           onFocus={() => setFocusedField("name")}
                           onBlur={() => setFocusedField(null)}
                         />
                       </div>
 
                       <div>
-                        <Label htmlFor="email" className="text-base font-semibold mb-2 block">
+                        <Label htmlFor="email" className="text-base font-semibold mb-2 block text-foreground">
                           Email Address *
                         </Label>
                         <Input
@@ -222,7 +214,7 @@ const Contact = () => {
                           type="email"
                           placeholder="john@example.com"
                           required
-                          className="h-12 text-base"
+                          className="h-12 text-base bg-background dark:bg-slate-900 border-gray-200 dark:border-slate-600 text-foreground"
                           onFocus={() => setFocusedField("email")}
                           onBlur={() => setFocusedField(null)}
                         />
@@ -230,21 +222,21 @@ const Contact = () => {
                     </div>
 
                     <div>
-                      <Label htmlFor="subject" className="text-base font-semibold mb-2 block">
+                      <Label htmlFor="subject" className="text-base font-semibold mb-2 block text-foreground">
                         Subject *
                       </Label>
                       <Input
                         id="subject"
                         placeholder="How can we help you today?"
                         required
-                        className="h-12 text-base"
+                        className="h-12 text-base bg-background dark:bg-slate-900 border-gray-200 dark:border-slate-600 text-foreground"
                         onFocus={() => setFocusedField("subject")}
                         onBlur={() => setFocusedField(null)}
                       />
                     </div>
 
                     <div>
-                      <Label htmlFor="message" className="text-base font-semibold mb-2 block">
+                      <Label htmlFor="message" className="text-base font-semibold mb-2 block text-foreground">
                         Message *
                       </Label>
                       <Textarea
@@ -252,7 +244,7 @@ const Contact = () => {
                         placeholder="Please share details about your inquiry..."
                         required
                         rows={5}
-                        className="resize-none text-base"
+                        className="resize-none text-base bg-background dark:bg-slate-900 border-gray-200 dark:border-slate-600 text-foreground"
                         onFocus={() => setFocusedField("message")}
                         onBlur={() => setFocusedField(null)}
                       />
@@ -280,7 +272,7 @@ const Contact = () => {
                 transition={{ duration: 0.6 }}
               >
                 {/* Contact Methods */}
-                <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
+                <div className="bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-lg border border-gray-100 dark:border-slate-700">
                   <h3 className="text-2xl font-bold mb-6 text-foreground">
                     Contact Information
                   </h3>
@@ -289,7 +281,7 @@ const Contact = () => {
                       <motion.a
                         key={method.label}
                         href={method.href}
-                        className="flex items-start gap-4 group p-3 rounded-xl hover:bg-gray-50 transition-colors"
+                        className="flex items-start gap-4 group p-3 rounded-xl hover:bg-gray-50 dark:hover:bg-slate-700/50 transition-colors"
                         initial={{ opacity: 0, x: -20 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
@@ -309,7 +301,7 @@ const Contact = () => {
                 </div>
 
                 {/* Office Hours */}
-                <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
+                <div className="bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-lg border border-gray-100 dark:border-slate-700">
                   <h3 className="text-2xl font-bold mb-6 text-foreground flex items-center gap-2">
                     <Clock className="w-6 h-6 text-primary" />
                     Office Hours
@@ -337,69 +329,9 @@ const Contact = () => {
                     All times in East Africa Time (EAT - UTC+3)
                   </p>
                 </div>
-
-                {/* Quick Actions */}
-                <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
-                  <h3 className="text-2xl font-bold mb-6 text-foreground flex items-center gap-2">
-                    <CheckCircle className="w-6 h-6 text-primary" />
-                    Quick Links
-                  </h3>
-                  <div className="space-y-4">
-                    {quickActions.map((action, index) => (
-                      <motion.a
-                        key={action.label}
-                        href={action.href}
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.3 + index * 0.1 }}
-                        whileHover={{ scale: 1.02 }}
-                      >
-                        <Button variant={action.variant} className="w-full justify-start text-base h-14" size="lg">
-                          <action.icon className="mr-3 w-5 h-5" />
-                          <div className="text-left">
-                            <div className="font-semibold">{action.label}</div>
-                            <div className="text-xs opacity-80">{action.description}</div>
-                          </div>
-                        </Button>
-                      </motion.a>
-                    ))}
-                  </div>
-                </div>
               </motion.div>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* Response Time Assurance */}
-      <section className="relative py-16 bg-muted/30">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            className="max-w-4xl mx-auto text-center"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
-              <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
-              <h3 className="text-2xl font-bold text-foreground mb-4">
-                We're Here to Help
-              </h3>
-              <p className="text-lg text-muted-foreground mb-6">
-                Our team typically responds to all inquiries within 24 hours during business days. 
-                For urgent matters, please call our main office line.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <div className="text-sm text-muted-foreground">
-                  <strong>Response Time:</strong> Within 24 hours
-                </div>
-                <div className="text-sm text-muted-foreground">
-                  <strong>Urgent Inquiries:</strong> +254 700 000 000
-                </div>
-              </div>
-            </div>
-          </motion.div>
         </div>
       </section>
     </main>
