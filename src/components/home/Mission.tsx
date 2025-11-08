@@ -272,7 +272,7 @@ export const Mission = () => {
           }}
         >
           <motion.div
-            className="inline-flex items-center gap-3 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-full px-6 py-1 border border-blue-200/50 dark:border-blue-600/30 shadow-lg"
+            className="inline-flex items-center gap-3 bg-white/80 mt-4 dark:bg-slate-800/80 rounded-full px-6 py-1 border border-blue-200/50 dark:border-blue-600/30 shadow-lg"
             whileHover={{ scale: 1.05, boxShadow: "0 20px 25px -5px rgba(59, 130, 246, 0.1)" }}
           >
             <Sparkles className="w-5 h-5 text-blue-600 dark:text-blue-400 animate-spin" />

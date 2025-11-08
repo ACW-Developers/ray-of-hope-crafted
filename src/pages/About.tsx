@@ -102,25 +102,10 @@ const About = () => {
             </motion.p>
           </motion.div>
         </div>
-
-        {/* Scroll Indicator */}
-        <motion.div
-          className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10"
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-        >
-          <div className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center pt-2">
-            <motion.div
-              className="w-1.5 h-1.5 bg-white rounded-full"
-              animate={{ y: [0, 16, 0] }}
-              transition={{ duration: 2, repeat: Infinity }}
-            />
-          </div>
-        </motion.div>
       </section>
 
       {/* Story Timeline Section */}
-      <section className="py-32 bg-background/95 backdrop-blur-sm relative z-10">
+      <section className="py-32 bg-background/95 relative z-10">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             {/* Main Story */}
@@ -288,59 +273,6 @@ const About = () => {
         </div>
       </section>
 
-      {/* Impact Stats Section - Animated Counters */}
-      <section className="py-24 bg-gradient-to-br from-primary/5 via-accent/5 to-background relative overflow-hidden">
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-20 left-20 w-96 h-96 bg-primary rounded-full blur-3xl" />
-          <div className="absolute bottom-20 right-20 w-96 h-96 bg-accent rounded-full blur-3xl" />
-        </div>
-
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <motion.div 
-            className="max-w-6xl mx-auto"
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true }}
-            variants={staggerContainer}
-          >
-            <motion.div variants={fadeInUp} className="text-center mb-16">
-              <h2 className="text-5xl font-bold font-['Playfair_Display'] gradient-text mb-6">
-                Our Impact in Numbers
-              </h2>
-              <p className="text-xl text-muted-foreground">
-                Real change, measurable results
-              </p>
-            </motion.div>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {[
-                { icon: Users, value: "250+", label: "Children Supported", color: "primary" },
-                { icon: Globe2, value: "2", label: "Countries Active", color: "accent" },
-                { icon: TrendingUp, value: "95%", label: "Graduation Rate", color: "primary" },
-                { icon: Heart, value: "10+", label: "Years of Service", color: "accent" },
-              ].map((stat, index) => (
-                <motion.div
-                  key={stat.label}
-                  variants={fadeInUp}
-                  className="glass-premium rounded-3xl p-8 text-center hover:shadow-strong transition-smooth group"
-                  whileHover={{ y: -8, scale: 1.05 }}
-                >
-                  <motion.div
-                    className={`w-16 h-16 mx-auto mb-6 rounded-2xl bg-gradient-${stat.color} flex items-center justify-center shadow-soft`}
-                    whileHover={{ rotate: 360 }}
-                    transition={{ duration: 0.6 }}
-                  >
-                    <stat.icon className="w-8 h-8 text-primary-foreground" />
-                  </motion.div>
-                  <div className="text-4xl font-bold text-primary mb-2">{stat.value}</div>
-                  <div className="text-sm text-muted-foreground font-medium">{stat.label}</div>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
       {/* Core Objectives - Horizontal Scroll Cards */}
       <section className="py-32 bg-background relative">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -421,6 +353,60 @@ const About = () => {
           </motion.div>
         </div>
       </section>
+
+      {/* Impact Stats Section - Animated Counters */}
+      <section className="py-24 bg-gradient-to-br from-primary/5 via-accent/5 to-background relative overflow-hidden">
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute top-20 left-20 w-96 h-96 bg-primary rounded-full blur-3xl" />
+          <div className="absolute bottom-20 right-20 w-96 h-96 bg-accent rounded-full blur-3xl" />
+        </div>
+
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <motion.div 
+            className="max-w-6xl mx-auto"
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true }}
+            variants={staggerContainer}
+          >
+            <motion.div variants={fadeInUp} className="text-center mb-16">
+              <h2 className="text-5xl font-bold font-['Playfair_Display'] gradient-text mb-6">
+                Our Impact in Numbers
+              </h2>
+              <p className="text-xl text-muted-foreground">
+                Real change, measurable results
+              </p>
+            </motion.div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {[
+                { icon: Users, value: "250+", label: "Children Supported", color: "primary" },
+                { icon: Globe2, value: "2", label: "Countries Active", color: "accent" },
+                { icon: TrendingUp, value: "95%", label: "Graduation Rate", color: "primary" },
+                { icon: Heart, value: "10+", label: "Years of Service", color: "accent" },
+              ].map((stat, index) => (
+                <motion.div
+                  key={stat.label}
+                  variants={fadeInUp}
+                  className="glass-premium rounded-3xl p-8 text-center hover:shadow-strong transition-smooth group"
+                  whileHover={{ y: -8, scale: 1.05 }}
+                >
+                  <motion.div
+                    className={`w-16 h-16 mx-auto mb-6 rounded-2xl bg-gradient-${stat.color} flex items-center justify-center shadow-soft`}
+                    whileHover={{ rotate: 360 }}
+                    transition={{ duration: 0.6 }}
+                  >
+                    <stat.icon className="w-8 h-8 text-primary-foreground" />
+                  </motion.div>
+                  <div className="text-4xl font-bold text-primary mb-2">{stat.value}</div>
+                  <div className="text-sm text-muted-foreground font-medium">{stat.label}</div>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
     </main>
   );
 };

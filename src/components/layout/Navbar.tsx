@@ -141,19 +141,19 @@ export const Navbar = () => {
                       whileHover={{ x: 5 }}
                       className={`flex items-center space-x-3 px-4 py-3 rounded-xl transition-all font-medium ${
                         location.pathname === item.path
-                          ? "bg-primary text-primary-foreground"
-                          : "text-foreground hover:bg-primary/10"
+                          ? "bg-primary text-black-foreground"
+                          : "text-foreground hover:bg-primary/80"
                       }`}
                     >
-                      <Icon className="w-5 h-5" />
-                      <span className="text-sm">{item.name}</span>
+                      <Icon className="w-5 h-5 text-gray-500" />
+                      <span className="text-sm text-gray-500">{item.name}</span>
                     </motion.div>
                   </Link>
                 );
               })}
               
               <div className="flex items-center justify-between px-4 py-3">
-                <span className="text-sm font-medium text-foreground">Theme</span>
+                <span className="text-sm font-medium text-gray-500 text-foreground">Theme</span>
                 <ThemeToggle />
               </div>
               
