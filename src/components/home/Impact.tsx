@@ -5,7 +5,7 @@ import { motion, useInView, useMotionValue, useSpring, useTransform } from "fram
 const stats = [
   {
     icon: Users,
-    value: 500,
+    value: 300,
     suffix: "+",
     label: "Children Supported",
     description: "Young lives transformed through comprehensive care",
@@ -13,7 +13,7 @@ const stats = [
   },
   {
     icon: GraduationCap,
-    value: 300,
+    value: 100,
     suffix: "+",
     label: "Students Enrolled",
     description: "Access to quality education and learning resources",
@@ -21,9 +21,9 @@ const stats = [
   },
   {
     icon: Heart,
-    value: 50,
+    value: 20,
     suffix: "+",
-    label: "Mentors Active",
+    label: "Volunteers Active",
     description: "Dedicated volunteers guiding future generations",
     color: "from-rose-400 to-pink-500",
   },

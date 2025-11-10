@@ -1,7 +1,7 @@
 import { Heart, Target, Eye, Award, Sparkles, Users, Globe2, TrendingUp } from "lucide-react";
 import { motion } from "framer-motion";
 import unityImage from "@/assets/unity-hands.jpg";
-import childImage1 from "@/assets/general/child1.jpeg";
+import childImage1 from "@/assets/general/school2.webp";
 import childImage2 from "@/assets/general/child2.jpeg";
 import childImage3 from "@/assets/general/child3.jpg";
 import schoolImage from "@/assets/general/school.webp";
@@ -301,13 +301,13 @@ const About = () => {
                   num: "01",
                   title: "Education Support",
                   description: "Ensuring every child has access to quality education through sponsorships, school supplies, and tutoring programs.",
-                  image: childImage3,
+                  image: schoolImage,
                 },
                 {
                   num: "02",
                   title: "Child Protection",
                   description: "Creating safe environments and implementing protection policies to safeguard children from all forms of abuse.",
-                  image: schoolImage,
+                  image: childImage3,
                 },
                 {
                   num: "03",
@@ -380,10 +380,10 @@ const About = () => {
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
               {[
-                { icon: Users, value: "250+", label: "Children Supported", color: "primary" },
+                { icon: Users, value: "200+", label: "Children Supported", color: "primary" },
                 { icon: Globe2, value: "2", label: "Countries Active", color: "accent" },
                 { icon: TrendingUp, value: "95%", label: "Graduation Rate", color: "primary" },
-                { icon: Heart, value: "10+", label: "Years of Service", color: "accent" },
+                { icon: Heart, value: "2+", label: "Years of Service", color: "accent" },
               ].map((stat, index) => (
                 <motion.div
                   key={stat.label}

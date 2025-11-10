@@ -6,7 +6,7 @@ import heroImage from "@/assets/hero-children.jpg";
 import child1 from "@/assets/general/child1.jpeg";
 import child2 from "@/assets/general/child2.jpeg";
 import child3 from "@/assets/general/child3.jpg";
-import bg1 from "@/assets/general/bg1.jpeg";
+import bg1 from "@/assets/general/child4.jpg";
 import bg2 from "@/assets/general/bg2.jpg";
 import bg3 from "@/assets/general/bg3.jpg";
 
@@ -59,7 +59,7 @@ const futureGoals = [
   { 
     title: "Regional Expansion", 
     description: "Establish comprehensive programs in new countries, extending our reach to thousands more vulnerable children in underserved regions.", 
-    timeline: "2025-2026", 
+    timeline: "Soon", 
     icon: MapPin,
     color: "from-blue-500 to-purple-500",
     bgColor: "bg-blue-500"
@@ -67,7 +67,7 @@ const futureGoals = [
   { 
     title: "Child Development Centre", 
     description: "Create a state-of-the-art facility offering integrated services including education, healthcare, and recreational activities for holistic child development.", 
-    timeline: "2026-2027", 
+    timeline: "Soon", 
     icon: BookOpen,
     color: "from-green-500 to-emerald-500",
     bgColor: "bg-green-500"
@@ -75,7 +75,7 @@ const futureGoals = [
   { 
     title: "Sustainable Initiatives", 
     description: "Develop income-generating projects that ensure long-term program sustainability while empowering local communities through economic opportunities.", 
-    timeline: "2025-2028", 
+    timeline: "Soon", 
     icon: Target,
     color: "from-orange-500 to-red-500",
     bgColor: "bg-orange-500"
@@ -83,7 +83,7 @@ const futureGoals = [
   { 
     title: "Vocational Training Centers", 
     description: "Establish comprehensive skills development facilities to empower youth with practical abilities for economic independence and career success.", 
-    timeline: "2026-2028", 
+    timeline: "Soon", 
     icon: Zap,
     color: "from-pink-500 to-purple-500",
     bgColor: "bg-pink-500"
@@ -164,7 +164,7 @@ const Projects = () => {
             animate={{ scale: 1 }}
             transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background" />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background/85" />
         </div>
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

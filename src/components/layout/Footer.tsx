@@ -264,7 +264,7 @@ export const Footer = () => {
                   href="tel:+254700000000"
                   className="text-sm text-white/80 hover:text-blue-300 transition-colors duration-300 font-light group-hover:underline"
                 >
-                  +254 700 000 000
+                  +1 500 000 000
                 </a>
               </motion.li>
             </ul>
@@ -282,13 +282,6 @@ export const Footer = () => {
                   placeholder="Your email"
                   className="flex-1 px-1 py-2 text-sm bg-white/10 border w-1/2 border-white/20 rounded focus:outline-none focus:border-blue-300 text-white placeholder-white/50"
                 />
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="px-2 py-2 bg-blue-600 text-white text-sm font-medium rounded hover:bg-blue-500 transition-colors"
-                >
-                  Join
-                </motion.button>
               </div>
             </motion.div>
           </motion.div>

@@ -7,7 +7,7 @@ import { TypingAnimation } from "@/components/ui/TypingAnimation";
 
 // Import local images from assets
 import bgImage1 from "@/assets/general/child.jpg";
-import bgImage2 from "@/assets/general/child2.jpeg";
+import bgImage2 from "@/assets/general/child4.jpg";
 import bgImage3 from "@/assets/general/hero-children.jpg";
 import bgImage4 from "@/assets/general/bg1.jpeg";
 import featuredImage1 from "@/assets/general/bg6.jpg";
@@ -284,7 +284,7 @@ export const Hero = () => {
               {/* Animated Badge */}
               <motion.div
                 variants={fadeInUp}
-                className="inline-flex items-center mt-10 space-x-3 bg-white/10 backdrop-blur-md px-3 py-2 rounded-2xl border border-white/20 shadow-2xl"
+                className="inline-flex items-center mt-20 md:mt-0 space-x-3 bg-white/10 backdrop-blur-md px-2 py-1 rounded-2xl border border-white/20 shadow-2xl"
               >
                 <motion.div
                   animate={{ 
@@ -297,8 +297,9 @@ export const Hero = () => {
                     ease: "easeInOut" 
                   }}
                 >
-                  <Sparkles className="w-5 h-5 text-sky-500 text-accent" fill="currentColor" />
+                  <Sparkles className="w-5 h-5 text-sky-500" fill="currentColor" />
                 </motion.div>
+
                 <span className="text-sm font-playwright font-semibold text-sky-500 tracking-wider">
                   Ray of Hope Foundation
                 </span>
@@ -333,7 +334,7 @@ export const Hero = () => {
                   />
                 </div>
                 
-                <p className="text-lg md:text-xl text-white/80 leading-relaxed max-w-2xl">
+                <p className="text-lg md:text-xl text-white/80 leading-relaxed font-light max-w-2xl">
                   Through education, protection, and sustainable community development, 
                   we're bringing lasting change to{" "}
                   <span className="bg-gradient-to-r from-accent to-yellow-300 bg-clip-text text-transparent font-semibold">
@@ -374,7 +375,7 @@ export const Hero = () => {
                   </motion.div>
                 </Link>
                 
-                <Link to="/about" className="flex-1">
+                <Link to="/about" className="flex-1 hidden sm:block">
                   <motion.div 
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
@@ -389,6 +390,7 @@ export const Hero = () => {
                     </Button>
                   </motion.div>
                 </Link>
+
               </motion.div>
             </motion.div>
 
@@ -500,7 +502,7 @@ export const Hero = () => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 50 }}
                 transition={{ duration: 0.6 }}
-                className="lg:hidden flex justify-center space-x-6 mt-12 pt-8 border-t border-white/20"
+                className="lg:hidden flex justify-center space-x-6 mt-12 pt-4 mb-4 border-t border-white/20"
               >
                 {featuredImages.map((image, index) => (
                   <motion.div

@@ -2,10 +2,10 @@ import { BookOpen, Shield, Users, Heart, Globe, Sparkles, ArrowRight, CheckCircl
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import childReading from "@/assets/child-reading.jpg";
-import child1 from "@/assets/general/child1.jpeg";
+import child1 from "@/assets/general/school2.webp";
 import child2 from "@/assets/general/child2.jpeg";
 import child3 from "@/assets/general/child3.jpg";
-import school from "@/assets/general/school.webp";
+import school from "@/assets/general/camp.webp";
 import bg5 from "@/assets/general/bg5.jpeg";
 
 const programs = [
@@ -22,7 +22,7 @@ const programs = [
       "Scholarship programs for higher education",
     ],
     image: childReading,
-    stat: { value: "120+", label: "Students Sponsored" },
+    stat: { value: "", label: "" },
   },
   {
     icon: Shield,
@@ -37,7 +37,7 @@ const programs = [
       "Community awareness campaigns",
     ],
     image: child1,
-    stat: { value: "50+", label: "Children Protected" },
+    stat: { value: "", label: "" },
   },
   {
     icon: Users,
@@ -52,7 +52,7 @@ const programs = [
       "Leadership development programs",
     ],
     image: child2,
-    stat: { value: "80", label: "Active Mentorship Pairs" },
+    stat: { value: "", label: "" },
   },
   {
     icon: Heart,
@@ -67,7 +67,7 @@ const programs = [
       "Emotional wellbeing support",
     ],
     image: child3,
-    stat: { value: "200+", label: "Children Receiving Care" },
+    stat: { value: "", label: "" },
   },
   {
     icon: Globe,
@@ -82,7 +82,7 @@ const programs = [
       "Community development initiatives",
     ],
     image: school,
-    stat: { value: "5", label: "Active Camp Locations" },
+    stat: { value: "", label: "" },
   },
 ];
 

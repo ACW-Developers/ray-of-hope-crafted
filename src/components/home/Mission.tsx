@@ -26,7 +26,7 @@ import {
 import aboutHero from '@/assets/general/bg6.jpg';
 import missionImage from '@/assets/general/school1.webp';
 import teamImage from '@/assets/general/child2.jpeg';
-import valuesImage from '@/assets/general/child3.jpg';
+import valuesImage from '@/assets/general/child4.jpg';
 import africaService from '@/assets/general/bg3.jpg';
 
 export const Mission = () => {
@@ -288,9 +288,13 @@ export const Mission = () => {
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
         >
-          {/* Hero Section */}
-          <div className="grid lg:grid-cols-2 gap-16 items-center mb-14">
-            <motion.div variants={itemVariants} className="relative h-[500px] rounded-3xl overflow-hidden shadow-2xl group">
+          {/* Hero Section - Reorganized for mobile */}
+          <div className="flex flex-col lg:grid lg:grid-cols-2 gap-8 lg:gap-16 items-center mb-14">
+            {/* Image Gallery - Moved to top on mobile */}
+            <motion.div 
+              variants={itemVariants} 
+              className="relative h-[400px] lg:h-[500px] w-full rounded-3xl overflow-hidden shadow-2xl group order-1 lg:order-1"
+            >
               {galleryImages.map((image, index) => (
                 <div
                   key={index}
@@ -308,170 +312,165 @@ export const Mission = () => {
               ))}
 
               {/* Gallery indicators */}
-              <div className="absolute bottom-2 left-8 z-10 flex space-x-2">
+              <div className="absolute bottom-4 left-4 z-10 flex space-x-2">
                 {galleryImages.map((_, index) => (
                   <button
                     key={index}
                     onClick={() => setCurrentImage(index)}
-                    className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                    className={`w-2 h-2 lg:w-3 lg:h-3 rounded-full transition-all duration-300 ${
                       index === currentImage
-                        ? 'bg-white w-8'
+                        ? 'bg-white w-6 lg:w-8'
                         : 'bg-white/50 hover:bg-white/70'
                     }`}
                   />
                 ))}
               </div>
 
-              {/* Floating badges */}
-              <div className="absolute top-8 right-8 bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm px-4 py-2 rounded-full shadow-lg">
-                <span className="text-sm font-medium text-blue-600 dark:text-blue-400 flex items-center gap-2">
-                  <Globe className="w-4 h-4" />
-                  East & Central Africa
-                </span>
-              </div>
-              <div className="absolute top-20 right-8 bg-gradient-to-r from-blue-600 to-indigo-600 backdrop-blur-sm px-4 py-2 rounded-full shadow-lg">
-                <span className="text-sm font-medium text-white flex items-center gap-2">
-                  <BadgeCheck className="w-4 h-4" />
-                  Registered in Canada
-                </span>
+              {/* Floating badges - Stacked on mobile */}
+              <div className="absolute top-4 right-4 flex flex-col gap-2">
+                <div className="bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm px-3 py-1 lg:px-4 lg:py-2 rounded-full shadow-lg">
+                  <span className="text-xs lg:text-sm font-medium text-blue-600 dark:text-blue-400 flex items-center gap-1 lg:gap-2">
+                    <Globe className="w-3 h-3 lg:w-4 lg:h-4" />
+                    East & Central Africa
+                  </span>
+                </div>
               </div>
             </motion.div>
 
-            <motion.div variants={itemVariants} className="space-y-8">
-              <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white leading-tight">
+            {/* Content - Moved below image on mobile */}
+            <motion.div variants={itemVariants} className="space-y-6 lg:space-y-8 order-2 lg:order-2">
+              <h2 className="text-3xl lg:text-5xl font-bold text-gray-900 dark:text-white leading-tight text-center lg:text-left">
                 Restoring Hope{' '}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 block lg:inline">
                   For Vulnerable Children
                 </span>
               </h2>
 
-              <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 rounded-full"></div>
+              <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 rounded-full mx-auto lg:mx-0"></div>
 
-              <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed font-light">
+              <p className="text-lg lg:text-xl text-gray-600 dark:text-gray-300 leading-relaxed font-light text-center lg:text-left">
                 Ray of Hope Community is a faith-based humanitarian organization dedicated to supporting 
                 orphaned and vulnerable children—especially those impacted by war, displacement, and poverty. 
                 We are driven by love, guided by Christian compassion, and committed to rebuilding lives through 
-                education, protection, and holistic care. Founded in response to the increasing number of orphaned 
-                children in East and Central Africa, our work centers on restoring dignity, strengthening hope, 
-                and developing future leaders in the most underserved regions.
+                education, protection, and holistic care.
               </p>
 
-              <div className="flex flex-wrap gap-4 pt-4">
-                <Link to="/about">
+              <div className="flex flex-col sm:flex-row gap-3 lg:gap-4 pt-4 justify-center lg:justify-start">
+                <Link to="/about" className="flex-1 sm:flex-none">
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 dark:from-blue-500 dark:to-indigo-500 dark:hover:from-blue-600 dark:hover:to-indigo-600 text-white px-8 py-4 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 group flex items-center font-semibold"
+                    className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 dark:from-blue-500 dark:to-indigo-500 dark:hover:from-blue-600 dark:hover:to-indigo-600 text-white px-6 py-3 lg:px-8 lg:py-4 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 group flex items-center justify-center font-semibold text-sm lg:text-base"
                   >
                     Our Full Story
-                    <ChevronRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                    <ChevronRight className="ml-2 w-4 h-4 lg:w-5 lg:h-5 group-hover:translate-x-1 transition-transform" />
                   </motion.button>
                 </Link>
 
-                <Link to="/programs">
+                <Link to="/programs" className="flex-1 sm:flex-none">
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="border-2 border-blue-600 dark:border-blue-400 text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 px-8 py-4 rounded-lg group flex items-center font-semibold transition-all duration-300"
+                    className="w-full border-2 border-blue-600 dark:border-blue-400 text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 px-6 py-3 lg:px-8 lg:py-4 rounded-lg group flex items-center justify-center font-semibold text-sm lg:text-base transition-all duration-300"
                   >
                     Our Programs
-                    <School className="ml-2 w-5 h-5 group-hover:scale-110 transition-transform" />
+                    <School className="ml-2 w-4 h-4 lg:w-5 lg:h-5 group-hover:scale-110 transition-transform" />
                   </motion.button>
                 </Link>
               </div>
             </motion.div>
           </div>
 
-          {/* Mission & Vision Section */}
-          <div className="grid lg:grid-cols-2 gap-12 mb-24">
-            <motion.div variants={itemVariants} className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-lg rounded-3xl p-8 shadow-2xl shadow-blue-100/50 dark:shadow-blue-900/20 border border-blue-100/50 dark:border-blue-800/30 hover:shadow-3xl hover:shadow-blue-200/30 dark:hover:shadow-blue-800/20 transition-all duration-500 h-full group">
-              <div className="flex items-center mb-8">
-                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center mr-6 shadow-lg group-hover:scale-110 transition-transform duration-300">
-                  <Target className="w-8 h-8 text-white" />
+          {/* Mission & Vision Section - Stacked on mobile */}
+          <div className="flex flex-col lg:grid lg:grid-cols-2 gap-8 lg:gap-12 mb-16 lg:mb-24">
+            <motion.div variants={itemVariants} className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-lg rounded-3xl p-6 lg:p-8 shadow-2xl shadow-blue-100/50 dark:shadow-blue-900/20 border border-blue-100/50 dark:border-blue-800/30 hover:shadow-3xl hover:shadow-blue-200/30 dark:hover:shadow-blue-800/20 transition-all duration-500 h-full group">
+              <div className="flex items-center mb-6 lg:mb-8">
+                <div className="w-12 h-12 lg:w-16 lg:h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center mr-4 lg:mr-6 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                  <Target className="w-6 h-6 lg:w-8 lg:h-8 text-white" />
                 </div>
                 <div>
-                  <h3 className="text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white">Our Mission</h3>
+                  <h3 className="text-xl lg:text-3xl font-bold text-gray-900 dark:text-white">Our Mission</h3>
                   <div className="w-12 h-1 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full mt-2"></div>
                 </div>
               </div>
-              <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+              <p className="text-base lg:text-lg text-gray-700 dark:text-gray-300 leading-relaxed font-light">
                 To support, educate, and protect orphaned and vulnerable children by providing holistic care, 
                 educational opportunities, and safe, loving environments—empowering them to become who God 
                 created them to be.
               </p>
               
-              <div className="flex items-center gap-4 mt-6 pt-6 border-t border-blue-100/50 dark:border-blue-800/30">
-                <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
-                  <Heart className="w-4 h-4 text-rose-600 dark:text-rose-400" />
+              <div className="flex flex-wrap gap-3 lg:gap-4 mt-4 lg:mt-6 pt-4 lg:pt-6 border-t border-blue-100/50 dark:border-blue-800/30">
+                <div className="flex items-center gap-2 text-xs lg:text-sm text-gray-600 dark:text-gray-400">
+                  <Heart className="w-3 h-3 lg:w-4 lg:h-4 text-rose-600 dark:text-rose-400" />
                   <span>Holistic Care</span>
                 </div>
-                <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
-                  <BookOpen className="w-4 h-4 text-green-600 dark:text-green-400" />
+                <div className="flex items-center gap-2 text-xs lg:text-sm text-gray-600 dark:text-gray-400">
+                  <BookOpen className="w-3 h-3 lg:w-4 lg:h-4 text-green-600 dark:text-green-400" />
                   <span>Education Focus</span>
                 </div>
               </div>
             </motion.div>
 
             <motion.div variants={itemVariants} className="relative group">
-              <div className="bg-gradient-to-br from-indigo-600 to-purple-600 dark:from-indigo-700 dark:to-purple-700 rounded-3xl p-8 text-white shadow-2xl hover:shadow-3xl transition-all duration-500 h-full flex flex-col">
-                <div className="flex items-center mb-8">
-                  <div className="w-16 h-16 rounded-2xl bg-white/20 backdrop-blur-sm flex items-center justify-center mr-6 border border-white/30 group-hover:scale-110 transition-transform duration-300">
-                    <Eye className="w-8 h-8 text-white" />
+              <div className="bg-gradient-to-br from-indigo-600 to-purple-600 dark:from-indigo-700 dark:to-purple-700 rounded-3xl p-6 lg:p-8 text-white shadow-2xl hover:shadow-3xl transition-all duration-500 h-full flex flex-col">
+                <div className="flex items-center mb-6 lg:mb-8">
+                  <div className="w-12 h-12 lg:w-16 lg:h-16 rounded-2xl bg-white/20 backdrop-blur-sm flex items-center justify-center mr-4 lg:mr-6 border border-white/30 group-hover:scale-110 transition-transform duration-300">
+                    <Eye className="w-6 h-6 lg:w-8 lg:h-8 text-white" />
                   </div>
                   <div>
-                    <h3 className="text-2xl lg:text-3xl font-bold text-white">Our Vision</h3>
+                    <h3 className="text-xl lg:text-3xl font-bold text-white">Our Vision</h3>
                     <div className="w-12 h-1 bg-white/60 rounded-full mt-2"></div>
                   </div>
                 </div>
                 
-                <blockquote className="text-lg leading-relaxed mb-6 flex-grow">
+                <blockquote className="text-base lg:text-lg leading-relaxed mb-4 lg:mb-6 flex-grow font-light">
                   "To see a generation of once-forgotten children rise up with dignity, hope, and the tools they need to 
                   transform their communities and nations."
                 </blockquote>
                 
-                <div className="flex items-center gap-4 text-sm text-white/80">
+                <div className="flex flex-wrap gap-3 lg:gap-4 text-xs lg:text-sm text-white/80">
                   <div className="flex items-center gap-2">
-                    <Sparkles className="w-4 h-4 text-amber-300" />
+                    <Sparkles className="w-3 h-3 lg:w-4 lg:h-4 text-amber-300" />
                     <span>Hope Driven</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Users className="w-4 h-4 text-cyan-300" />
+                    <Users className="w-3 h-3 lg:w-4 lg:h-4 text-cyan-300" />
                     <span>Community Transformation</span>
                   </div>
                 </div>
 
                 {/* Floating elements */}
-                <div className="absolute top-4 right-4 w-8 h-8 bg-white/10 rounded-full animate-ping"></div>
-                <div className="absolute bottom-4 left-4 w-6 h-6 bg-white/5 rounded-full animate-pulse"></div>
+                <div className="absolute top-4 right-4 w-6 h-6 lg:w-8 lg:h-8 bg-white/10 rounded-full animate-ping"></div>
+                <div className="absolute bottom-4 left-4 w-4 h-4 lg:w-6 lg:h-6 bg-white/5 rounded-full animate-pulse"></div>
               </div>
             </motion.div>
           </div>
 
-          {/* Core Values Section */}
-          <motion.div variants={itemVariants} className="mb-24">
-            <div className="text-center mb-16">
-              <div className="inline-flex items-center gap-3 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-full px-6 py-3 mb-6 border border-blue-200/50 dark:border-blue-600/30">
-                <Ribbon className="w-5 h-5 text-blue-600 dark:text-blue-400" />
-                <span className="text-blue-600 dark:text-blue-400 font-semibold text-sm uppercase tracking-wider">
+          {/* Core Values Section - Enhanced mobile layout */}
+          <motion.div variants={itemVariants} className="mb-16 lg:mb-24">
+            <div className="text-center mb-12 lg:mb-16">
+              <div className="inline-flex items-center gap-3 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-full px-4 py-2 lg:px-6 lg:py-3 mb-4 lg:mb-6 border border-blue-200/50 dark:border-blue-600/30">
+                <Ribbon className="w-4 h-4 lg:w-5 lg:h-5 text-blue-600 dark:text-blue-400" />
+                <span className="text-blue-600 dark:text-blue-400 font-semibold text-xs lg:text-sm uppercase tracking-wider">
                   OUR FOUNDATION
                 </span>
               </div>
 
-              <h3 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+              <h3 className="text-2xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4 lg:mb-6">
                 Our{' '}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400">
                   Core Values
                 </span>
               </h3>
 
-              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
+              <p className="text-base lg:text-xl text-gray-600 dark:text-gray-300 font-light max-w-3xl mx-auto leading-relaxed px-4">
                 These fundamental principles guide every aspect of our work and define who we are as a faith-based 
                 humanitarian organization serving vulnerable children in East and Central Africa.
               </p>
             </div>
 
             {/* Radial Values Layout - Hidden on small screens */}
-            <div className="hidden sm:block relative h-[600px] lg:h-[700px] items-center justify-center">
+            <div className="hidden lg:block relative h-[600px] items-center justify-center">
               {/* Central Active Value Display */}
               <div className="absolute inset-0 flex items-center justify-center z-10">
                 <div className="text-center max-w-md mx-auto">
@@ -552,24 +551,53 @@ export const Mission = () => {
               </div>
             </div>
 
-            {/* Active Value Display for Mobile */}
-            <div className="sm:hidden mt-8 text-center">
-              <div className={`w-20 h-20 mx-auto mb-4 rounded-full bg-gradient-to-r ${coreValues[activeValue].color} flex items-center justify-center shadow-lg`}>
-                {(() => {
-                  const IconComponent = coreValues[activeValue].icon;
-                  return <IconComponent className="w-8 h-8 text-white" />;
-                })()}
+            {/* Mobile Values Grid */}
+            <div className="lg:hidden">
+              {/* Active Value Display */}
+              <div className="text-center mb-8 p-6 bg-white/50 dark:bg-slate-800/50 rounded-2xl backdrop-blur-sm border border-blue-100/30 dark:border-blue-800/30">
+                <div className={`w-20 h-20 mx-auto mb-4 rounded-full bg-gradient-to-r ${coreValues[activeValue].color} flex items-center justify-center shadow-lg`}>
+                  {(() => {
+                    const IconComponent = coreValues[activeValue].icon;
+                    return <IconComponent className="w-8 h-8 text-white" />;
+                  })()}
+                </div>
+                <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
+                  {coreValues[activeValue].title}
+                </h4>
+                <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                  {coreValues[activeValue].description}
+                </p>
               </div>
-              <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
-                {coreValues[activeValue].title}
-              </h4>
-              <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                {coreValues[activeValue].description}
-              </p>
+
+              {/* Values Grid */}
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                {coreValues.map((value, index) => (
+                  <motion.button
+                    key={value.title}
+                    onClick={() => setActiveValue(index)}
+                    className={`p-4 rounded-xl ${value.bgColor} border-2 ${value.borderColor} backdrop-blur-sm transition-all duration-300 ${
+                      index === activeValue 
+                        ? 'ring-2 ring-blue-500 scale-105 shadow-lg' 
+                        : 'hover:scale-102'
+                    }`}
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    <div className="text-center">
+                      <div className={`w-10 h-10 mx-auto mb-2 rounded-full bg-gradient-to-r ${value.color} flex items-center justify-center shadow-md`}>
+                        <value.icon className="w-4 h-4 text-white" />
+                      </div>
+                      <span className={`text-xs font-semibold ${value.textColor} line-clamp-2`}>
+                        {value.title}
+                      </span>
+                    </div>
+                  </motion.button>
+                ))}
+              </div>
             </div>
 
-            {/* Navigation Dots */}
-            <div className="flex justify-center space-x-3 mt-12">
+            {/* Navigation Dots - Only show for radial layout */}
+            <div className="hidden lg:flex justify-center space-x-3 mt-12">
               {coreValues.map((_, index) => (
                 <motion.button
                   key={index}
@@ -586,52 +614,52 @@ export const Mission = () => {
             </div>
           </motion.div>
 
-          {/* Africa Service Section */}
-          <motion.div variants={itemVariants} className="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-3xl p-12 backdrop-blur-sm border border-blue-100/50 dark:border-blue-800/30 relative overflow-hidden">
+          {/* Africa Service Section - Stacked on mobile */}
+          <motion.div variants={itemVariants} className="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-3xl p-6 lg:p-12 backdrop-blur-sm border border-blue-100/50 dark:border-blue-800/30 relative overflow-hidden">
             <div className="absolute inset-0 opacity-10 dark:opacity-5">
               <div className="absolute top-0 left-0 w-32 h-32 bg-blue-600 rounded-full animate-float"></div>
               <div className="absolute bottom-0 right-0 w-24 h-24 bg-indigo-600 rounded-full animate-float" style={{ animationDelay: '2s' }}></div>
             </div>
 
             <div className="relative z-10">
-              <div className="grid lg:grid-cols-2 gap-12 items-center">
-                <div>
-                  <h3 className="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-6">
+              <div className="flex flex-col lg:grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+                <div className="order-2 lg:order-1">
+                  <h3 className="text-2xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-4 lg:mb-6 text-center lg:text-left">
                     Serving{' '}
                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400">
                       East & Central Africa
                     </span>
                   </h3>
-                  <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+                  <p className="text-base lg:text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-4 font-light lg:mb-6 text-center lg:text-left">
                     We are actively working in refugee camps in Kenya and Uganda, supporting vulnerable children 
                     with education, mentorship, and essential resources. Our future goals include expanding to 
                     post-conflict areas in Burundi and establishing a permanent Child Development Centre in the 
                     Democratic Republic of Congo.
                   </p>
-                  <div className="flex flex-wrap gap-4">
-                    <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
-                      <MapPin className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+                  <div className="flex flex-wrap gap-3 lg:gap-4 justify-center lg:justify-start">
+                    <div className="flex items-center gap-2 text-sm lg:text-base text-gray-600 dark:text-gray-400">
+                      <MapPin className="w-4 h-4 lg:w-5 lg:h-5 text-blue-600 dark:text-blue-400" />
                       <span>Kenya & Uganda</span>
                     </div>
-                    <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
-                      <Award className="w-5 h-5 text-amber-600 dark:text-amber-400" />
+                    <div className="flex items-center gap-2 text-sm lg:text-base text-gray-600 dark:text-gray-400">
+                      <Award className="w-4 h-4 lg:w-5 lg:h-5 text-amber-600 dark:text-amber-400" />
                       <span>Future Expansion</span>
                     </div>
-                    <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
-                      <Shield className="w-5 h-5 text-green-600 dark:text-green-400" />
+                    <div className="flex items-center gap-2 text-sm lg:text-base text-gray-600 dark:text-gray-400">
+                      <Shield className="w-4 h-4 lg:w-5 lg:h-5 text-green-600 dark:text-green-400" />
                       <span>Child Protection Focus</span>
                     </div>
                   </div>
                 </div>
                 
                 <motion.div 
-                  className="relative"
+                  className="relative order-1 lg:order-2"
                   whileHover={{ scale: 1.02 }}
                 >
                   <img
                     src={africaService}
                     alt="African landscape representing our service areas"
-                    className="rounded-2xl shadow-lg"
+                    className="rounded-2xl shadow-lg w-full"
                   />
                   <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-indigo-600/20 rounded-2xl"></div>
                 </motion.div>
@@ -640,15 +668,15 @@ export const Mission = () => {
           </motion.div>
 
           {/* Call to Action */}
-          <motion.div variants={itemVariants} className="text-center mt-16">
-            <Link to="/get-involved">
+          <motion.div variants={itemVariants} className="text-center mt-12 lg:mt-16">
+            <Link to="/contact">
               <motion.button
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 dark:from-blue-500 dark:to-indigo-500 dark:hover:from-blue-600 dark:hover:to-indigo-600 text-white px-8 py-4 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 group flex items-center font-semibold mx-auto"
+                className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 dark:from-blue-500 dark:to-indigo-500 dark:hover:from-blue-600 dark:hover:to-indigo-600 text-white px-6 py-3 lg:px-8 lg:py-4 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 group flex items-center font-semibold mx-auto text-sm lg:text-base"
               >
                 Join Our Mission
-                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="ml-2 w-4 h-4 lg:w-5 lg:h-5 group-hover:translate-x-1 transition-transform" />
               </motion.button>
             </Link>
           </motion.div>

@@ -8,7 +8,7 @@ const programs = [
     title: "Education Support",
     description: "Providing school fees, supplies, and tutoring to ensure every child has access to quality education and a brighter future.",
     color: "primary",
-    image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=400&h=300&fit=crop&crop=center",
+    image: "https://images.unsplash.com/photo-1588072432836-e10032774350?w=800&auto=format&fit=crop",
     imageAlt: "Children studying together in classroom"
   },
   {
@@ -19,19 +19,19 @@ const programs = [
     imageAlt: "Protective hands surrounding a child"
   },
   {
-    title: "Mentorship Programs",
-    description: "Connecting children with caring mentors who provide guidance, support, and positive role models for personal growth.",
-    color: "accent",
-    image: "https://images.unsplash.com/photo-1537511446984-935f663eb1f4?w=400&h=300&fit=crop&crop=center",
-    imageAlt: "Mentor and child reading together"
-  },
+  title: "Mentorship Programs",
+  description: "Connecting children with caring mentors who provide guidance, support, and positive role models for personal growth.",
+  color: "accent",
+  image: "https://images.unsplash.com/photo-1573497491208-6b1acb260507?w=800&auto=format&fit=crop",
+  imageAlt: "Mentor and child having a meaningful conversation"
+},
   {
-    title: "Holistic Care",
-    description: "Addressing physical, emotional, and spiritual needs through comprehensive programs that nurture the whole child.",
-    color: "primary",
-    image: "https://images.unsplash.com/photo-1542816417-0983c9c9ad53?w=400&h=300&fit=crop&crop=center",
-    imageAlt: "Children playing and laughing together"
-  },
+  title: "Holistic Care",
+  description: "Addressing physical, emotional, and spiritual needs through comprehensive programs that nurture the whole child.",
+  color: "primary",
+  image: "https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=800&auto=format&fit=crop",
+  imageAlt: "Children receiving comprehensive care and education"
+}
 ];
 
 export const Programs = () => {
@@ -132,8 +132,6 @@ export const Programs = () => {
                       
                       {/* Hover Learn More */}
                       <div className="flex items-center text-primary font-semibold opacity-0 group-hover:opacity-100 transform translate-x-4 group-hover:translate-x-0 transition-all duration-500 mt-4">
-                        <span className="text-sm">Learn more</span>
-                        <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
                       </div>
                     </div>
                   </div>
