@@ -281,32 +281,10 @@ export const Hero = () => {
               initial="initial"
               animate="animate"
             >
-              {/* Animated Badge */}
-              <motion.div
-                variants={fadeInUp}
-                className="inline-flex items-center mt-20 md:mt-0 space-x-3 bg-white/10 backdrop-blur-md px-2 py-1 rounded-2xl border border-white/20 shadow-2xl"
-              >
-                <motion.div
-                  animate={{ 
-                    rotate: [0, 360],
-                    scale: [1, 1.1, 1]
-                  }}
-                  transition={{ 
-                    duration: 4, 
-                    repeat: Infinity,
-                    ease: "easeInOut" 
-                  }}
-                >
-                  <Sparkles className="w-5 h-5 text-sky-500" fill="currentColor" />
-                </motion.div>
 
-                <span className="text-sm font-playwright font-semibold text-sky-500 tracking-wider">
-                  Ray of Hope Foundation
-                </span>
-              </motion.div>
 
               {/* Main Heading - Constant Statement */}
-              <motion.div variants={fadeInUp} className="space-y-6">
+              <motion.div variants={fadeInUp} className="space-y-6 mt-20">
                 <h1 className="text-5xl md:text-6xl font-bold text-white mt-4 leading-tight">
                   <span className="gradient-animated-text">
                     Every Child
