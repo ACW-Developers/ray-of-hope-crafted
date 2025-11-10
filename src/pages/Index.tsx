@@ -9,7 +9,6 @@ const Index = () => {
   return (
     <main className="min-h-screen">
       <Hero />
-      <WaveDivider color="hsl(var(--background))" />
       <Mission />
       <WaveDivider color="hsl(var(--primary))" />
       <Programs />
