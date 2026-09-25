@@ -96,7 +96,7 @@ export const Footer = () => {
                 >
                   <img 
                     src={logo} 
-                    alt="Ray of Hope Community Foundation Logo" 
+                    alt="Imbuto of Hope International Logo" 
                     className="w-14 h-14 object-contain"
                   />
                 </motion.div>
@@ -106,8 +106,8 @@ export const Footer = () => {
                 />
               </motion.div>
               <div>
-                <h2 className="text-2xl font-bold font-['Playfair_Display'] text-white tracking-tight">
-                  Ray of Hope
+                <h2 className="text-2xl font-bold font-heading text-white tracking-tight">
+                  Imbuto of Hope International
                 </h2>
                 <p className="text-sm text-white/70 font-light tracking-wider">FOUNDATION</p>
               </div>
@@ -295,7 +295,7 @@ export const Footer = () => {
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="flex items-center space-x-2 text-sm text-white/70">
               <Shield className="w-4 h-4" />
-              <span>© {currentYear} Ray of Hope Community Foundation. All rights reserved.</span>
+              <span>© {currentYear} Imbuto of Hope International. All rights reserved.</span>
             </div>
             
             <div className="flex items-center space-x-6">

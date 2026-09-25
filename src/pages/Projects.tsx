@@ -185,7 +185,7 @@ const Projects = () => {
             </motion.div>
             
             <motion.h1 
-              className="text-7xl md:text-8xl font-bold font-['Playfair_Display'] mb-8 text-white"
+              className="text-7xl md:text-8xl font-bold font-heading mb-8 text-white"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.8 }}
@@ -214,7 +214,7 @@ const Projects = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-5xl md:text-6xl font-bold font-['Playfair_Display'] gradient-text mb-6">
+            <h2 className="text-5xl md:text-6xl font-bold font-heading gradient-text mb-6">
               Our Impact Stories
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
@@ -309,7 +309,7 @@ const Projects = () => {
                 transition={{ delay: 0.3 }}
               >
                 <motion.h3 
-                  className="text-4xl font-bold font-['Playfair_Display'] mb-6 gradient-text"
+                  className="text-4xl font-bold font-heading mb-6 gradient-text"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                 >
@@ -387,7 +387,7 @@ const Projects = () => {
               <span className="text-sm font-bold tracking-wider">STRATEGIC VISION 2028</span>
             </motion.div>
 
-            <h2 className="text-5xl md:text-6xl font-bold font-['Playfair_Display'] gradient-text mb-6">
+            <h2 className="text-5xl md:text-6xl font-bold font-heading gradient-text mb-6">
               Our Future Vision
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
@@ -452,7 +452,7 @@ const Projects = () => {
                         <goal.icon className="w-6 h-6" />
                       </motion.div>
                       <div>
-                        <h3 className="text-xl lg:text-2xl font-bold font-['Playfair_Display']">
+                        <h3 className="text-xl lg:text-2xl font-bold font-heading">
                           {goal.title}
                         </h3>
                         {/* Timeline Label - Desktop */}

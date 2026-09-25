@@ -6,13 +6,13 @@ import { useState, useEffect } from "react";
 import { TypingAnimation } from "@/components/ui/TypingAnimation";
 
 // Import local images from assets
-import bgImage1 from "@/assets/general/latest/R31.jpeg";
+import bgImage1 from "@/assets/general/Latest/R31.jpeg";
 import bgImage2 from "@/assets/general/child4.jpg";
-import bgImage3 from "@/assets/general/latest/R28.jpeg";
-import bgImage4 from "@/assets/general/latest/R33.jpeg";
+import bgImage3 from "@/assets/general/Latest/R28.jpeg";
+import bgImage4 from "@/assets/general/Latest/R33.jpeg";
 import featuredImage1 from "@/assets/general/bg6.jpg";
-import featuredImage2 from "@/assets/general/latest/R31.jpeg";
-import featuredImage3 from "@/assets/general/latest/R10.jpeg";
+import featuredImage2 from "@/assets/general/Latest/R31.jpeg";
+import featuredImage3 from "@/assets/general/Latest/R10.jpeg";
 
 export const Hero = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -139,7 +139,7 @@ export const Hero = () => {
           className="space-y-3"
         >
           <h3 className="text-2xl font-bold text-white font-playwright">
-            Ray of Hope
+            Imbuto of Hope International
           </h3>
           <p className="text-white/70 text-sm">
             Loading amazing content...

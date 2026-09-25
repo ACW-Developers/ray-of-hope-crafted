@@ -23,11 +23,11 @@ import {
   Cross
 } from 'lucide-react';
 
-import aboutHero from '@/assets/general/latest/R20.jpeg';
-import missionImage from '@/assets/general/latest/R9.jpeg';
-import teamImage from '@/assets/general/latest/R18.jpeg';
+import aboutHero from '@/assets/general/Latest/R20.jpeg';
+import missionImage from '@/assets/general/Latest/R9.jpeg';
+import teamImage from '@/assets/general/Latest/R18.jpeg';
 import valuesImage from '@/assets/general/bg6.jpg';
-import africaService from '@/assets/general/latest/R31.jpeg';
+import africaService from '@/assets/general/Latest/R31.jpeg';
 
 export const Mission = () => {
   const [currentImage, setCurrentImage] = useState(0);
@@ -45,7 +45,7 @@ export const Mission = () => {
     },
     {
       src: teamImage,
-      alt: 'Ray of Hope team providing care and support'
+      alt: 'Imbuto of Hope International team providing care and support'
     },
     {
       src: valuesImage,
@@ -349,7 +349,7 @@ export const Mission = () => {
               <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 rounded-full mx-auto lg:mx-0"></div>
 
               <p className="text-lg lg:text-xl text-gray-600 dark:text-gray-300 leading-relaxed font-light text-center lg:text-left">
-                Ray of Hope Community is a faith-based humanitarian organization dedicated to supporting 
+                Imbuto of Hope International is a faith-based humanitarian organization dedicated to supporting 
                 orphaned and vulnerable children—especially those impacted by war, displacement, and poverty. 
                 We are driven by love, guided by Christian compassion, and committed to rebuilding lives through 
                 education, protection, and holistic care.

@@ -60,7 +60,7 @@ export const Navbar = () => {
               >
                 <img 
                   src={logo} 
-                  alt="Ray of Hope Community Logo" 
+                  alt="Imbuto of Hope International Logo" 
                   className="w-16 h-16 object-contain transition-all duration-300"
                 />
               </motion.div>

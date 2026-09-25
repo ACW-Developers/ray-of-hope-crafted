@@ -32,12 +32,12 @@ const impactAreas = [
 const paymentInfo = {
   paypal: {
     email: "rayofhope@gmail.com",
-    name: "Ray of Hope Foundation",
+    name: "Imbuto of Hope International",
     instructions: "Send to PayPal address or use 'Send to Friends and Family' option"
   },
   bank: {
     bankName: "Global Trust Bank",
-    accountName: "Ray of Hope Foundation",
+    accountName: "Imbuto of Hope International",
     accountNumber: "1234 5678 9012 3456",
     routingNumber: "021000021",
     swiftCode: "GTBKENAXXX",
@@ -153,7 +153,7 @@ const Donate = () => {
           <Icon className="w-6 h-6 text-white" />
         </div>
         <div>
-          <h3 className="text-2xl font-bold font-['Playfair_Display']">{title}</h3>
+          <h3 className="text-2xl font-bold font-heading">{title}</h3>
           <p className="text-muted-foreground">{method}</p>
         </div>
       </div>
@@ -206,7 +206,7 @@ const Donate = () => {
                 <Check className="w-12 h-12 text-green-600 dark:text-green-400" />
               </motion.div>
               
-              <h1 className="text-4xl md:text-5xl font-bold font-['Playfair_Display'] mb-6 text-foreground">
+              <h1 className="text-4xl md:text-5xl font-bold font-heading mb-6 text-foreground">
                 Thank You for Your Generosity!
               </h1>
               
@@ -255,7 +255,7 @@ const Donate = () => {
                 animate={{ opacity: 1, y: 0 }}
                 className="bg-card text-card-foreground rounded-3xl p-8 shadow-lg border border-border mb-12"
               >
-                <h2 className="text-3xl font-bold font-['Playfair_Display'] mb-6 text-center">Your Pledge Summary</h2>
+                <h2 className="text-3xl font-bold font-heading mb-6 text-center">Your Pledge Summary</h2>
                 <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                   <div className="text-center p-4 bg-muted/50 rounded-xl">
                     <User className="w-8 h-8 text-primary mx-auto mb-2" />
@@ -290,7 +290,7 @@ const Donate = () => {
                   <Check className="w-8 h-8 text-primary" />
                 </motion.div>
                 
-                <h1 className="text-4xl md:text-5xl font-bold font-['Playfair_Display'] mb-4 text-foreground">
+                <h1 className="text-4xl md:text-5xl font-bold font-heading mb-4 text-foreground">
                   Pledge Confirmed!
                 </h1>
                 
@@ -332,7 +332,7 @@ const Donate = () => {
                 transition={{ delay: 0.4 }}
                 className="bg-card text-card-foreground rounded-3xl p-8 shadow-lg border border-border max-w-4xl mx-auto mb-8"
               >
-                <h3 className="text-2xl font-bold font-['Playfair_Display'] mb-6 text-center">
+                <h3 className="text-2xl font-bold font-heading mb-6 text-center">
                   Next Steps
                 </h3>
                 <div className="space-y-4 text-left">
@@ -372,7 +372,7 @@ const Donate = () => {
                     size="lg"
                     onClick={() => {
                       const subject = `Donation Instructions - ${storedPledge?.firstName} ${storedPledge?.lastName}`;
-                      const body = `Dear ${storedPledge?.firstName},\n\nThank you for your pledge of $${storedPledge?.amount} for ${selectedImpact?.label}!\n\nPayment Details:\nPayPal: ${paymentInfo.paypal.email}\nBank Transfer: ${paymentInfo.bank.accountNumber}\n\nPlease include your name in the payment reference.\n\nBest regards,\nRay of Hope Team`;
+                      const body = `Dear ${storedPledge?.firstName},\n\nThank you for your pledge of $${storedPledge?.amount} for ${selectedImpact?.label}!\n\nPayment Details:\nPayPal: ${paymentInfo.paypal.email}\nBank Transfer: ${paymentInfo.bank.accountNumber}\n\nPlease include your name in the payment reference.\n\nBest regards,\nImbuto of Hope International Team`;
                       window.open(`mailto:${storedPledge?.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`);
                     }}
                   >
@@ -430,7 +430,7 @@ const Donate = () => {
               <Heart className="w-5 h-5 text-accent" fill="currentColor" />
               <span className="text-sm font-bold tracking-wide">Make a Pledge Today</span>
             </motion.div>
-            <h1 className="text-5xl md:text-7xl font-bold font-['Playfair_Display'] mb-6 leading-tight">
+            <h1 className="text-5xl md:text-7xl font-bold font-heading mb-6 leading-tight">
               Commit to Change
               <br />
               <span className="bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">
@@ -454,7 +454,7 @@ const Donate = () => {
                 <div className="bg-card text-card-foreground rounded-3xl p-8 md:p-10 shadow-lg border border-border">
                   <div className="flex items-center space-x-3 mb-2">
                     <Mail className="w-6 h-6 text-primary" />
-                    <h2 className="text-3xl font-bold font-['Playfair_Display']">
+                    <h2 className="text-3xl font-bold font-heading">
                       Make Your Pledge
                     </h2>
                   </div>
@@ -658,7 +658,7 @@ const Donate = () => {
                     <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center">
                       <Sparkles className="w-5 h-5 text-white" />
                     </div>
-                    <h3 className="text-2xl font-bold font-['Playfair_Display']">Your Impact</h3>
+                    <h3 className="text-2xl font-bold font-heading">Your Impact</h3>
                   </div>
                   <div className="space-y-5">
                     {[

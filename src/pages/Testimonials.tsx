@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 const testimonials = [
   {
     quote:
-      "Ray of Hope gave my children a future I couldn't provide alone. Through their education support, my daughter is now in secondary school and dreams of becoming a teacher.",
+      "Imbuto of Hope International gave my children a future I couldn't provide alone. Through their education support, my daughter is now in secondary school and dreams of becoming a teacher.",
     author: "Mary K.",
     role: "Caregiver, Kakuma Camp",
     organization: "Parent",
@@ -20,7 +20,7 @@ const testimonials = [
   },
   {
     quote:
-      "Working with Ray of Hope has been transformative. Their holistic approach addresses not just immediate needs but creates lasting change in children's lives.",
+      "Working with Imbuto of Hope International has been transformative. Their holistic approach addresses not just immediate needs but creates lasting change in children's lives.",
     author: "Dr. Sarah L.",
     role: "Partner Organization",
     organization: "Education Initiative",
@@ -126,7 +126,7 @@ const Testimonials = () => {
               <span className="text-sm font-semibold tracking-wider">STORIES OF HOPE</span>
             </motion.div>
             <motion.h1 
-              className="text-5xl md:text-6xl font-bold font-['Playfair_Display'] mb-6 gradient-animated-text"
+              className="text-5xl md:text-6xl font-bold font-heading mb-6 gradient-animated-text"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
@@ -270,7 +270,7 @@ const Testimonials = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="text-4xl font-bold font-['Playfair_Display'] gradient-text mb-6">
+              <h2 className="text-4xl font-bold font-heading gradient-text mb-6">
                 More Stories
               </h2>
               <p className="text-xl text-muted-foreground">
