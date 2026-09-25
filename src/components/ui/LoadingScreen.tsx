@@ -55,7 +55,7 @@ const LoadingScreen = ({ onLoadingComplete }: { onLoadingComplete: () => void })
           transition={{ duration: 0.8, type: "spring" }}
           className="mb-8 flex justify-center"
         >
-          <img src={logo} alt="Ray of Hope" className="w-32 h-32 object-contain" />
+          <img src={logo} alt="Imbuto of Hope International" className="w-32 h-32 object-contain" />
         </motion.div>
 
         {/* Organization Name */}
@@ -63,9 +63,9 @@ const LoadingScreen = ({ onLoadingComplete }: { onLoadingComplete: () => void })
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
-          className="text-4xl md:text-5xl font-bold text-white font-['Playfair_Display'] mb-8"
+          className="text-4xl md:text-5xl font-bold text-white font-heading mb-8"
         >
-          Ray of Hope Foundation
+          Imbuto of Hope International
         </motion.h1>
 
         {/* Loading Circle */}

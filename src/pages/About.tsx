@@ -93,7 +93,7 @@ const About = () => {
             </motion.div>
             <motion.h1 
               variants={fadeInUp} 
-              className="text-6xl md:text-7xl font-bold font-['Playfair_Display'] mb-6 text-white"
+              className="text-6xl md:text-7xl font-bold font-heading mb-6 text-white"
             >
               Our Story
             </motion.h1>
@@ -120,12 +120,12 @@ const About = () => {
                 <span className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-6">
                   The Beginning
                 </span>
-                <h2 className="text-5xl font-bold font-['Playfair_Display'] mb-6 gradient-text">
+                <h2 className="text-5xl font-bold font-heading mb-6 gradient-text">
                   Born from Compassion
                 </h2>
                 <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
                   <p>
-                    Ray of Hope Community emerged from a profound calling witnessed in the refugee camps 
+                    Imbuto of Hope International emerged from a profound calling witnessed in the refugee camps 
                     of Kenya and Uganda. What started as a handful of volunteers has blossomed into a 
                     comprehensive movement touching hundreds of lives.
                   </p>
@@ -199,7 +199,7 @@ const About = () => {
                   >
                     <Target className="w-8 h-8 text-primary-foreground" />
                   </motion.div>
-                  <h3 className="text-3xl font-bold mb-4 font-['Playfair_Display'] relative z-10">Mission</h3>
+                  <h3 className="text-3xl font-bold mb-4 font-heading relative z-10">Mission</h3>
                   <p className="text-muted-foreground leading-relaxed relative z-10">
                     To support, educate, and protect vulnerable children, empowering them to become
                     who God created them to be through holistic care addressing physical, emotional,
@@ -222,7 +222,7 @@ const About = () => {
                   >
                     <Eye className="w-8 h-8 text-accent-foreground" />
                   </motion.div>
-                  <h3 className="text-3xl font-bold mb-4 font-['Playfair_Display'] relative z-10">Vision</h3>
+                  <h3 className="text-3xl font-bold mb-4 font-heading relative z-10">Vision</h3>
                   <p className="text-muted-foreground leading-relaxed relative z-10">
                     A generation of once-forgotten children rising with dignity and hope. Communities
                     where every child has the opportunity to thrive and reach their full potential.
@@ -244,7 +244,7 @@ const About = () => {
                   >
                     <Award className="w-8 h-8 text-primary-foreground" />
                   </motion.div>
-                  <h3 className="text-3xl font-bold mb-4 font-['Playfair_Display'] relative z-10">Core Values</h3>
+                  <h3 className="text-3xl font-bold mb-4 font-heading relative z-10">Core Values</h3>
                   <div className="space-y-3 relative z-10">
                     {[
                       "Compassion",
@@ -287,7 +287,7 @@ const About = () => {
               <span className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-4">
                 Strategic Focus
               </span>
-              <h2 className="text-5xl font-bold font-['Playfair_Display'] gradient-text mb-6">
+              <h2 className="text-5xl font-bold font-heading gradient-text mb-6">
                 Core Objectives
               </h2>
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
@@ -340,7 +340,7 @@ const About = () => {
                   
                   <div className="relative z-10 p-8 h-full flex flex-col justify-end">
                     <div className="text-6xl font-bold text-white/20 mb-4">{objective.num}</div>
-                    <h3 className="text-3xl font-bold text-white mb-3 font-['Playfair_Display']">
+                    <h3 className="text-3xl font-bold text-white mb-3 font-heading">
                       {objective.title}
                     </h3>
                     <p className="text-white/80 leading-relaxed">
@@ -370,7 +370,7 @@ const About = () => {
             variants={staggerContainer}
           >
             <motion.div variants={fadeInUp} className="text-center mb-16">
-              <h2 className="text-5xl font-bold font-['Playfair_Display'] gradient-text mb-6">
+              <h2 className="text-5xl font-bold font-heading gradient-text mb-6">
                 Our Impact in Numbers
               </h2>
               <p className="text-xl text-muted-foreground">

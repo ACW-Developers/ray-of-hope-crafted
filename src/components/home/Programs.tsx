@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
 
-import education from '@/assets/general/latest/R4.jpeg';
-import protection from '@/assets/general/latest/R27.jpeg';
-import Mentorship from '@/assets/general/latest/R5.jpeg';
+import education from '@/assets/general/Latest/R4.jpeg';
+import protection from '@/assets/general/Latest/R27.jpeg';
+import Mentorship from '@/assets/general/Latest/R5.jpeg';
 import care from '@/assets/general/bg6.jpg';
 
 const programs = [
@@ -79,7 +79,7 @@ export const Programs = () => {
                 What We Do
               </span>
             </div>
-            <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold font-['Playfair_Display'] gradient-text mb-8 leading-tight animate-gradient">
+            <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold font-heading gradient-text mb-8 leading-tight animate-gradient">
               Our Programs
             </h2>
             <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed font-light">
@@ -127,7 +127,7 @@ export const Programs = () => {
                     {/* Content Section */}
                     <div className="md:w-3/5 p-4 md:p-5 flex flex-col justify-center">
                       <div className="mb-6">
-                        <h3 className="text-2xl md:text-3xl font-bold mb-4 font-['Playfair_Display'] group-hover:text-primary transition-colors duration-300">
+                        <h3 className="text-2xl md:text-3xl font-bold mb-4 font-heading group-hover:text-primary transition-colors duration-300">
                           {program.title}
                         </h3>
                         <p className="text-muted-foreground leading-relaxed text-base md:text-lg font-light">

@@ -67,8 +67,10 @@ export default {
         'elegant': 'var(--shadow-elegant)',
       },
       fontFamily: {
-        'inter': ['Inter', 'sans-serif'],
-        'playfair': ['Playfair Display', 'serif'],
+        sans: ['Quicksand', 'system-ui', 'sans-serif'],
+        heading: ['Quicksand', 'system-ui', 'sans-serif'],
+        inter: ['Quicksand', 'system-ui', 'sans-serif'],
+        playfair: ['Quicksand', 'system-ui', 'sans-serif'],
       },
       borderRadius: {
         lg: "var(--radius)",

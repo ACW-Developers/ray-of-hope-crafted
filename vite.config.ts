@@ -17,9 +17,9 @@ export default defineConfig(({ mode }) => ({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.ico', 'robots.txt'],
       manifest: {
-        name: 'Ray of Hope Community',
-        short_name: 'Ray of Hope',
-        description: 'Ray of Hope Community supports orphaned and vulnerable children across East and Central Africa through education, protection, and holistic care.',
+        name: 'Imbuto of Hope International',
+        short_name: 'Imbuto of Hope International',
+        description: 'Imbuto of Hope International supports orphaned and vulnerable children across East and Central Africa through education, protection, and holistic care.',
         theme_color: '#1e293b',
         background_color: '#0f172a',
         display: 'standalone',

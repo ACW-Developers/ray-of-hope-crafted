@@ -51,7 +51,7 @@ const Contact = () => {
 *Message:*
 ${formData.message}
 
-*Sent via:* Ray of Hope Website
+*Sent via:* Imbuto of Hope International Website
     `.trim();
 
     // Encode the message for URL
@@ -183,7 +183,7 @@ ${formData.message}
             </motion.div>
 
             <motion.h1
-              className="text-5xl md:text-6xl lg:text-7xl font-bold font-['Playfair_Display'] mb-6 text-white"
+              className="text-5xl md:text-6xl lg:text-7xl font-bold font-heading mb-6 text-white"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
@@ -235,7 +235,7 @@ ${formData.message}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-4xl md:text-5xl font-bold font-['Playfair_Display'] text-foreground mb-4">
+              <h2 className="text-4xl md:text-5xl font-bold font-heading text-foreground mb-4">
                 Let's Start a Conversation
               </h2>
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
@@ -255,7 +255,7 @@ ${formData.message}
                 <div className="bg-white dark:bg-slate-800 rounded-2xl p-8 md:p-10 shadow-lg border border-gray-100 dark:border-slate-700">
                   <div className="mb-8">
                     <div className="flex items-center gap-3 mb-3">
-                      <h3 className="text-3xl font-bold font-['Playfair_Display'] text-foreground">
+                      <h3 className="text-3xl font-bold font-heading text-foreground">
                         Send via WhatsApp
                       </h3>
                       <svg className="w-6 h-6 text-green-600" fill="currentColor" viewBox="0 0 24 24">

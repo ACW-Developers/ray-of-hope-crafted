@@ -1,7 +1,7 @@
 import { ArrowRight, Heart } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import childImage from "@/assets/general/latest/R17.jpeg";
+import childImage from "@/assets/general/Latest/R17.jpeg";
 
 export const CallToAction = () => {
   return (
@@ -36,7 +36,7 @@ export const CallToAction = () => {
                     </span>
                   </div>
 
-                  <h2 className="text-4xl md:text-5xl font-bold font-['Playfair_Display'] mb-8 leading-tight">
+                  <h2 className="text-4xl md:text-5xl font-bold font-heading mb-8 leading-tight">
                     Every Child Matters.
                     <br />
                     <span className="bg-gradient-gold bg-clip-text text-transparent">Every Life Counts.</span>

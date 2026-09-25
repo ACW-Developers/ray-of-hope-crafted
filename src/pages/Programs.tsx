@@ -166,7 +166,7 @@ const Programs = () => {
             </motion.div>
             <motion.h1 
               variants={fadeInUp} 
-              className="text-6xl md:text-7xl lg:text-8xl font-bold font-['Playfair_Display'] mb-6 text-white leading-tight"
+              className="text-6xl md:text-7xl lg:text-8xl font-bold font-heading mb-6 text-white leading-tight"
             >
               Our Programs
             </motion.h1>
@@ -259,7 +259,7 @@ const Programs = () => {
                       </div>
 
                       {/* Title */}
-                      <h3 className="text-5xl font-bold font-['Playfair_Display'] mb-6 gradient-text">
+                      <h3 className="text-5xl font-bold font-heading mb-6 gradient-text">
                         {program.title}
                       </h3>
 
@@ -325,7 +325,7 @@ const Programs = () => {
             transition={{ duration: 0.6 }}
           >
             <Sparkles className="w-12 h-12 mx-auto mb-6 text-accent" fill="currentColor" />
-            <h2 className="text-5xl font-bold font-['Playfair_Display'] mb-6">
+            <h2 className="text-5xl font-bold font-heading mb-6">
               Future Initiatives
             </h2>
             <p className="text-xl text-white/90 mb-8 leading-relaxed">
