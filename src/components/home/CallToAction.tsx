@@ -1,7 +1,7 @@
 import { ArrowRight, Heart } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import childImage from "@/assets/child-reading.jpg";
+import childImage from "@/assets/general/latest/R17.jpeg";
 
 export const CallToAction = () => {
   return (

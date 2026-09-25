@@ -3,33 +3,38 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
 
+import education from '@/assets/general/latest/R4.jpeg';
+import protection from '@/assets/general/latest/R27.jpeg';
+import Mentorship from '@/assets/general/latest/R5.jpeg';
+import care from '@/assets/general/bg6.jpg';
+
 const programs = [
   {
     title: "Education Support",
     description: "Providing school fees, supplies, and tutoring to ensure every child has access to quality education and a brighter future.",
     color: "primary",
-    image: "https://images.unsplash.com/photo-1588072432836-e10032774350?w=800&auto=format&fit=crop",
+    image: education,
     imageAlt: "Children studying together in classroom"
   },
   {
     title: "Child Protection",
     description: "Creating safe environments and implementing protection policies to safeguard children from abuse and exploitation.",
     color: "secondary",
-    image: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=400&h=300&fit=crop&crop=center",
+    image: protection,
     imageAlt: "Protective hands surrounding a child"
   },
   {
   title: "Mentorship Programs",
   description: "Connecting children with caring mentors who provide guidance, support, and positive role models for personal growth.",
   color: "accent",
-  image: "https://images.unsplash.com/photo-1573497491208-6b1acb260507?w=800&auto=format&fit=crop",
+  image: Mentorship ,
   imageAlt: "Mentor and child having a meaningful conversation"
 },
   {
   title: "Holistic Care",
   description: "Addressing physical, emotional, and spiritual needs through comprehensive programs that nurture the whole child.",
   color: "primary",
-  image: "https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=800&auto=format&fit=crop",
+  image: care,
   imageAlt: "Children receiving comprehensive care and education"
 }
 ];

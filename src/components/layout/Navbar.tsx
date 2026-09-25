@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Home, Users, BookOpen, FolderOpen, Mail } from "lucide-react";
+import { Menu, X, Home, Users, BookOpen, FolderOpen, Mail, HandCoins } from "lucide-react";
 import { useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ScrollProgress } from "@/components/ui/ScrollProgress";
@@ -99,7 +99,7 @@ export const Navbar = () => {
               <Link to="/donate">
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                   <Button variant="accent" size="sm" className="ml-2 glow-pulse font-semibold">
-                    <span className="mr-2">❤️</span>
+                    <HandCoins className="mr-2 h-5 w-5" />
                     Donate Now
                   </Button>
                 </motion.div>

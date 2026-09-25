@@ -6,13 +6,13 @@ import { useState, useEffect } from "react";
 import { TypingAnimation } from "@/components/ui/TypingAnimation";
 
 // Import local images from assets
-import bgImage1 from "@/assets/general/child.jpg";
+import bgImage1 from "@/assets/general/latest/R31.jpeg";
 import bgImage2 from "@/assets/general/child4.jpg";
-import bgImage3 from "@/assets/general/hero-children.jpg";
-import bgImage4 from "@/assets/general/bg1.jpeg";
+import bgImage3 from "@/assets/general/latest/R28.jpeg";
+import bgImage4 from "@/assets/general/latest/R33.jpeg";
 import featuredImage1 from "@/assets/general/bg6.jpg";
-import featuredImage2 from "@/assets/general/child.jpg";
-import featuredImage3 from "@/assets/general/child2.jpeg";
+import featuredImage2 from "@/assets/general/latest/R31.jpeg";
+import featuredImage3 from "@/assets/general/latest/R10.jpeg";
 
 export const Hero = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -338,7 +338,7 @@ export const Hero = () => {
                       className="w-full bg-sky-700 border border-gray-300 hover:from-accent/90 hover:to-purple-600/90 text-white font-semibold px-8 py-6 rounded-2xl shadow-2xl shadow-accent/25 relative overflow-hidden"
                     >
                       <span className="relative z-10 flex items-center justify-center">
-                        Support the Cause
+                        Support Cause
                         <ArrowRight className="ml-3 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                       </span>
                       
