@@ -28,7 +28,7 @@ const Root = () => {
   return (
     <AnimatePresence mode="wait">
       {isLoading ? (
-        <LoadingScreen key="loading" onLoadingComplete={() => setIsLoading(false)} />
+        <LoadingScreen key="loading" />
       ) : (
         <App key="app" />
       )}
@@ -36,4 +36,8 @@ const Root = () => {
   );
 };
 
-createRoot(document.getElementById("root")!).render(<Root />);
+const rootElement = document.getElementById("root");
+
+if (rootElement) {
+  createRoot(rootElement).render(<Root />);
+}
