@@ -1,79 +1,52 @@
-import { ArrowRight, Heart } from "lucide-react";
+import { ArrowRight, Heart, ShieldCheck } from "lucide-react";
+import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import childImage from "@/assets/general/Latest/R17.jpeg";
 
-export const CallToAction = () => {
-  return (
-    <section className="py-32 bg-background relative overflow-hidden">
-      {/* Elegant Background */}
-      <div className="absolute inset-0 bg-gradient-subtle opacity-60" />
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-sapphire opacity-10 rounded-full blur-[150px]" />
-      
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="max-w-6xl mx-auto reveal">
-          <div className="glass-premium rounded-[2.5rem] overflow-hidden shadow-elegant floating-card">
-            <div className="grid md:grid-cols-2 gap-0">
-              {/* Image Side */}
-              <div className="relative h-64 md:h-auto">
-                <img
-                  src={childImage}
-                  alt="Child reading with hope"
-                  className="absolute inset-0 w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-r from-primary/40 to-transparent" />
-              </div>
-
-              {/* Elegant Content Side */}
-              <div className="p-10 md:p-14 flex flex-col justify-center relative">
-                <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-gold opacity-10 rounded-full blur-[100px]" />
-                
-                <div className="relative z-10">
-                  <div className="inline-flex items-center space-x-2 glass-premium px-5 py-3 rounded-full mb-8 self-start shimmer">
-                    <Heart className="w-5 h-5 text-accent" fill="currentColor" />
-                    <span className="text-sm font-bold text-accent tracking-wide">
-                      Join Our Mission
-                    </span>
-                  </div>
-
-                  <h2 className="text-4xl md:text-5xl font-bold font-heading mb-8 leading-tight">
-                    Every Child Matters.
-                    <br />
-                    <span className="bg-gradient-gold bg-clip-text text-transparent">Every Life Counts.</span>
-                  </h2>
-
-                  <p className="text-lg md:text-xl text-muted-foreground mb-10 leading-relaxed font-light">
-                    Let us become a ray of hope in the darkest corners of the world. Your support
-                    can transform a child's life, providing education, protection, and a
-                    brighter future.
-                  </p>
-
-                  <div className="flex flex-col sm:flex-row gap-5">
-                    <Link to="/donate">
-                      <Button variant="hero" size="xl" className="w-full sm:w-auto group glow-pulse hover:scale-110 transition-all duration-500 shadow-elegant">
-                        Make a Donation
-                        <ArrowRight className="ml-2 group-hover:translate-x-2 transition-transform duration-300" />
-                      </Button>
-                    </Link>
-                    <Link to="/contact">
-                      <Button variant="outline" size="xl" className="w-full sm:w-auto glass-premium border-primary/30 hover:scale-105 transition-all duration-500">
-                        Get Involved
-                      </Button>
-                    </Link>
-                  </div>
-
-                  <div className="mt-10 pt-10 border-t border-border/50">
-                    <p className="text-base text-muted-foreground italic font-light leading-relaxed">
-                      "Every child matters. Every life counts. Let us become a ray of hope in
-                      the darkest corners of the world."
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
+export const CallToAction = () => (
+  <section className="bg-muted/70 py-20 sm:py-24 lg:py-28">
+    <div className="container-page">
+      <motion.div
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.6 }}
+        className="grid overflow-hidden rounded-md border border-border bg-card shadow-medium lg:grid-cols-[0.9fr_1.1fr]"
+      >
+        <div className="relative min-h-[22rem] overflow-hidden">
+          <img src={childImage} alt="A child reading and learning with hope" className="absolute inset-0 h-full w-full object-cover" loading="lazy" />
+          <div className="absolute inset-0 bg-primary/25" />
+          <div className="absolute bottom-6 left-6 flex items-center gap-3 rounded-md bg-accent px-4 py-3 text-accent-foreground shadow-medium">
+            <ShieldCheck className="h-5 w-5" aria-hidden="true" />
+            <span className="text-sm font-bold">Your support creates opportunity</span>
           </div>
         </div>
-      </div>
-    </section>
-  );
-};
+
+        <div className="relative p-8 sm:p-12 lg:p-14">
+          <div className="absolute inset-y-0 left-0 hidden w-1 bg-secondary lg:block" />
+          <p className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-secondary">
+            <Heart className="h-4 w-4 fill-current" /> Join Our Mission
+          </p>
+          <h2 className="text-title mt-5 text-primary">
+            Every child matters. <span className="text-secondary">Every life counts.</span>
+          </h2>
+          <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
+            Let us become a ray of hope in the darkest corners of the world. Your support can transform a child's life, providing education, protection, and a brighter future.
+          </p>
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <Button asChild variant="accent" size="xl">
+              <Link to="/donate">Make a Donation <ArrowRight /></Link>
+            </Button>
+            <Button asChild variant="outline" size="xl" className="border-secondary text-primary hover:bg-secondary hover:text-secondary-foreground">
+              <Link to="/contact">Get Involved</Link>
+            </Button>
+          </div>
+          <blockquote className="mt-9 border-l-2 border-accent pl-5 text-sm italic leading-relaxed text-muted-foreground">
+            “Every child matters. Every life counts. Let us become a ray of hope in the darkest corners of the world.”
+          </blockquote>
+        </div>
+      </motion.div>
+    </div>
+  </section>
+);
