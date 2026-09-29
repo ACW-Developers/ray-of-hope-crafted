@@ -5,8 +5,8 @@ import { Button } from "@/components/ui/button";
 import { PageHero } from "@/components/layout/PageHero";
 import heroImage from "@/assets/general/bg5.jpeg";
 import educationImage from "@/assets/general/Latest/R18.jpeg";
-import protectionImage from "@/assets/general/latest/R38.jpeg";
-import mentorshipImage from "@/assets/general/latest/R34.jpeg";
+import protectionImage from "@/assets/general/Latest/R38.jpeg";
+import mentorshipImage from "@/assets/general/Latest/R34.jpeg";
 import careImage from "@/assets/general/child3.jpg";
 import campImage from "@/assets/general/camp.webp";
 
