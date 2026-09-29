@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { PageHero } from "@/components/layout/PageHero";
-import heroImage from "@/assets/unity-hands.jpg";
+import heroImage from "@/assets/general/Latest/R23.jpeg";
 import communityImage from "@/assets/general/Latest/R30.jpeg";
 
 const contactMethods = [

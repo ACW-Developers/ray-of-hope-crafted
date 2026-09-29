@@ -58,7 +58,7 @@ export const Hero = () => {
           />
         </AnimatePresence>
       </motion.div>
-      <div className="absolute inset-0 bg-gradient-to-r from-[hsl(var(--surface-dark))] via-[hsl(var(--surface-dark)/0.75)] to-[hsl(var(--surface-dark)/0.2)]" />
+      <div className="absolute inset-0 bg-gradient-to-r from-[hsl(var(--surface-dark)/0.85)] via-[hsl(var(--surface-dark)/0.75)] to-[hsl(var(--surface-dark)/0.2)]" />
       <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[hsl(var(--surface-dark))] to-transparent" />
 
       <div className="container-page relative flex min-h-[100svh] flex-col justify-center pb-28 pt-32">

@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { PageHero } from "@/components/layout/PageHero";
 import heroImage from "@/assets/general/bg5.jpeg";
-import educationImage from "@/assets/child-reading.jpg";
-import protectionImage from "@/assets/general/school2.webp";
-import mentorshipImage from "@/assets/general/child2.jpeg";
+import educationImage from "@/assets/general/Latest/R18.jpeg";
+import protectionImage from "@/assets/general/latest/R25 (4).jpeg";
+import mentorshipImage from "@/assets/general/latest/R34.jpeg";
 import careImage from "@/assets/general/child3.jpg";
 import campImage from "@/assets/general/camp.webp";
 

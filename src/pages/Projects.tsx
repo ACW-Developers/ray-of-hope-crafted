@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { PageHero } from "@/components/layout/PageHero";
 import heroImage from "@/assets/general/child4.jpg";
-import educationImage from "@/assets/child-reading.jpg";
+import educationImage from "@/assets/general/Latest/R31.jpeg";
 import havenImage from "@/assets/hero-children.jpg";
 import mentorshipImage from "@/assets/general/child1.jpeg";
 

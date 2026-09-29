@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Award, BookOpen, Eye, HandHeart, Heart, Shield, Target, Users } from "lucide-react";
 import { PageHero } from "@/components/layout/PageHero";
-import unityImage from "@/assets/unity-hands.jpg";
+import unityImage from "@/assets/general/Latest/R27.jpeg";
 import schoolImage from "@/assets/general/school.webp";
 import childrenImage from "@/assets/general/child2.jpeg";
 import mentoringImage from "@/assets/general/school2.webp";
@@ -76,7 +76,7 @@ const About = () => (
       </div>
     </section>
 
-    <section className="bg-surface-dark py-20 text-surface-dark-foreground md:py-28">
+    <section className="bg-primary py-15 text-surface-dark-foreground md:py-24">
       <div className="container-page grid gap-12 lg:grid-cols-[.9fr_1.1fr] lg:items-center">
         <motion.div {...reveal}><Award className="h-9 w-9 text-accent" /><h2 className="text-title mt-6">Values we live by</h2><p className="mt-5 max-w-lg leading-7 text-surface-dark-foreground/70">Our values are not statements on a wall. They shape how we serve, account for resources, and walk alongside each community.</p></motion.div>
         <motion.div {...reveal} className="grid grid-cols-2 gap-px overflow-hidden rounded-md bg-surface-dark-foreground/15 sm:grid-cols-3">

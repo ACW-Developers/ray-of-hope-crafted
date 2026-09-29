@@ -17,7 +17,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import aboutHero from "@/assets/general/Latest/R20.jpeg";
 import missionImage from "@/assets/general/Latest/R9.jpeg";
-import africaService from "@/assets/general/Latest/R31.jpeg";
+import africaService from "@/assets/general/Latest/R36.jpeg";
 
 const coreValues = [
   { icon: Heart, title: "Compassion & Dignity", description: "Every child is created in the image of God and deserves love, dignity, and care.", tone: "primary" },
