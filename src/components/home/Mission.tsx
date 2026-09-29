@@ -55,7 +55,7 @@ export const Mission = () => (
               className="aspect-[4/3] w-full object-cover"
             />
           </div>
-          <div className="absolute -bottom-6 right-4 max-w-[15rem] rounded-md border border-border bg-card p-5 shadow-medium sm:right-8">
+          <div className="hidden lg:absolute -bottom-6 right-4 max-w-[15rem] rounded-md border border-border bg-card p-5 shadow-medium sm:right-8">
             <MapPin className="mb-3 h-5 w-5 text-secondary" aria-hidden="true" />
             <p className="text-sm font-bold text-primary">East & Central Africa</p>
             <p className="mt-1 text-xs leading-relaxed text-muted-foreground">Present in Kenya and Uganda, with a vision for wider regional care.</p>
