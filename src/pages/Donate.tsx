@@ -38,8 +38,8 @@ const impactGuide = [
   { amount: 500, text: "A full-year scholarship", icon: Sparkles },
 ];
 const paymentInfo = {
-  paypal: { email: "rayofhope@gmail.com", name: "Imbuto of Hope International" },
-  bank: { bankName: "Global Trust Bank", accountName: "Imbuto of Hope International", accountNumber: "1234 5678 9012 3456", routingNumber: "021000021", swiftCode: "GTBKENAXXX" },
+  paypal: { email: "xxxx...", name: "xxxx..." },
+  bank: { bankName: "xxxx...", accountName: "xxxx...", accountNumber: "xxxx...", routingNumber: "xxxx...", swiftCode: "xxxx..." },
 };
 type Pledge = { firstName: string; lastName: string; email: string; amount: number; donationType: string; impactArea: string };
 

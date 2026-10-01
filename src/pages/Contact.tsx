@@ -12,9 +12,9 @@ import heroImage from "@/assets/general/Latest/R23.jpeg";
 import communityImage from "@/assets/general/Latest/R30.jpeg";
 
 const contactMethods = [
-  { icon: Mail, label: "General inquiries", value: "info@rayofhope.org", description: "Questions about our work and programs", href: "mailto:info@rayofhope.org" },
-  { icon: MessageCircle, label: "WhatsApp", value: "+1 (520) 736-1677", description: "Send a message directly to our team", href: "https://wa.me/15207361677" },
-  { icon: Users, label: "Partnerships", value: "partners@rayofhope.org", description: "Organizations and corporate partners", href: "mailto:partners@rayofhope.org" },
+  { icon: Mail, label: "General inquiries", value: "info@imbutoofhope.org", description: "Questions about our work and programs", href: "mailto:info@imbutoofhope.org" },
+  { icon: MessageCircle, label: "WhatsApp", value: "+1 (319) 654-2928", description: "Send a message directly to our team", href: "https://wa.me/13196542928" },
+  { icon: Users, label: "Partnerships", value: "info@imbutoofhope.org", description: "Organizations and corporate partners", href: "mailto:info@imbutoofhope.org" },
 ];
 
 const reveal = { initial: { opacity: 0, y: 20 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true, margin: "-60px" }, transition: { duration: 0.5 } };
@@ -31,7 +31,7 @@ const Contact = () => {
     event.preventDefault();
     setIsSubmitting(true);
     const message = `*New Contact Form Submission*\n\n*Name:* ${formData.name}\n*Email:* ${formData.email}\n*Subject:* ${formData.subject}\n\n*Message:*\n${formData.message}\n\n*Sent via:* Imbuto of Hope International Website`;
-    const popup = window.open(`https://wa.me/15207361677?text=${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
+    const popup = window.open(`https://wa.me/13196542928?text=${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
     setIsSubmitting(false);
 
     if (popup) {
