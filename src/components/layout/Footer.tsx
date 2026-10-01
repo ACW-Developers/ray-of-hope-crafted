@@ -97,14 +97,14 @@ export const Footer = () => {
             </li>
             <li className="flex gap-3">
               <Mail className="mt-0.5 h-4 w-4 shrink-0 text-secondary" />
-              <a href="mailto:info@rayofhope.org" className="link-underline opacity-85 hover:opacity-100">
-                info@rayofhope.org
+              <a href="mailto:info@imbutoofhope.org" className="link-underline opacity-85 hover:opacity-100">
+                info@imbutoofhope.org
               </a>
             </li>
             <li className="flex gap-3">
               <Phone className="mt-0.5 h-4 w-4 shrink-0 text-secondary" />
-              <a href="https://wa.me/15207361677" className="link-underline opacity-85 hover:opacity-100">
-                +1 (520) 736-1677
+              <a href="https://wa.me/13196542928" className="link-underline opacity-85 hover:opacity-100">
+                +1 (319) 654-2928
               </a>
             </li>
           </ul>
