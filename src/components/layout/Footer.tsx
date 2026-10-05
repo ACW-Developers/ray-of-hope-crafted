@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Mail, MapPin, Phone, Facebook, Twitter, Instagram, Linkedin, ArrowUpRight } from "lucide-react";
+import { Mail, MapPin, Phone, PhoneCall, Facebook, Twitter, Instagram, Linkedin, ArrowUpRight } from "lucide-react";
 import logo from "@/assets/logos/logo2.png";
 
 const quickLinks = [
@@ -105,6 +105,12 @@ export const Footer = () => {
               <Phone className="mt-0.5 h-4 w-4 shrink-0 text-secondary" />
               <a href="https://wa.me/13196542928" className="link-underline opacity-85 hover:opacity-100">
                 +1 (319) 654-2928
+              </a>
+            </li>
+            <li className="flex gap-3">
+              <PhoneCall className="mt-0.5 h-4 w-4 shrink-0 text-secondary" />
+              <a href="tel:+18253431549" className="link-underline opacity-85 hover:opacity-100">
+                +1 (825) 343-1549
               </a>
             </li>
           </ul>

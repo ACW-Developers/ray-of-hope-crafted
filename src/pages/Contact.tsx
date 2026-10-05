@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Clock3, HandHeart, Mail, MessageCircle, Send, Users } from "lucide-react";
+import { ArrowRight, Clock3, HandHeart, Mail, MessageCircle, Phone, Send, Users } from "lucide-react";
 import { Link } from "react-router-dom";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
@@ -14,6 +14,7 @@ import communityImage from "@/assets/general/Latest/R30.jpeg";
 const contactMethods = [
   { icon: Mail, label: "General inquiries", value: "info@imbutoofhope.org", description: "Questions about our work and programs", href: "mailto:info@imbutoofhope.org" },
   { icon: MessageCircle, label: "WhatsApp", value: "+1 (319) 654-2928", description: "Send a message directly to our team", href: "https://wa.me/13196542928" },
+  { icon: Phone, label: "Alternative line", value: "+1 (825) 343-1549", description: "Reach us when the main line is busy", href: "tel:+18253431549" },
   { icon: Users, label: "Partnerships", value: "info@imbutoofhope.org", description: "Organizations and corporate partners", href: "mailto:info@imbutoofhope.org" },
 ];
 
