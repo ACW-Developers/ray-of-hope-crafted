@@ -7,7 +7,7 @@ import { ScrollProgress } from "@/components/ui/ScrollProgress";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
 
 // Import your actual logo from assets
-import logo from "@/assets/logos/logo2.png";
+import logo from "@/assets/logos/logo4.png";
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);

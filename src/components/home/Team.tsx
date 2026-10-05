@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 import { Sparkles, User, Users } from "lucide-react";
 import nkundaFaustin from "@/assets/team/nkunda-faustin.jpeg";
+import TeamMember from "@/assets/team/Team1.jpeg";
+import TeamMember2 from "@/assets/team/Team2.jpeg";
 
 const teamMembers = [
   {
@@ -10,16 +12,16 @@ const teamMembers = [
     bio: "Provides leadership and direction for Imbuto of Hope International, guiding our commitment to children and communities across East and Central Africa.",
   },
   {
-    name: "Name to be announced",
-    role: "Leadership team",
-    photo: null,
-    bio: "This profile is reserved for a member of our leadership team and will be published once confirmed.",
+    name: "Nelly Muhorakeye",
+    role: "Secretary General",
+    photo: TeamMember,
+    bio: "Coordinates organizational activities and communication, ensuring effective collaboration and smooth implementation of our mission.",
   },
   {
-    name: "Name to be announced",
-    role: "Leadership team",
-    photo: null,
-    bio: "This profile is reserved for a member of our leadership team and will be published once confirmed.",
+    name: "Nathanael Mugenza",
+    role: "Treasurer",
+    photo: TeamMember2,
+    bio: "Manages the financial resources of Imbuto of Hope International, ensuring transparency and accountability in all fiscal matters.",
   },
 ];
 
@@ -57,7 +59,7 @@ export const Team = () => (
             className="group flex overflow-hidden rounded-md border border-border bg-card shadow-soft transition-shadow duration-300 hover:shadow-medium"
           >
             <div className="flex w-full flex-col">
-              <div className="relative aspect-[4/5] overflow-hidden bg-muted">
+              <div className="relative aspect-[5/5] overflow-hidden bg-muted">
                 {photo ? (
                   <img
                     src={photo}
@@ -88,13 +90,6 @@ export const Team = () => (
         ))}
       </ul>
 
-      <motion.p
-        {...reveal}
-        className="mx-auto mt-10 flex max-w-2xl items-center justify-center gap-2 text-center text-sm text-muted-foreground"
-      >
-        <Sparkles className="h-4 w-4 shrink-0 text-accent" aria-hidden="true" />
-        New leadership profiles are added here as they are confirmed.
-      </motion.p>
     </div>
   </section>
 );

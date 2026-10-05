@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Mail, MapPin, Phone, PhoneCall, Facebook, Twitter, Instagram, Linkedin, ArrowUpRight } from "lucide-react";
-import logo from "@/assets/logos/logo2.png";
+import logo from "@/assets/logos/logo4.png";
 
 const quickLinks = [
   { name: "About", path: "/about" },
