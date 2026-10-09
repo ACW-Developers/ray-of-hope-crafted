@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import education from "@/assets/general/Latest/R4.jpeg";
 import protection from "@/assets/general/Latest/R27.jpeg";
 import mentorship from "@/assets/general/Latest/R5.jpeg";
-import care from "@/assets/general/bg6.jpg";
+import care from "@/assets/general/Latest/R40.jpeg";
 
 const programs = [
   { icon: BookOpen, title: "Education Support", description: "Providing school fees, supplies, and tutoring to ensure every child has access to quality education and a brighter future.", image: education, imageAlt: "Children studying together in a classroom", tone: "primary" },

@@ -4,10 +4,10 @@ import { ArrowRight, BookOpen, Calendar, CheckCircle2, Heart, MapPin, Shield, Ta
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { PageHero } from "@/components/layout/PageHero";
-import heroImage from "@/assets/general/child4.jpg";
+import heroImage from "@/assets/general/Latest/R35.jpeg";
 import educationImage from "@/assets/general/Latest/R31.jpeg";
-import havenImage from "@/assets/hero-children.jpg";
-import mentorshipImage from "@/assets/general/child1.jpeg";
+import havenImage from "@/assets/general/Latest/R27.jpeg";
+import mentorshipImage from "@/assets/general/Latest/R4.jpeg";
 
 const stories = [
   { title: "Educational Excellence Initiative", short: "Education", location: "Kakuma Refugee Camp, Kenya", year: "2018 — Present", description: "Our flagship education program provides comprehensive academic support including full scholarships, educational materials, and personalised tutoring to help every child reach their potential.", image: educationImage, icon: BookOpen, achievements: ["Full scholarships covering tuition, books, and supplies", "Weekly tutoring and mentorship sessions", "Leadership development workshops", "Career guidance and university placement support"] },

@@ -2,8 +2,8 @@ import { motion } from "framer-motion";
 import { Award, BookOpen, Eye, HandHeart, Heart, Shield, Target, Users } from "lucide-react";
 import { PageHero } from "@/components/layout/PageHero";
 import unityImage from "@/assets/general/Latest/R27.jpeg";
-import schoolImage from "@/assets/general/school.webp";
-import childrenImage from "@/assets/general/child2.jpeg";
+import schoolImage from "@/assets/general/Latest/R38.jpeg";
+import childrenImage from "@/assets/general/Latest/R39.jpeg";
 import mentoringImage from "@/assets/general/school2.webp";
 
 const values = ["Compassion", "Integrity", "Transparency", "Inclusion", "Stewardship", "Accountability", "Empowerment"];

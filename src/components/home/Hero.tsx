@@ -12,9 +12,9 @@ import { useEffect, useRef, useState } from "react";
 import { TypingAnimation } from "@/components/ui/TypingAnimation";
 
 import bgImage1 from "@/assets/general/Latest/R31.jpeg";
-import bgImage2 from "@/assets/general/child4.jpg";
+import bgImage2 from "@/assets/general/Latest/R33.jpeg";
 import bgImage3 from "@/assets/general/Latest/R28.jpeg";
-import bgImage4 from "@/assets/general/Latest/R33.jpeg";
+import bgImage4 from "@/assets/general/Latest/R13.jpeg";
 
 const bgImages = [bgImage1, bgImage2, bgImage3, bgImage4];
 const SLIDE_MS = 6500;

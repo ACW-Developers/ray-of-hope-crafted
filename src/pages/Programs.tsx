@@ -3,12 +3,12 @@ import { ArrowRight, BookOpen, CheckCircle2, Globe2, HeartPulse, Shield, Users }
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { PageHero } from "@/components/layout/PageHero";
-import heroImage from "@/assets/general/bg5.jpeg";
+import heroImage from "@/assets/general/Latest/R37.jpeg";
 import educationImage from "@/assets/general/Latest/R18.jpeg";
 import protectionImage from "@/assets/general/Latest/R38.jpeg";
 import mentorshipImage from "@/assets/general/Latest/R34.jpeg";
-import careImage from "@/assets/general/child3.jpg";
-import campImage from "@/assets/general/camp.webp";
+import careImage from "@/assets/general/Latest/R41.jpeg";
+import campImage from "@/assets/general/Latest/R25.jpeg";
 
 const programs = [
   { icon: BookOpen, title: "Education Support", tagline: "Unlocking potential through learning", description: "We believe education is the key to breaking the cycle of poverty. Our comprehensive education program transforms lives through knowledge and opportunity.", image: educationImage, features: ["School fee sponsorships", "Supplies and uniforms", "After-school tutoring", "Vocational training", "Higher education scholarships"] },
