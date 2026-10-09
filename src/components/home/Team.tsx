@@ -44,7 +44,7 @@ export const Team = () => (
         </h2>
         <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
           Lasting change begins with accountable people. Our leadership team guides every program
-          with care, integrity, and a shared calling to serve.
+          with care, integrity, and a shared commitment to serve.
         </p>
       </motion.div>
 
