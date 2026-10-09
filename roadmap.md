@@ -1,5 +1,8 @@
 # Roadmap
 
+- [x] Replace faith-based references with inclusive humanitarian wording
+- [ ] Verify and repair image loading across every website page
+
 - [x] Replace the site logo, contact details, and temporary donation details
 - [x] Refine About, Programs, Projects, Contact, and Donate pages
 - [x] Simplify the whole-site loading experience

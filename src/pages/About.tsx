@@ -6,7 +6,7 @@ import schoolImage from "@/assets/general/school.webp";
 import childrenImage from "@/assets/general/child2.jpeg";
 import mentoringImage from "@/assets/general/school2.webp";
 
-const values = ["Compassion", "Integrity", "Transparency", "Inclusion", "Stewardship", "Faith", "Empowerment"];
+const values = ["Compassion", "Integrity", "Transparency", "Inclusion", "Stewardship", "Accountability", "Empowerment"];
 const objectives = [
   { icon: BookOpen, title: "Education support", text: "Opening access to school fees, supplies, tutoring, and opportunities that let children keep learning." },
   { icon: Shield, title: "Child protection", text: "Creating safe environments and practical safeguards for children facing displacement and vulnerability." },
@@ -18,7 +18,7 @@ const reveal = { initial: { opacity: 0, y: 24 }, whileInView: { opacity: 1, y: 0
 
 const About = () => (
   <main className="min-h-screen bg-background">
-    <PageHero eyebrow="Our story" title="Hope grows when a child is seen, protected, and believed in." description="A journey of faith, compassion, and practical action across East and Central Africa." image={unityImage} icon={Heart} />
+    <PageHero eyebrow="Our story" title="Hope grows when a child is seen, protected, and believed in." description="A humanitarian journey of compassion and practical action across East and Central Africa." image={unityImage} icon={Heart} />
 
     <section className="py-20 md:py-28">
       <div className="container-page grid items-center gap-12 lg:grid-cols-[1.05fr_.95fr] lg:gap-20">
@@ -26,8 +26,8 @@ const About = () => (
           <p className="eyebrow">The beginning</p>
           <h2 className="text-title mt-5">Born from compassion. Built for lasting change.</h2>
           <div className="mt-7 space-y-5 text-base leading-8 text-muted-foreground md:text-lg">
-            <p>Imbuto of Hope International emerged from a profound calling witnessed in the refugee camps of Kenya and Uganda. What started as a handful of volunteers has blossomed into a comprehensive movement touching hundreds of lives.</p>
-            <p>We saw beyond immediate physical needs. We witnessed the spiritual and emotional void that displacement creates—and the resilience in every child waiting to be nurtured.</p>
+            <p>Imbuto of Hope International emerged in response to the urgent needs of children in the refugee camps of Kenya and Uganda. What started as a handful of volunteers has blossomed into a comprehensive humanitarian movement touching hundreds of lives.</p>
+            <p>We saw beyond immediate physical needs. We witnessed the emotional challenges and loss of community that displacement creates—and the resilience in every child waiting to be nurtured.</p>
             <p>Today, our work spans education, protection, mentorship, and holistic care. Every program is designed not only to meet needs, but to restore dignity and ignite hope.</p>
           </div>
         </motion.div>
@@ -47,8 +47,8 @@ const About = () => (
           <motion.article {...reveal} className="bg-card p-8 md:p-12">
             <Target className="h-8 w-8 text-secondary" />
             <p className="mt-8 text-xs font-bold uppercase tracking-[0.2em] text-secondary">Our mission</p>
-            <h2 className="mt-3 text-3xl font-bold">Empower every child to become who God created them to be.</h2>
-            <p className="mt-5 leading-7 text-muted-foreground">To support, educate, and protect vulnerable children through holistic care addressing physical, emotional, and spiritual needs.</p>
+            <h2 className="mt-3 text-3xl font-bold">Empower every child to reach their full potential.</h2>
+            <p className="mt-5 leading-7 text-muted-foreground">To support, educate, and protect vulnerable children through holistic care addressing physical, emotional, and social needs.</p>
           </motion.article>
           <motion.article {...reveal} className="bg-primary p-8 text-primary-foreground md:p-12">
             <Eye className="h-8 w-8 text-accent" />

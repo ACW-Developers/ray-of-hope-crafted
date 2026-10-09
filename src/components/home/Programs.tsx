@@ -11,7 +11,7 @@ const programs = [
   { icon: BookOpen, title: "Education Support", description: "Providing school fees, supplies, and tutoring to ensure every child has access to quality education and a brighter future.", image: education, imageAlt: "Children studying together in a classroom", tone: "primary" },
   { icon: ShieldCheck, title: "Child Protection", description: "Creating safe environments and implementing protection policies to safeguard children from abuse and exploitation.", image: protection, imageAlt: "Children supported in a safe community environment", tone: "secondary" },
   { icon: Users, title: "Mentorship Programs", description: "Connecting children with caring mentors who provide guidance, support, and positive role models for personal growth.", image: mentorship, imageAlt: "Mentor and child sharing a meaningful conversation", tone: "accent" },
-  { icon: HeartHandshake, title: "Holistic Care", description: "Addressing physical, emotional, and spiritual needs through comprehensive programs that nurture the whole child.", image: care, imageAlt: "Children receiving comprehensive care and education", tone: "primary" },
+  { icon: HeartHandshake, title: "Holistic Care", description: "Addressing physical, emotional, and social needs through comprehensive programs that nurture the whole child.", image: care, imageAlt: "Children receiving comprehensive care and education", tone: "primary" },
 ] as const;
 
 const toneClasses = {
