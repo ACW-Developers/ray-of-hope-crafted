@@ -3,6 +3,7 @@ import react from "@vitejs/plugin-react-swc";
 import path from "path";
 import { componentTagger } from "lovable-tagger";
 import { VitePWA } from "vite-plugin-pwa";
+import { imagetools } from "vite-imagetools";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
@@ -11,6 +12,14 @@ export default defineConfig(({ mode }) => ({
     port: 8080,
   },
   plugins: [
+    imagetools({
+      // Preserve originals and dimensions; compress only the served copies.
+      defaultDirectives: (url) => new URLSearchParams(
+        url.pathname.includes("/logos/")
+          ? { format: "webp", lossless: "true" }
+          : { format: "webp", quality: "90" }
+      ),
+    }),
     react(), 
     mode === "development" && componentTagger(),
     VitePWA({

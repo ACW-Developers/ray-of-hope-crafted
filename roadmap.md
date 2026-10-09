@@ -1,5 +1,8 @@
 # Roadmap
 
+- [ ] Optimize website image delivery while preserving original assets and dimensions
+- [ ] Improve About, Programs, Projects, and Contact hero contrast and verify image loading
+
 - [x] Replace faith-based references with inclusive humanitarian wording
 - [x] Verify image loading across every website page, carousel slides, project tabs, and phone layouts
 
