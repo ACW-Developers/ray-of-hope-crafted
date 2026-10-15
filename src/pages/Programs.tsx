@@ -1,26 +1,34 @@
 import { motion } from "framer-motion";
-import { ArrowRight, BookOpen, CheckCircle2, Globe2, HeartPulse, Shield, Users } from "lucide-react";
+import { ArrowRight, BookOpen, Briefcase, CheckCircle2, Handshake, HeartHandshake, HeartPulse, PiggyBank, Shield, Sprout, Users } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { PageHero } from "@/components/layout/PageHero";
 import heroImage from "@/assets/general/Latest/R37.jpeg";
 import educationImage from "@/assets/general/Latest/R18.jpeg";
-import protectionImage from "@/assets/general/Latest/R38.jpeg";
-import mentorshipImage from "@/assets/general/Latest/R34.jpeg";
-import careImage from "@/assets/general/Latest/R41.jpeg";
-import campImage from "@/assets/general/Latest/R25.jpeg";
+import womenImage from "@/assets/general/Latest/R38.jpeg";
+import survivorsImage from "@/assets/general/Latest/R12.jpeg";
+import youthImage from "@/assets/general/Latest/R34.jpeg";
+import savingsImage from "@/assets/general/Latest/R41.jpeg";
+import skillsImage from "@/assets/general/Latest/R16.jpeg";
+import basicImage from "@/assets/general/Latest/R25.jpeg";
+import protectionImage from "@/assets/general/Latest/R13.jpeg";
+import partnershipImage from "@/assets/general/Latest/R1.jpeg";
 
 const programs = [
-  { icon: BookOpen, title: "Education Support", tagline: "Unlocking potential through learning", description: "We believe education is the key to breaking the cycle of poverty. Our comprehensive education program transforms lives through knowledge and opportunity.", image: educationImage, features: ["School fee sponsorships", "Supplies and uniforms", "After-school tutoring", "Vocational training", "Higher education scholarships"] },
-  { icon: Shield, title: "Child Protection", tagline: "Safety, security, and peace of mind", description: "Every child deserves to feel safe and protected. Our initiatives create havens where children can heal, grow, and thrive without fear.", image: protectionImage, features: ["Safe facilities", "Protection policy implementation", "Trauma counselling", "Legal advocacy", "Community awareness"] },
-  { icon: Users, title: "Mentorship Programs", tagline: "Guiding futures and building leaders", description: "Positive role models can transform a child's trajectory. Our mentorship program connects vulnerable youth with caring adults who inspire and guide.", image: mentorshipImage, features: ["One-to-one mentoring", "Group mentorship activities", "Life skills workshops", "Career guidance", "Leadership development"] },
-  { icon: HeartPulse, title: "Holistic Care", tagline: "Nurturing health, confidence, and wellbeing", description: "We address the whole child—physical, emotional, and social needs—because transformation is strongest when every part of wellbeing is nurtured.", image: careImage, features: ["Nutrition and food support", "Healthcare access", "Personal development", "Recreation and sport", "Emotional wellbeing"] },
-  { icon: Globe2, title: "Refugee Camp Support", tagline: "Hope in the hardest places", description: "Active in Kenya and Uganda refugee camps, we provide comprehensive support where children and caregivers need it most.", image: campImage, features: ["Emergency relief", "Education in challenging settings", "Family reunification", "Caregiver training", "Community development"] },
+  { icon: BookOpen, title: "Education Support for Orphans and Vulnerable Children", tagline: "Keeping children in school", description: "Supporting orphaned and vulnerable children with school fees, uniforms, books, school supplies, and other educational needs so they can remain in school and reach their potential.", image: educationImage, features: ["School fees", "Uniforms", "Books and school supplies", "Other educational needs"] },
+  { icon: Briefcase, title: "Women and Widow Economic Empowerment", tagline: "Building sustainable incomes", description: "Training widows and vulnerable women in entrepreneurship, vocational skills, financial literacy, and small-business development, with appropriate start-up support to help them establish sustainable sources of income.", image: womenImage, features: ["Entrepreneurship training", "Vocational skills", "Financial literacy", "Small-business development", "Start-up support"] },
+  { icon: HeartHandshake, title: "Support for Survivors of Sexual and Gender-Based Violence", tagline: "Care with dignity and respect", description: "Supporting girls and women affected by sexual and gender-based violence, including those facing unintended pregnancies following sexual violence, by connecting them with appropriate support.", image: survivorsImage, features: ["Psychosocial support", "Health support", "Educational support", "Social and economic support"] },
+  { icon: Users, title: "Youth Empowerment and Substance Abuse Prevention", tagline: "Pathways to a healthier future", description: "Supporting vulnerable youth, including young people affected by or at risk of substance abuse, with pathways toward recovery, reintegration, employment, and a healthier, more productive future.", image: youthImage, features: ["Prevention education", "Mentorship", "Life skills", "Vocational training", "Psychosocial support"] },
+  { icon: PiggyBank, title: "Community Savings Groups and Health Access", tagline: "Resilience through mutual support", description: "Establishing and strengthening community savings groups (Ibimina) to promote saving, financial literacy, mutual support, and economic resilience, while helping vulnerable families connect with available healthcare and health-insurance opportunities.", image: savingsImage, features: ["Savings groups (Ibimina)", "Financial literacy", "Mutual support", "Healthcare and insurance access"] },
+  { icon: Sprout, title: "Skills Development and Sustainable Livelihoods", tagline: "Skills that lead to income", description: "Providing vulnerable youth, women, and families with opportunities that can lead to sustainable income.", image: skillsImage, features: ["Vocational training", "Entrepreneurship skills", "Agricultural knowledge", "Mentorship"] },
+  { icon: HeartPulse, title: "Humanitarian and Basic Support", tagline: "Help in times of crisis", description: "Providing appropriate assistance to individuals and families experiencing severe vulnerability or crisis.", image: basicImage, features: ["Food and essential needs", "Education", "Healthcare", "Emergency situations"] },
+  { icon: Shield, title: "Protection, Inclusion, and Equal Opportunities", tagline: "Dignity and safety for all", description: "Promoting the protection, dignity, safety, inclusion, and equal opportunities of vulnerable children, women, youth, and families.", image: protectionImage, features: ["Protection", "Dignity and safety", "Inclusion", "Equal opportunities"] },
+  { icon: Handshake, title: "Partnerships and Resource Mobilization", tagline: "Working together for lasting change", description: "Building partnerships to mobilize resources and implement sustainable programs that improve lives in Africa and beyond.", image: partnershipImage, features: ["Communities and governments", "Foundations and businesses", "Churches and donors", "Other organizations"] },
 ];
 
 const Programs = () => (
   <main className="min-h-screen bg-background">
-    <PageHero eyebrow="What we do" title="Practical care designed around the whole child." description="Five connected programs help children feel safe, stay in school, build confidence, and move toward a hopeful future." image={heroImage} icon={BookOpen} />
+    <PageHero eyebrow="What we do" title="Nine programs. One shared purpose." description="Connected programs that empower vulnerable children, women, youth, and families to overcome poverty and build sustainable futures." image={heroImage} icon={BookOpen} />
     <section className="py-20 md:py-28">
       <div className="container-page">
         <div className="mx-auto max-w-7xl space-y-20 md:space-y-28">
@@ -32,7 +40,7 @@ const Programs = () => (
               <div className={index % 2 ? "lg:order-1" : ""}>
                 <div className="flex items-center gap-4"><span className="flex h-12 w-12 items-center justify-center rounded-md bg-secondary/10 text-secondary"><Icon className="h-6 w-6" /></span><span className="text-xs font-bold uppercase tracking-[0.18em] text-secondary">Program {String(index + 1).padStart(2, "0")}</span></div>
                 <p className="mt-7 text-sm font-bold text-primary">{tagline}</p>
-                <h2 className="mt-2 text-title">{title}</h2>
+                <h2 className="mt-2 text-2xl font-bold leading-tight md:text-3xl">{title}</h2>
                 <p className="mt-5 text-lg leading-8 text-muted-foreground">{description}</p>
                 <ul className="mt-7 grid gap-3 sm:grid-cols-2">
                   {features.map(feature => <li key={feature} className="flex items-start gap-3 text-sm text-muted-foreground"><CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-secondary" />{feature}</li>)}
