@@ -43,7 +43,7 @@ export const CallToAction = () => (
             </Button>
           </div>
           <blockquote className="mt-9 border-l-2 border-accent pl-5 text-sm italic leading-relaxed text-muted-foreground">
-            “Every child matters. Every life counts. Let us become a ray of hope in the darkest corners of the world.”
+            “Planting Hope, Changing Lives.”
           </blockquote>
         </div>
       </motion.div>
