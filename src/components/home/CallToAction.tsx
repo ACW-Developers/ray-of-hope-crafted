@@ -29,10 +29,10 @@ export const CallToAction = () => (
             <Heart className="h-4 w-4 fill-current" /> Join Our Mission
           </p>
           <h2 className="text-title mt-5 text-primary">
-            Every child matters. <span className="text-secondary">Every life counts.</span>
+            Planting hope. <span className="text-secondary">Changing lives.</span>
           </h2>
           <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-            Let us become a ray of hope in the darkest corners of the world. Your support can transform a child's life, providing education, protection, and a brighter future.
+            Your support helps vulnerable children, women, youth, and families access education, develop skills, and build a hopeful, self-reliant future.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Button asChild variant="accent" size="xl">

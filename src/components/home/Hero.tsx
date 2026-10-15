@@ -20,18 +20,17 @@ const bgImages = [bgImage1, bgImage2, bgImage3, bgImage4];
 const SLIDE_MS = 6500;
 
 const typingPhrases = [
-  "Rebuilding Lives",
-  "Empowering Children",
+  "Planting Hope",
+  "Changing Lives",
+  "Empowering Families",
   "Restoring Dignity",
-  "Building Hope",
-  "Creating Futures",
-  "Transforming Communities",
+  "Building Sustainable Futures",
 ];
 
 const pillars = [
   { icon: BookOpen, label: "Education" },
+  { icon: Users, label: "Empowerment" },
   { icon: Shield, label: "Protection" },
-  { icon: Users, label: "Mentorship" },
 ];
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -109,8 +108,8 @@ export const Hero = () => {
             }}
             className="text-display mt-6"
           >
-            Every Child <br />
-            <span className="text-accent">Deserves Hope</span>
+            Planting Hope, <br />
+            <span className="text-accent">Changing Lives</span>
           </motion.h1>
 
           <motion.div
@@ -140,9 +139,9 @@ export const Hero = () => {
             }}
             className="mt-6 max-w-xl text-lg leading-relaxed opacity-80"
           >
-            Through education, protection, and sustainable community
-            development, we're bringing lasting change to orphaned and
-            vulnerable children across East and Central Africa.
+            We empower vulnerable children, women, youth, and families through
+            education, economic empowerment, skills development, and community
+            support, so they can build independent and sustainable futures.
           </motion.p>
 
           <motion.div
