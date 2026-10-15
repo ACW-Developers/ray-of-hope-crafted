@@ -8,10 +8,10 @@ import mentorship from "@/assets/general/Latest/R5.jpeg";
 import care from "@/assets/general/Latest/R40.jpeg";
 
 const programs = [
-  { icon: BookOpen, title: "Education Support", description: "Providing school fees, supplies, and tutoring to ensure every child has access to quality education and a brighter future.", image: education, imageAlt: "Children studying together in a classroom", tone: "primary" },
-  { icon: ShieldCheck, title: "Child Protection", description: "Creating safe environments and implementing protection policies to safeguard children from abuse and exploitation.", image: protection, imageAlt: "Children supported in a safe community environment", tone: "secondary" },
-  { icon: Users, title: "Mentorship Programs", description: "Connecting children with caring mentors who provide guidance, support, and positive role models for personal growth.", image: mentorship, imageAlt: "Mentor and child sharing a meaningful conversation", tone: "accent" },
-  { icon: HeartHandshake, title: "Holistic Care", description: "Addressing physical, emotional, and social needs through comprehensive programs that nurture the whole child.", image: care, imageAlt: "Children receiving comprehensive care and education", tone: "primary" },
+  { icon: BookOpen, title: "Education Support", description: "School fees, uniforms, books, and supplies that help orphaned and vulnerable children stay in school and reach their potential.", image: education, imageAlt: "Children studying together in a classroom", tone: "primary" },
+  { icon: ShieldCheck, title: "Women & Widow Empowerment", description: "Entrepreneurship, vocational skills, financial literacy, and start-up support that help women build sustainable incomes.", image: protection, imageAlt: "Community members supported together", tone: "secondary" },
+  { icon: Users, title: "Youth Empowerment", description: "Prevention education, mentorship, life skills, and vocational training that open pathways to a healthier, productive future.", image: mentorship, imageAlt: "Young people sharing a meaningful conversation", tone: "accent" },
+  { icon: HeartHandshake, title: "Savings Groups & Health Access", description: "Community savings groups (Ibimina) that build financial resilience, while connecting families with healthcare and insurance.", image: care, imageAlt: "Families gathered in a supportive community", tone: "primary" },
 ] as const;
 
 const toneClasses = {
@@ -31,10 +31,10 @@ export const Programs = () => (
       >
         <div>
           <p className="eyebrow">What We Do</p>
-          <h2 id="programs-title" className="text-title mt-5">Programs built around the whole child</h2>
+          <h2 id="programs-title" className="text-title mt-5">Nine programs, one shared purpose</h2>
         </div>
         <p className="text-lg leading-relaxed text-muted-foreground md:pb-1">
-          Comprehensive support systems designed to protect childhood, expand opportunity, and strengthen the communities children call home.
+          Connected programs that help children, women, youth, and families overcome poverty, access education and essential services, and build sustainable livelihoods.
         </p>
       </motion.div>
 
