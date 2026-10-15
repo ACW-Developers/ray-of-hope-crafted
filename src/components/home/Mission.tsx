@@ -19,14 +19,13 @@ import missionImage from "@/assets/general/Latest/R9.jpeg";
 import africaService from "@/assets/general/Latest/R36.jpeg";
 
 const coreValues = [
-  { icon: Heart, title: "Compassion & Dignity", description: "Every child deserves love, dignity, care, and the opportunity to thrive.", tone: "primary" },
-  { icon: Shield, title: "Child Protection", description: "We uphold the safety and protection of all children through trauma-informed and anti-abuse policies.", tone: "secondary" },
-  { icon: Users, title: "Community Empowerment", description: "We build lasting change by equipping and partnering with local communities.", tone: "accent" },
-  { icon: Sparkles, title: "Integrity & Transparency", description: "We operate with honesty and provide transparent reporting to all stakeholders.", tone: "primary" },
-  { icon: BookOpen, title: "Education & Development", description: "Empowering children through quality education and holistic development programs.", tone: "secondary" },
-  { icon: Gem, title: "Stewardship", description: "We use all resources wisely, ensuring compliance with Canadian nonprofit laws.", tone: "accent" },
-  { icon: HandHelping, title: "Inclusion & Respect", description: "We serve all children regardless of background, with equal respect and care.", tone: "primary" },
-  { icon: Users, title: "Accountability & Leadership", description: "We lead with humility, listen to communities, and take responsibility for the people we serve.", tone: "secondary" },
+  { icon: Heart, title: "Compassion", description: "We care about people and respond to their needs with kindness and respect.", tone: "primary" },
+  { icon: Sparkles, title: "Empowerment", description: "We help people develop the skills and resources needed to become self-reliant.", tone: "secondary" },
+  { icon: Shield, title: "Integrity", description: "We act honestly, responsibly, and transparently.", tone: "accent" },
+  { icon: Gem, title: "Dignity", description: "We respect the worth and rights of every person we serve.", tone: "primary" },
+  { icon: HandHelping, title: "Inclusion", description: "We promote equal opportunities and participation for vulnerable people.", tone: "secondary" },
+  { icon: BookOpen, title: "Sustainability", description: "We seek solutions that create lasting positive change.", tone: "accent" },
+  { icon: Users, title: "Hope", description: "We believe every person deserves an opportunity for a better future.", tone: "primary" },
 ] as const;
 
 const toneClasses = {
@@ -64,14 +63,14 @@ export const Mission = () => (
         <div className="pt-8 lg:col-span-6 lg:pt-0">
           <p className="eyebrow">Who We Are</p>
           <h2 id="who-we-are-title" className="text-title mt-5 text-foreground">
-            Restoring hope for <span className="text-primary">vulnerable children</span>
+            Restoring hope for <span className="text-primary">children and families</span>
           </h2>
           <div className="mt-6 h-1 w-20 bg-accent" />
           <p className="mt-7 text-lg leading-relaxed text-muted-foreground">
-            Imbuto of Hope International is a humanitarian organization dedicated to supporting orphaned and vulnerable children—especially those impacted by war, displacement, and poverty.
+            Imbuto of Hope International is a humanitarian organization empowering vulnerable children, women, youth, and families to overcome poverty, access education and essential services, and live with dignity and hope.
           </p>
           <p className="mt-4 leading-relaxed text-muted-foreground">
-            We are driven by compassion, guided by respect for human dignity, and committed to rebuilding lives through education, protection, and holistic care.
+            Through education, economic empowerment, skills development, community support, and healthcare access, we help individuals and communities build independent and sustainable futures.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Button asChild variant="hero" size="lg">
@@ -90,9 +89,9 @@ export const Mission = () => (
             <Target className="h-6 w-6" aria-hidden="true" />
           </div>
           <p className="mt-7 text-xs font-bold uppercase tracking-[0.2em] text-secondary">Our Mission</p>
-          <h3 className="mt-3 text-2xl font-bold text-primary">Support, educate, and protect</h3>
+          <h3 className="mt-3 text-2xl font-bold text-primary">Restore hope, strengthen dignity</h3>
           <p className="mt-5 leading-relaxed text-muted-foreground">
-            To support, educate, and protect orphaned and vulnerable children by providing holistic care, educational opportunities, and safe, loving environments—empowering them to reach their full potential.
+            Imbuto of Hope International is committed to empowering vulnerable children, women, youth, and families through education, economic empowerment, skills development, community support, healthcare access, and sustainable livelihood opportunities.
           </p>
         </motion.article>
 
@@ -101,9 +100,9 @@ export const Mission = () => (
             <Eye className="h-6 w-6" aria-hidden="true" />
           </div>
           <p className="mt-7 text-xs font-bold uppercase tracking-[0.2em] text-accent">Our Vision</p>
-          <h3 className="mt-3 text-2xl font-bold">A generation rising with dignity</h3>
+          <h3 className="mt-3 text-2xl font-bold">Equal opportunity for every family</h3>
           <blockquote className="mt-5 text-lg leading-relaxed text-primary-foreground/80">
-            “To see a generation of once-forgotten children rise up with dignity, hope, and the tools they need to transform their communities and nations.”
+            “A world where vulnerable children, women, youth, and families have equal opportunities to access education, overcome poverty, live safely and with dignity, and build a hopeful and self-reliant future.”
           </blockquote>
         </motion.article>
       </div>
@@ -115,7 +114,7 @@ export const Mission = () => (
           <p className="eyebrow">Our Foundation</p>
           <h3 className="text-title mt-5">Values that shape every decision</h3>
           <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
-            These principles define how we serve children, work with communities, and steward every resource entrusted to us.
+            These principles define how we serve people, work with communities, and steward every resource entrusted to us.
           </p>
         </motion.div>
         <div className="mt-12 grid gap-x-10 gap-y-8 sm:grid-cols-2 lg:grid-cols-4">
@@ -147,7 +146,7 @@ export const Mission = () => (
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-accent">Where We Serve</p>
           <h3 className="mt-4 text-3xl font-bold">Serving East & Central Africa</h3>
           <p className="mt-6 leading-relaxed text-primary-foreground/80">
-            We are actively working in refugee camps in Kenya and Uganda, supporting vulnerable children with education, mentorship, and essential resources. Our future goals include expanding to post-conflict areas in Burundi and establishing a permanent Child Development Centre in the Democratic Republic of Congo.
+            We are actively working in refugee camps in Kenya and Uganda, supporting vulnerable children and families with education, mentorship, and essential resources. Our future goals include expanding to post-conflict areas in Burundi and establishing a permanent Child Development Centre in the Democratic Republic of Congo.
           </p>
           <div className="mt-7 flex flex-wrap gap-x-6 gap-y-3 text-sm font-semibold">
             <span className="flex items-center gap-2"><MapPin className="h-4 w-4 text-accent" /> Kenya & Uganda</span>
