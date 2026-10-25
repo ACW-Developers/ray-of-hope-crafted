@@ -6,19 +6,19 @@ import schoolImage from "@/assets/general/Latest/R38.jpeg";
 import childrenImage from "@/assets/general/Latest/R39.jpeg";
 import mentoringImage from "@/assets/general/school2.webp";
 
-const values = ["Compassion", "Integrity", "Transparency", "Inclusion", "Stewardship", "Accountability", "Empowerment"];
+const values = ["Compassion", "Empowerment", "Integrity", "Dignity", "Inclusion", "Sustainability", "Hope"];
 const objectives = [
-  { icon: BookOpen, title: "Education support", text: "Opening access to school fees, supplies, tutoring, and opportunities that let children keep learning." },
-  { icon: Shield, title: "Child protection", text: "Creating safe environments and practical safeguards for children facing displacement and vulnerability." },
-  { icon: Users, title: "Mentorship & guidance", text: "Connecting young people with trusted adults who offer encouragement, direction, and positive role models." },
-  { icon: HandHeart, title: "Community empowerment", text: "Equipping caregivers and local networks to build sustainable systems of care around every child." },
+  { icon: BookOpen, title: "Education & essential services", text: "Helping children and families access education, healthcare, and the essential services they need." },
+  { icon: HandHeart, title: "Overcoming poverty", text: "Building economic empowerment and sustainable livelihoods through skills, savings, and enterprise." },
+  { icon: Users, title: "Overcoming social challenges", text: "Walking alongside people facing violence, substance abuse, or crisis with respectful, appropriate support." },
+  { icon: Shield, title: "Dignity & independence", text: "Promoting protection, inclusion, and equal opportunities so every person can live with hope." },
 ];
 
 const reveal = { initial: { opacity: 0, y: 24 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true, margin: "-80px" }, transition: { duration: 0.55 } };
 
 const About = () => (
   <main className="min-h-screen bg-background">
-    <PageHero eyebrow="Our story" title="Hope grows when a child is seen, protected, and believed in." description="A humanitarian journey of compassion and practical action across East and Central Africa." image={unityImage} icon={Heart} />
+    <PageHero eyebrow="Our story" title="Planting hope, changing lives." description="A humanitarian journey of compassion and practical action across East and Central Africa." image={unityImage} icon={Heart} />
 
     <section className="py-20 md:py-28">
       <div className="container-page grid items-center gap-12 lg:grid-cols-[1.05fr_.95fr] lg:gap-20">
@@ -28,7 +28,7 @@ const About = () => (
           <div className="mt-7 space-y-5 text-base leading-8 text-muted-foreground md:text-lg">
             <p>Imbuto of Hope International emerged in response to the urgent needs of children in the refugee camps of Kenya and Uganda. What started as a handful of volunteers has blossomed into a comprehensive humanitarian movement touching hundreds of lives.</p>
             <p>We saw beyond immediate physical needs. We witnessed the emotional challenges and loss of community that displacement creates—and the resilience in every child waiting to be nurtured.</p>
-            <p>Today, our work spans education, protection, mentorship, and holistic care. Every program is designed not only to meet needs, but to restore dignity and ignite hope.</p>
+            <p>Today, our work serves children, women, youth, and families through education, economic empowerment, skills development, community support, and healthcare access. Every program is designed not only to meet needs, but to restore dignity and ignite hope.</p>
           </div>
         </motion.div>
         <motion.div {...reveal} className="grid grid-cols-2 gap-4">
@@ -47,14 +47,14 @@ const About = () => (
           <motion.article {...reveal} className="bg-card p-8 md:p-12">
             <Target className="h-8 w-8 text-secondary" />
             <p className="mt-8 text-xs font-bold uppercase tracking-[0.2em] text-secondary">Our mission</p>
-            <h2 className="mt-3 text-3xl font-bold">Empower every child to reach their full potential.</h2>
-            <p className="mt-5 leading-7 text-muted-foreground">To support, educate, and protect vulnerable children through holistic care addressing physical, emotional, and social needs.</p>
+            <h2 className="mt-3 text-3xl font-bold">Restore hope and strengthen dignity.</h2>
+            <p className="mt-5 leading-7 text-muted-foreground">Imbuto of Hope International is committed to empowering vulnerable children, women, youth, and families through education, economic empowerment, skills development, community support, healthcare access, and sustainable livelihood opportunities. We work to restore hope, strengthen dignity, and equip individuals and communities with the knowledge, skills, and resources they need to build independent and sustainable futures.</p>
           </motion.article>
           <motion.article {...reveal} className="bg-primary p-8 text-primary-foreground md:p-12">
             <Eye className="h-8 w-8 text-accent" />
             <p className="mt-8 text-xs font-bold uppercase tracking-[0.2em] text-accent">Our vision</p>
-            <h2 className="mt-3 text-3xl font-bold">A generation rising with dignity and hope.</h2>
-            <p className="mt-5 leading-7 text-primary-foreground/80">Communities where once-forgotten children have the opportunity, support, and confidence to thrive.</p>
+            <h2 className="mt-3 text-3xl font-bold">A hopeful, self-reliant future for all.</h2>
+            <p className="mt-5 leading-7 text-primary-foreground/80">A world where vulnerable children, women, youth, and families have equal opportunities to access education, overcome poverty, live safely and with dignity, and build a hopeful and self-reliant future.</p>
           </motion.article>
         </div>
       </div>
@@ -63,7 +63,7 @@ const About = () => (
     <section className="py-20 md:py-28">
       <div className="container-page">
         <motion.div {...reveal} className="max-w-2xl">
-          <p className="eyebrow">How we work</p><h2 className="text-title mt-5">Four commitments guide every decision.</h2>
+          <p className="eyebrow">How we work</p><h2 className="text-title mt-5">Our objective guides every decision.</h2><p className="mt-5 text-lg leading-8 text-muted-foreground">To empower vulnerable children, women, youth, and families to overcome poverty, access education and essential services, develop sustainable livelihoods, overcome social challenges, and live with dignity, hope, and greater independence.</p>
         </motion.div>
         <div className="mt-12 grid gap-8 md:grid-cols-2">
           {objectives.map(({ icon: Icon, title, text }, index) => (

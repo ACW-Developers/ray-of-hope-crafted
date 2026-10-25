@@ -13,10 +13,11 @@ const quickLinks = [
 
 const programs = [
   "Education Support",
-  "Child Protection",
-  "Mentorship",
-  "Community Empowerment",
-  "Refugee Camp Support",
+  "Women Economic Empowerment",
+  "Youth Empowerment",
+  "Savings Groups & Health Access",
+  "Skills & Livelihoods",
+  "Protection & Inclusion",
 ];
 
 const socials = [
@@ -43,8 +44,8 @@ export const Footer = () => {
             </span>
           </Link>
           <p className="mt-6 max-w-sm text-sm leading-relaxed opacity-75">
-            Rebuilding lives and restoring hope for orphaned and vulnerable children across East and
-            Central Africa through sustainable community programs.
+            Empowering vulnerable children, women, youth, and families through education, economic
+            empowerment, skills development, and community support.
           </p>
           <ul className="mt-6 flex gap-2">
             {socials.map(({ icon: Icon, href, label }) => (
@@ -126,7 +127,7 @@ export const Footer = () => {
       <div className="border-t border-surface-dark-foreground/10">
         <div className="container-page flex flex-col gap-3 py-6 text-xs opacity-70 sm:flex-row sm:items-center sm:justify-between">
           <p>© {year} Imbuto of Hope International. All rights reserved.</p>
-          <p>Every child matters. Every life counts.</p>
+          <p>Planting Hope, Changing Lives.</p>
         </div>
       </div>
     </footer>

@@ -22,10 +22,13 @@ export const PageHero = ({
     <img
       src={image}
       alt=""
+      decoding="async"
+      fetchPriority="high"
       className="absolute inset-0 h-full w-full object-cover opacity-55"
       style={{ objectPosition: imagePosition }}
     />
-    <div className="absolute inset-0 bg-gradient-to-t from-surface-dark via-surface-dark/60 to-surface-dark/20" />
+    <div aria-hidden="true" className="absolute inset-0 bg-surface-dark/10" />
+    <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-surface-dark via-surface-dark/60 to-surface-dark/20" />
     <div className="container-page relative z-10 pb-16 pt-28 md:pb-24">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
