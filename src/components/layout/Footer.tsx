@@ -35,13 +35,7 @@ export const Footer = () => {
       <div className="container-page grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-12">
         <div className="lg:col-span-4">
           <Link to="/" className="flex items-center gap-4">
-            <span className="flex h-16 w-16 items-center justify-center rounded-md bg-card p-1.5">
-              <img src={logo} alt="Imbuto of Hope International logo" className="h-full w-full object-contain" />
-            </span>
-            <span className="leading-tight">
-              <span className="block text-xl font-bold">Imbuto of Hope</span>
-              <span className="block text-xs font-semibold uppercase tracking-[0.2em] opacity-70">International</span>
-            </span>
+            <span className="inline-flex rounded-md bg-card px-4 py-3"><img src={logo} alt="Imbuto of Hope International logo" className="h-14 w-auto max-w-[260px] object-contain" /></span>
           </Link>
           <p className="mt-6 max-w-sm text-sm leading-relaxed opacity-75">
             Empowering vulnerable children, women, youth, and families through education, economic

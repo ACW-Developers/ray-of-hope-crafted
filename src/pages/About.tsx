@@ -26,7 +26,7 @@ const About = () => (
           <p className="eyebrow">The beginning</p>
           <h2 className="text-title mt-5">Born from compassion. Built for lasting change.</h2>
           <div className="mt-7 space-y-5 text-base leading-8 text-muted-foreground md:text-lg">
-            <p>Imbuto of Hope International emerged in response to the urgent needs of children in the refugee camps of Kenya and Uganda. What started as a handful of volunteers has blossomed into a comprehensive humanitarian movement touching hundreds of lives.</p>
+            <p>Imbuto of Hope International emerged in response to the urgent needs of children in the refugee camps of Kenya and Uganda. What started as a handful of volunteers has blossomed into a comprehensive humanitarian movement touching hundreds of lives. Today we serve in Kenya, Uganda, Tanzania, Rwanda and Burundi.</p>
             <p>We saw beyond immediate physical needs. We witnessed the emotional challenges and loss of community that displacement creates—and the resilience in every child waiting to be nurtured.</p>
             <p>Today, our work serves children, women, youth, and families through education, economic empowerment, skills development, community support, and healthcare access. Every program is designed not only to meet needs, but to restore dignity and ignite hope.</p>
           </div>

@@ -54,7 +54,7 @@ const Programs = () => (
     </section>
     <section className="bg-primary py-20 text-primary-foreground">
       <div className="container-page flex flex-col items-start justify-between gap-8 md:flex-row md:items-end">
-        <div className="max-w-3xl"><p className="text-xs font-bold uppercase tracking-[0.2em] text-accent">Looking ahead</p><h2 className="text-title mt-4">The next chapter extends hope further.</h2><p className="mt-5 leading-7 text-primary-foreground/75">Our future includes expansion to Burundi and DRC, a Child Development Centre, sustainable income projects, and skills training centres.</p></div>
+        <div className="max-w-3xl"><p className="text-xs font-bold uppercase tracking-[0.2em] text-accent">Looking ahead</p><h2 className="text-title mt-4">The next chapter extends hope further.</h2><p className="mt-5 leading-7 text-primary-foreground/75">Our future includes deeper work across Kenya, Uganda, Tanzania, Rwanda and Burundi, expansion to DRC, a Child Development Centre, sustainable income projects, and skills training centres.</p></div>
         <Button asChild variant="accent" size="lg"><Link to="/projects">Explore our vision <ArrowRight /></Link></Button>
       </div>
     </section>

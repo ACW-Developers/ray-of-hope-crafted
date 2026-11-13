@@ -15,7 +15,7 @@ const stories = [
   { title: "Mentorship Network", short: "Mentorship", location: "Kenya & Uganda", year: "2020 — Present", description: "Vulnerable children connect with dedicated mentors who offer guidance, emotional support, and positive role modelling through structured activities and life skills development.", image: mentorshipImage, icon: Users, achievements: ["One-to-one mentorship with trained volunteers", "Life skills and career development workshops", "Monthly recreational and educational activities", "Peer support groups and community building"] },
 ];
 const goals = [
-  { icon: MapPin, title: "Regional expansion", text: "Establish programs in Burundi and DRC, extending support to more vulnerable children." },
+  { icon: MapPin, title: "Regional expansion", text: "Grow our work across Kenya, Uganda, Tanzania, Rwanda and Burundi, and into DRC, extending support to more vulnerable children." },
   { icon: BookOpen, title: "Child Development Centre", text: "Create an integrated home for education, healthcare, and recreation." },
   { icon: Target, title: "Sustainable initiatives", text: "Develop income-generating projects that strengthen local communities." },
   { icon: Wrench, title: "Vocational training centres", text: "Equip young people with practical skills for independence and meaningful work." },

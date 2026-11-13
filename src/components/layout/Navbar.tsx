@@ -61,7 +61,7 @@ export const Navbar = () => {
                 <img 
                   src={logo} 
                   alt="Imbuto of Hope International logo" 
-                  className="w-16 h-16 object-contain transition-all duration-300"
+                  className="h-11 w-auto max-w-[200px] sm:h-14 sm:max-w-[260px] object-contain transition-all duration-300"
                 />
               </motion.div>
             </Link>

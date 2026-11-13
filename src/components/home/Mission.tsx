@@ -56,7 +56,7 @@ export const Mission = () => (
           <div className="hidden lg:absolute -bottom-6 right-4 max-w-[15rem] rounded-md border border-border bg-card p-5 shadow-medium sm:right-8">
             <MapPin className="mb-3 h-5 w-5 text-secondary" aria-hidden="true" />
             <p className="text-sm font-bold text-primary">East & Central Africa</p>
-            <p className="mt-1 text-xs leading-relaxed text-muted-foreground">Present in Kenya and Uganda, with a vision for wider regional care.</p>
+            <p className="mt-1 text-xs leading-relaxed text-muted-foreground">Serving Kenya, Uganda, Tanzania, Rwanda and Burundi.</p>
           </div>
         </div>
 
@@ -146,10 +146,10 @@ export const Mission = () => (
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-accent">Where We Serve</p>
           <h3 className="mt-4 text-3xl font-bold">Serving East & Central Africa</h3>
           <p className="mt-6 leading-relaxed text-primary-foreground/80">
-            We are actively working in refugee camps in Kenya and Uganda, supporting vulnerable children and families with education, mentorship, and essential resources. Our future goals include expanding to post-conflict areas in Burundi and establishing a permanent Child Development Centre in the Democratic Republic of Congo.
+            We serve communities across Kenya, Uganda, Tanzania, Rwanda and Burundi, supporting vulnerable children and families with education, mentorship, and essential resources. Our future goals include establishing a permanent Child Development Centre in the Democratic Republic of Congo.
           </p>
           <div className="mt-7 flex flex-wrap gap-x-6 gap-y-3 text-sm font-semibold">
-            <span className="flex items-center gap-2"><MapPin className="h-4 w-4 text-accent" /> Kenya & Uganda</span>
+            <span className="flex items-center gap-2"><MapPin className="h-4 w-4 text-accent" /> Kenya · Uganda · Tanzania · Rwanda · Burundi</span>
             <span className="flex items-center gap-2"><Shield className="h-4 w-4 text-secondary" /> Child Protection Focus</span>
           </div>
           <Button asChild variant="accent" size="lg" className="mt-8">
