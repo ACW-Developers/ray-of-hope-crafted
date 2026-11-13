@@ -35,7 +35,7 @@ export const Footer = () => {
       <div className="container-page grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-12">
         <div className="lg:col-span-4">
           <Link to="/" className="flex items-center gap-4">
-            <span className="inline-flex rounded-md bg-card px-4 py-3"><img src={logo} alt="Imbuto of Hope International logo" className="h-14 w-auto max-w-[260px] object-contain" /></span>
+            <span className="inline-flex rounded-md bg-card px-4 py-3"><img src={logo} alt="Imbuto of Hope International logo" className="h-14 w-auto max-w-[380px] object-contain" /></span>
           </Link>
           <p className="mt-6 max-w-sm text-sm leading-relaxed opacity-75">
             Empowering vulnerable children, women, youth, and families through education, economic

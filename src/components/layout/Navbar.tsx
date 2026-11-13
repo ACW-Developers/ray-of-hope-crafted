@@ -50,9 +50,9 @@ export const Navbar = () => {
       >
 
         <div className="container mx-auto px-6 lg:px-8">
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between py-1 md:py-1">
             {/* Logo */}
-            <Link to="/" className="flex items-center space-x-3 group">
+            <Link to="/" className="flex items-center space-x-4 group">
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -61,7 +61,7 @@ export const Navbar = () => {
                 <img 
                   src={logo} 
                   alt="Imbuto of Hope International logo" 
-                  className="h-11 w-auto max-w-[200px] sm:h-14 sm:max-w-[260px] object-contain transition-all duration-300"
+                  className="h-11 w-auto max-w-[140px] sm:h-14 sm:max-w-[210px] object-contain transition-all duration-300"
                 />
               </motion.div>
             </Link>
@@ -78,7 +78,7 @@ export const Navbar = () => {
                       className="relative group"
                     >
                       <div
-                        className={`flex items-center space-x-2 px-4 py-2 rounded-full transition-all font-medium ${
+                        className={`flex items-center space-x-2 px-4 py-2 rounded-xl transition-all font-medium ${
                           location.pathname === item.path
                             ? "bg-primary text-primary-foreground shadow-soft"
                             : "text-foreground hover:bg-primary/10 hover:text-primary"

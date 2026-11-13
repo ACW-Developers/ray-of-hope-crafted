@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import logo from "@/assets/logos/logo2.png";
+import logo from "@/assets/logos/Imbuto.png";
 
 const LoadingScreen = () => (
   <motion.div
