@@ -59,30 +59,32 @@ const Testimonials = () => {
 
   const prev = () => {
     setDirection(-1);
-    setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+    setCurrentIndex(
+      (prev) => (prev - 1 + testimonials.length) % testimonials.length,
+    );
   };
 
   const fadeInUp = {
     initial: { opacity: 0, y: 40 },
     animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.6 }
+    transition: { duration: 0.6 },
   };
 
   const slideVariants = {
     enter: (direction: number) => ({
       x: direction > 0 ? 1000 : -1000,
-      opacity: 0
+      opacity: 0,
     }),
     center: {
       zIndex: 1,
       x: 0,
-      opacity: 1
+      opacity: 1,
     },
     exit: (direction: number) => ({
       zIndex: 0,
       x: direction < 0 ? 1000 : -1000,
-      opacity: 0
-    })
+      opacity: 0,
+    }),
   };
 
   return (
@@ -110,22 +112,24 @@ const Testimonials = () => {
         </div>
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <motion.div 
+          <motion.div
             className="max-w-4xl mx-auto text-center"
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <motion.div 
+            <motion.div
               className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-md rounded-full px-6 py-3 mb-6"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.2 }}
             >
               <Sparkles className="w-5 h-5 text-accent" fill="currentColor" />
-              <span className="text-sm font-semibold tracking-wider">STORIES OF HOPE</span>
+              <span className="text-sm font-semibold tracking-wider">
+                STORIES OF HOPE
+              </span>
             </motion.div>
-            <motion.h1 
+            <motion.h1
               className="text-5xl md:text-6xl font-bold font-heading mb-6 gradient-animated-text"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -133,13 +137,14 @@ const Testimonials = () => {
             >
               Voices of Hope
             </motion.h1>
-            <motion.p 
+            <motion.p
               className="text-xl md:text-2xl text-white/90"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
             >
-              Stories of transformation from those whose lives have been touched by our work
+              Stories of transformation from those whose lives have been touched
+              by our work
             </motion.p>
           </motion.div>
         </div>
@@ -151,7 +156,7 @@ const Testimonials = () => {
           <div className="max-w-5xl mx-auto">
             <div className="glass-premium rounded-3xl p-12 md:p-16 shadow-strong relative overflow-hidden">
               {/* Decorative Elements */}
-              <motion.div 
+              <motion.div
                 className="absolute top-8 right-8 opacity-10"
                 animate={{ rotate: [0, 10, -10, 0] }}
                 transition={{ duration: 10, repeat: Infinity }}
@@ -171,7 +176,7 @@ const Testimonials = () => {
                     exit="exit"
                     transition={{
                       x: { type: "spring", stiffness: 300, damping: 30 },
-                      opacity: { duration: 0.2 }
+                      opacity: { duration: 0.2 },
                     }}
                   >
                     <div className="mb-8">
@@ -201,7 +206,10 @@ const Testimonials = () => {
                       </div>
 
                       <div className="flex items-center space-x-2">
-                        <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+                        <motion.div
+                          whileHover={{ scale: 1.1 }}
+                          whileTap={{ scale: 0.9 }}
+                        >
                           <Button
                             variant="ghost"
                             size="icon"
@@ -214,7 +222,10 @@ const Testimonials = () => {
                         <div className="text-sm text-muted-foreground px-4">
                           {currentIndex + 1} / {testimonials.length}
                         </div>
-                        <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+                        <motion.div
+                          whileHover={{ scale: 1.1 }}
+                          whileTap={{ scale: 0.9 }}
+                        >
                           <Button
                             variant="ghost"
                             size="icon"
@@ -263,7 +274,7 @@ const Testimonials = () => {
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-6xl mx-auto">
-            <motion.div 
+            <motion.div
               className="text-center mb-16"
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}

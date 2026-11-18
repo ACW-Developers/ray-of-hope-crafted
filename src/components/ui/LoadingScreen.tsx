@@ -13,9 +13,16 @@ const LoadingScreen = () => (
   >
     <div className="px-6 text-center">
       <img src={logo} alt="" className="mx-auto h-24 w-24 object-contain" />
-      <h1 className="mt-6 text-2xl font-bold text-foreground md:text-3xl">Imbuto of Hope International</h1>
-      <div className="mx-auto mt-7 h-8 w-8 animate-spin rounded-full border-[3px] border-border border-t-secondary" aria-hidden="true" />
-      <p className="mt-4 text-sm text-muted-foreground">Bringing hope to life…</p>
+      <h1 className="mt-6 text-2xl font-bold text-foreground md:text-3xl">
+        Imbuto of Hope International
+      </h1>
+      <div
+        className="mx-auto mt-7 h-8 w-8 animate-spin rounded-full border-[3px] border-border border-t-secondary"
+        aria-hidden="true"
+      />
+      <p className="mt-4 text-sm text-muted-foreground">
+        Bringing hope to life…
+      </p>
     </div>
   </motion.div>
 );

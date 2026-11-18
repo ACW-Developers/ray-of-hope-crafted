@@ -7,7 +7,11 @@ interface TypingAnimationProps {
   cursorClassName?: string;
 }
 
-export const TypingAnimation = ({ phrases, className = "", cursorClassName = "" }: TypingAnimationProps) => {
+export const TypingAnimation = ({
+  phrases,
+  className = "",
+  cursorClassName = "",
+}: TypingAnimationProps) => {
   const [currentPhraseIndex, setCurrentPhraseIndex] = useState(0);
   const [displayText, setDisplayText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
@@ -31,7 +35,7 @@ export const TypingAnimation = ({ phrases, className = "", cursorClassName = "" 
           }
         }
       },
-      isDeleting ? 50 : 100
+      isDeleting ? 50 : 100,
     );
 
     return () => clearTimeout(timeout);
@@ -43,7 +47,7 @@ export const TypingAnimation = ({ phrases, className = "", cursorClassName = "" 
       <motion.span
         animate={{ opacity: [1, 0] }}
         transition={{ duration: 0.8, repeat: Infinity }}
-        className={`ml-1 inline-block w-1 h-[1em] ${cursorClassName || 'bg-current'}`}
+        className={`ml-1 inline-block w-1 h-[1em] ${cursorClassName || "bg-current"}`}
       />
     </div>
   );

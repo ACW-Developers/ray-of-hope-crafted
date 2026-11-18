@@ -2,7 +2,12 @@ import type { Config } from "tailwindcss";
 
 export default {
   darkMode: ["class"],
-  content: ["./pages/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}", "./app/**/*.{ts,tsx}", "./src/**/*.{ts,tsx}"],
+  content: [
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
+  ],
   prefix: "",
   theme: {
     container: {
@@ -51,26 +56,26 @@ export default {
         },
       },
       backgroundImage: {
-        'gradient-primary': 'var(--gradient-primary)',
-        'gradient-hero': 'var(--gradient-hero)',
-        'gradient-accent': 'var(--gradient-accent)',
-        'gradient-subtle': 'var(--gradient-subtle)',
-        'gradient-aqua': 'var(--gradient-aqua)',
-        'gradient-sapphire': 'var(--gradient-sapphire)',
-        'gradient-gold': 'var(--gradient-gold)',
-        'gradient-mesh': 'var(--gradient-mesh)',
+        "gradient-primary": "var(--gradient-primary)",
+        "gradient-hero": "var(--gradient-hero)",
+        "gradient-accent": "var(--gradient-accent)",
+        "gradient-subtle": "var(--gradient-subtle)",
+        "gradient-aqua": "var(--gradient-aqua)",
+        "gradient-sapphire": "var(--gradient-sapphire)",
+        "gradient-gold": "var(--gradient-gold)",
+        "gradient-mesh": "var(--gradient-mesh)",
       },
       boxShadow: {
-        'soft': 'var(--shadow-soft)',
-        'medium': 'var(--shadow-medium)',
-        'strong': 'var(--shadow-strong)',
-        'elegant': 'var(--shadow-elegant)',
+        soft: "var(--shadow-soft)",
+        medium: "var(--shadow-medium)",
+        strong: "var(--shadow-strong)",
+        elegant: "var(--shadow-elegant)",
       },
       fontFamily: {
-        sans: ['Quicksand', 'system-ui', 'sans-serif'],
-        heading: ['Quicksand', 'system-ui', 'sans-serif'],
-        inter: ['Quicksand', 'system-ui', 'sans-serif'],
-        playfair: ['Quicksand', 'system-ui', 'sans-serif'],
+        sans: ["Quicksand", "system-ui", "sans-serif"],
+        heading: ["Quicksand", "system-ui", "sans-serif"],
+        inter: ["Quicksand", "system-ui", "sans-serif"],
+        playfair: ["Quicksand", "system-ui", "sans-serif"],
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -102,7 +107,7 @@ export default {
           from: { opacity: "0", transform: "scale(0.95)" },
           to: { opacity: "1", transform: "scale(1)" },
         },
-        "float": {
+        float: {
           "0%, 100%": { transform: "translateY(0px)" },
           "50%": { transform: "translateY(-20px)" },
         },
@@ -110,19 +115,33 @@ export default {
           "0%, 100%": { boxShadow: "0 0 20px hsl(var(--primary) / 0.3)" },
           "50%": { boxShadow: "0 0 40px hsl(var(--primary) / 0.6)" },
         },
-        "shimmer": {
+        shimmer: {
           "0%, 100%": { opacity: "1", filter: "brightness(1)" },
           "50%": { opacity: "0.8", filter: "brightness(1.2)" },
         },
-        "particle": {
-          "0%": { transform: "translateY(0) translateX(0) scale(1)", opacity: "0" },
+        particle: {
+          "0%": {
+            transform: "translateY(0) translateX(0) scale(1)",
+            opacity: "0",
+          },
           "10%": { opacity: "1" },
           "90%": { opacity: "1" },
-          "100%": { transform: "translateY(-100vh) translateX(100px) scale(0)", opacity: "0" },
+          "100%": {
+            transform: "translateY(-100vh) translateX(100px) scale(0)",
+            opacity: "0",
+          },
         },
-        "reveal": {
-          "from": { opacity: "0", transform: "translateY(60px) scale(0.95)", filter: "blur(10px)" },
-          "to": { opacity: "1", transform: "translateY(0) scale(1)", filter: "blur(0)" },
+        reveal: {
+          from: {
+            opacity: "0",
+            transform: "translateY(60px) scale(0.95)",
+            filter: "blur(10px)",
+          },
+          to: {
+            opacity: "1",
+            transform: "translateY(0) scale(1)",
+            filter: "blur(0)",
+          },
         },
         "float-slow": {
           "0%, 100%": { transform: "translate(0, 0) rotate(0deg)" },
@@ -137,12 +156,12 @@ export default {
         "fade-in-up": "fade-in-up 0.8s ease-out",
         "slide-in-right": "slide-in-right 0.5s ease-out",
         "scale-in": "scale-in 0.4s ease-out",
-        "float": "float 6s ease-in-out infinite",
+        float: "float 6s ease-in-out infinite",
         "float-slow": "float-slow 8s ease-in-out infinite",
         "pulse-glow": "pulse-glow 2s ease-in-out infinite",
-        "shimmer": "shimmer 3s ease-in-out infinite",
-        "particle": "particle 20s linear infinite",
-        "reveal": "reveal 1s ease-out forwards",
+        shimmer: "shimmer 3s ease-in-out infinite",
+        particle: "particle 20s linear infinite",
+        reveal: "reveal 1s ease-out forwards",
       },
     },
   },

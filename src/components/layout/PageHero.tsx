@@ -28,7 +28,10 @@ export const PageHero = ({
       style={{ objectPosition: imagePosition }}
     />
     <div aria-hidden="true" className="absolute inset-0 bg-surface-dark/10" />
-    <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-surface-dark via-surface-dark/60 to-surface-dark/20" />
+    <div
+      aria-hidden="true"
+      className="absolute inset-0 bg-gradient-to-t from-surface-dark via-surface-dark/60 to-surface-dark/20"
+    />
     <div className="container-page relative z-10 pb-16 pt-28 md:pb-24">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -39,7 +42,9 @@ export const PageHero = ({
         <p className="mb-5 flex items-center gap-3 text-xs font-bold uppercase tracking-[0.2em] text-accent">
           <Icon className="h-5 w-5" aria-hidden="true" /> {eyebrow}
         </p>
-        <h1 className="text-display max-w-3xl text-surface-dark-foreground">{title}</h1>
+        <h1 className="text-display max-w-3xl text-surface-dark-foreground">
+          {title}
+        </h1>
         <p className="mt-6 max-w-2xl text-lg leading-relaxed text-surface-dark-foreground/80 md:text-xl">
           {description}
         </p>

@@ -1,6 +1,15 @@
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Home, Users, BookOpen, FolderOpen, Mail, HandCoins } from "lucide-react";
+import {
+  Menu,
+  X,
+  Home,
+  Users,
+  BookOpen,
+  FolderOpen,
+  Mail,
+  HandCoins,
+} from "lucide-react";
 import { useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ScrollProgress } from "@/components/ui/ScrollProgress";
@@ -48,7 +57,6 @@ export const Navbar = () => {
           borderRadius: "2rem",
         }}
       >
-
         <div className="container mx-auto px-6 lg:px-8">
           <div className="flex items-center justify-between py-1 md:py-1">
             {/* Logo */}
@@ -58,9 +66,9 @@ export const Navbar = () => {
                 whileTap={{ scale: 0.95 }}
                 className="relative"
               >
-                <img 
-                  src={logo} 
-                  alt="Imbuto of Hope International logo" 
+                <img
+                  src={logo}
+                  alt="Imbuto of Hope International logo"
                   className="h-11 w-auto max-w-[140px] sm:h-14 sm:max-w-[210px] object-contain transition-all duration-300"
                 />
               </motion.div>
@@ -91,14 +99,21 @@ export const Navbar = () => {
                   </Link>
                 );
               })}
-              
+
               <div className="h-8 w-px bg-border/50 mx-2" />
-              
+
               <ThemeToggle />
-              
+
               <Link to="/donate">
-                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                  <Button variant="accent" size="sm" className="ml-2 glow-pulse font-semibold">
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Button
+                    variant="accent"
+                    size="sm"
+                    className="ml-2 glow-pulse font-semibold"
+                  >
                     <HandCoins className="mr-2 h-5 w-5" />
                     Donate Now
                   </Button>
@@ -151,14 +166,20 @@ export const Navbar = () => {
                   </Link>
                 );
               })}
-              
+
               <div className="flex items-center justify-between px-4 py-3">
-                <span className="text-sm font-medium text-gray-500 text-foreground">Theme</span>
+                <span className="text-sm font-medium text-gray-500 text-foreground">
+                  Theme
+                </span>
                 <ThemeToggle />
               </div>
-              
+
               <Link to="/donate" onClick={() => setIsOpen(false)}>
-                <Button variant="accent" size="sm" className="w-full mt-2 font-semibold">
+                <Button
+                  variant="accent"
+                  size="sm"
+                  className="w-full mt-2 font-semibold"
+                >
                   <HandCoins className="mr-2 h-5 w-5" />
                   Donate Now
                 </Button>

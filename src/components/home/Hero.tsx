@@ -1,4 +1,3 @@
-
 import { ArrowRight, BookOpen, Shield, Users } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";

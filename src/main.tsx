@@ -17,21 +17,17 @@ const Root = () => {
       }, 500);
     };
 
-    if (document.readyState === 'complete') {
+    if (document.readyState === "complete") {
       handleLoad();
     } else {
-      window.addEventListener('load', handleLoad);
-      return () => window.removeEventListener('load', handleLoad);
+      window.addEventListener("load", handleLoad);
+      return () => window.removeEventListener("load", handleLoad);
     }
   }, []);
 
   return (
     <AnimatePresence mode="wait">
-      {isLoading ? (
-        <LoadingScreen key="loading" />
-      ) : (
-        <App key="app" />
-      )}
+      {isLoading ? <LoadingScreen key="loading" /> : <App key="app" />}
     </AnimatePresence>
   );
 };

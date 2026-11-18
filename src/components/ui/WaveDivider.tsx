@@ -5,7 +5,10 @@ interface WaveDividerProps {
   color?: string;
 }
 
-export const WaveDivider = ({ className = "", color = "hsl(var(--primary))" }: WaveDividerProps) => {
+export const WaveDivider = ({
+  className = "",
+  color = "hsl(var(--primary))",
+}: WaveDividerProps) => {
   return (
     <div className={`relative w-full h-24 overflow-hidden ${className}`}>
       <svg
@@ -16,7 +19,9 @@ export const WaveDivider = ({ className = "", color = "hsl(var(--primary))" }: W
         <motion.path
           d="M0,0 C150,100 350,0 600,50 C850,100 1050,0 1200,50 L1200,120 L0,120 Z"
           fill={color}
-          initial={{ d: "M0,0 C150,100 350,0 600,50 C850,100 1050,0 1200,50 L1200,120 L0,120 Z" }}
+          initial={{
+            d: "M0,0 C150,100 350,0 600,50 C850,100 1050,0 1200,50 L1200,120 L0,120 Z",
+          }}
           animate={{
             d: [
               "M0,0 C150,100 350,0 600,50 C850,100 1050,0 1200,50 L1200,120 L0,120 Z",

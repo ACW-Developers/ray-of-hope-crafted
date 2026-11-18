@@ -1,5 +1,15 @@
 import { Link } from "react-router-dom";
-import { Mail, MapPin, Phone, PhoneCall, Facebook, Twitter, Instagram, Linkedin, ArrowUpRight } from "lucide-react";
+import {
+  Mail,
+  MapPin,
+  Phone,
+  PhoneCall,
+  Facebook,
+  Twitter,
+  Instagram,
+  Linkedin,
+  ArrowUpRight,
+} from "lucide-react";
 import logo from "@/assets/logos/logo4.png";
 
 const quickLinks = [
@@ -35,11 +45,18 @@ export const Footer = () => {
       <div className="container-page grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-12">
         <div className="lg:col-span-4">
           <Link to="/" className="flex items-center gap-4">
-            <span className="inline-flex rounded-md bg-card px-4 py-3"><img src={logo} alt="Imbuto of Hope International logo" className="h-14 w-auto max-w-[380px] object-contain" /></span>
+            <span className="inline-flex rounded-md bg-card px-4 py-3">
+              <img
+                src={logo}
+                alt="Imbuto of Hope International logo"
+                className="h-14 w-auto max-w-[380px] object-contain"
+              />
+            </span>
           </Link>
           <p className="mt-6 max-w-sm text-sm leading-relaxed opacity-75">
-            Empowering vulnerable children, women, youth, and families through education, economic
-            empowerment, skills development, and community support.
+            Empowering vulnerable children, women, youth, and families through
+            education, economic empowerment, skills development, and community
+            support.
           </p>
           <ul className="mt-6 flex gap-2">
             {socials.map(({ icon: Icon, href, label }) => (
@@ -59,11 +76,16 @@ export const Footer = () => {
         </div>
 
         <nav className="lg:col-span-2" aria-label="Footer">
-          <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-accent">Explore</h3>
+          <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-accent">
+            Explore
+          </h3>
           <ul className="mt-5 space-y-3">
             {quickLinks.map((l) => (
               <li key={l.path}>
-                <Link to={l.path} className="link-underline text-sm opacity-85 hover:opacity-100">
+                <Link
+                  to={l.path}
+                  className="link-underline text-sm opacity-85 hover:opacity-100"
+                >
                   {l.name}
                 </Link>
               </li>
@@ -72,11 +94,16 @@ export const Footer = () => {
         </nav>
 
         <div className="lg:col-span-3">
-          <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-accent">Our Programs</h3>
+          <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-accent">
+            Our Programs
+          </h3>
           <ul className="mt-5 space-y-3">
             {programs.map((p) => (
               <li key={p}>
-                <Link to="/programs" className="link-underline text-sm opacity-85 hover:opacity-100">
+                <Link
+                  to="/programs"
+                  className="link-underline text-sm opacity-85 hover:opacity-100"
+                >
                   {p}
                 </Link>
               </li>
@@ -85,26 +112,38 @@ export const Footer = () => {
         </div>
 
         <div className="lg:col-span-3">
-          <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-accent">Get in Touch</h3>
+          <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-accent">
+            Get in Touch
+          </h3>
           <ul className="mt-5 space-y-4 text-sm">
             <li className="flex gap-3 opacity-85">
-              <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-secondary" /> East & Central Africa Region
+              <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-secondary" /> East
+              & Central Africa Region
             </li>
             <li className="flex gap-3">
               <Mail className="mt-0.5 h-4 w-4 shrink-0 text-secondary" />
-              <a href="mailto:info@imbutoofhope.org" className="link-underline opacity-85 hover:opacity-100">
+              <a
+                href="mailto:info@imbutoofhope.org"
+                className="link-underline opacity-85 hover:opacity-100"
+              >
                 info@imbutoofhope.org
               </a>
             </li>
             <li className="flex gap-3">
               <Phone className="mt-0.5 h-4 w-4 shrink-0 text-secondary" />
-              <a href="https://wa.me/13196542928" className="link-underline opacity-85 hover:opacity-100">
+              <a
+                href="https://wa.me/13196542928"
+                className="link-underline opacity-85 hover:opacity-100"
+              >
                 +1 (319) 654-2928
               </a>
             </li>
             <li className="flex gap-3">
               <PhoneCall className="mt-0.5 h-4 w-4 shrink-0 text-secondary" />
-              <a href="tel:+18253431549" className="link-underline opacity-85 hover:opacity-100">
+              <a
+                href="tel:+18253431549"
+                className="link-underline opacity-85 hover:opacity-100"
+              >
                 +1 (825) 343-1549
               </a>
             </li>

@@ -39,7 +39,7 @@ export const BubbleBackground = () => {
       {bubbles.map((bubble) => {
         const distance = Math.sqrt(
           Math.pow(mousePos.x - (bubble.x / 100) * window.innerWidth, 2) +
-            Math.pow(mousePos.y - (bubble.y / 100) * window.innerHeight, 2)
+            Math.pow(mousePos.y - (bubble.y / 100) * window.innerHeight, 2),
         );
         const scale = Math.max(1, 1.5 - distance / 500);
 
@@ -71,7 +71,7 @@ export const BubbleBackground = () => {
           />
         );
       })}
-      
+
       {/* Mathematical wave patterns */}
       <svg className="absolute inset-0 w-full h-full opacity-10">
         <defs>

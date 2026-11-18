@@ -7,19 +7,13 @@ export const ThemeToggle = () => {
 
   useEffect(() => {
     // Default to light mode unless the user has previously selected a theme.
-    const savedTheme = localStorage.getItem("theme") as
-      | "light"
-      | "dark"
-      | null;
+    const savedTheme = localStorage.getItem("theme") as "light" | "dark" | null;
 
     const initialTheme: "light" | "dark" = savedTheme || "light";
 
     setTheme(initialTheme);
 
-    document.documentElement.classList.toggle(
-      "dark",
-      initialTheme === "dark"
-    );
+    document.documentElement.classList.toggle("dark", initialTheme === "dark");
   }, []);
 
   const toggleTheme = () => {
@@ -28,10 +22,7 @@ export const ThemeToggle = () => {
     setTheme(newTheme);
     localStorage.setItem("theme", newTheme);
 
-    document.documentElement.classList.toggle(
-      "dark",
-      newTheme === "dark"
-    );
+    document.documentElement.classList.toggle("dark", newTheme === "dark");
   };
 
   return (

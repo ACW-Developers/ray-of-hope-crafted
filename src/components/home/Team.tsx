@@ -33,7 +33,10 @@ const reveal = {
 };
 
 export const Team = () => (
-  <section className="bg-background py-20 sm:py-24 lg:py-28" aria-labelledby="team-title">
+  <section
+    className="bg-background py-20 sm:py-24 lg:py-28"
+    aria-labelledby="team-title"
+  >
     <div className="container-page">
       <motion.div {...reveal} className="mx-auto max-w-3xl text-center">
         <p className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-secondary">
@@ -43,8 +46,9 @@ export const Team = () => (
           The people behind the promise
         </h2>
         <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-          Lasting change begins with accountable people. Our leadership team guides every program
-          with care, integrity, and a shared commitment to serve.
+          Lasting change begins with accountable people. Our leadership team
+          guides every program with care, integrity, and a shared commitment to
+          serve.
         </p>
       </motion.div>
 
@@ -82,14 +86,17 @@ export const Team = () => (
 
               <div className="flex flex-1 flex-col p-6 text-center">
                 <h3 className="text-lg font-bold text-foreground">{name}</h3>
-                <p className="mt-2 text-xs font-bold uppercase tracking-[0.2em] text-secondary">{role}</p>
-                <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{bio}</p>
+                <p className="mt-2 text-xs font-bold uppercase tracking-[0.2em] text-secondary">
+                  {role}
+                </p>
+                <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+                  {bio}
+                </p>
               </div>
             </div>
           </motion.li>
         ))}
       </ul>
-
     </div>
   </section>
 );
