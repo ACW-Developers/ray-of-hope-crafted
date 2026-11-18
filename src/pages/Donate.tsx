@@ -1,12 +1,8 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import {
-  ArrowLeft,
   BookOpen,
-  Building2,
   Check,
-  CheckCircle2,
-  Clipboard,
   CreditCard,
   GraduationCap,
   HandHeart,
@@ -14,7 +10,6 @@ import {
   Home,
   LifeBuoy,
   LockKeyhole,
-  Mail,
   Salad,
   ShieldCheck,
   Sparkles,
@@ -37,14 +32,30 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { PageHero } from "@/components/layout/PageHero";
+import { supabase } from "@/integrations/supabase/client";
 import heroImage from "@/assets/general/Latest/R31.jpeg";
 
 const donationSchema = z.object({
-  firstName: z.string().trim().min(2, "Enter at least 2 characters"),
-  lastName: z.string().trim().min(2, "Enter at least 2 characters"),
-  email: z.string().email("Enter a valid email address"),
-  amount: z.number().finite().min(1, "Amount must be at least $1"),
-  impactArea: z.string().min(1, "Choose an impact area"),
+  firstName: z.string().trim().min(2, "Enter at least 2 characters").max(80),
+  lastName: z.string().trim().min(2, "Enter at least 2 characters").max(80),
+  email: z.string().trim().email("Enter a valid email address").max(254),
+  amount: z
+    .number()
+    .finite()
+    .min(1, "Amount must be at least $1")
+    .max(999999.99, "Maximum donation is $999,999.99")
+    .refine((amount) => Math.abs(amount * 100 - Math.round(amount * 100)) < 0.000001, {
+      message: "Enter an amount in whole cents",
+    }),
+  impactArea: z.enum([
+    "education",
+    "healthcare",
+    "shelter",
+    "emergency",
+    "empowerment",
+    "general",
+  ], { required_error: "Choose an impact area" }),
+  donationType: z.enum(["one-time", "monthly"]),
 });
 
 const donationAmounts = [25, 50, 100, 250, 500, 1000];
@@ -54,305 +65,176 @@ const impactAreas: {
   description: string;
   icon: LucideIcon;
 }[] = [
-  {
-    value: "education",
-    label: "Children's Education",
-    description: "School fees, supplies, and learning programs",
-    icon: BookOpen,
-  },
-  {
-    value: "healthcare",
-    label: "Healthcare & Nutrition",
-    description: "Medical care and nutritious meals",
-    icon: HeartPulse,
-  },
-  {
-    value: "shelter",
-    label: "Safe Shelter",
-    description: "Safe housing and protection",
-    icon: Home,
-  },
-  {
-    value: "emergency",
-    label: "Emergency Relief",
-    description: "Immediate support for children in crisis",
-    icon: LifeBuoy,
-  },
-  {
-    value: "empowerment",
-    label: "Youth Empowerment",
-    description: "Skills training and mentorship",
-    icon: Users,
-  },
-  {
-    value: "general",
-    label: "Greatest Need",
-    description: "Support where it is needed most",
-    icon: Target,
-  },
+  { value: "education", label: "Children's Education", description: "School fees, supplies, and learning programs", icon: BookOpen },
+  { value: "healthcare", label: "Healthcare & Nutrition", description: "Medical care and nutritious meals", icon: HeartPulse },
+  { value: "shelter", label: "Safe Shelter", description: "Safe housing and protection", icon: Home },
+  { value: "emergency", label: "Emergency Relief", description: "Immediate support for children in crisis", icon: LifeBuoy },
+  { value: "empowerment", label: "Youth Empowerment", description: "Skills training and mentorship", icon: Users },
+  { value: "general", label: "Greatest Need", description: "Support where it is needed most", icon: Target },
 ];
 const impactGuide = [
   { amount: 25, text: "School supplies for one child", icon: BookOpen },
   { amount: 50, text: "Nutritious meals for one month", icon: Salad },
-  {
-    amount: 100,
-    text: "Education support for three months",
-    icon: GraduationCap,
-  },
+  { amount: 100, text: "Education support for three months", icon: GraduationCap },
   { amount: 250, text: "Complete healthcare for one child", icon: HeartPulse },
   { amount: 500, text: "A full-year scholarship", icon: Sparkles },
 ];
-const paymentInfo = {
-  paypal: { email: "xxxx...", name: "xxxx..." },
-  bank: {
-    bankName: "xxxx...",
-    accountName: "xxxx...",
-    accountNumber: "xxxx...",
-    routingNumber: "xxxx...",
-    swiftCode: "xxxx...",
-  },
-};
-type Pledge = {
-  firstName: string;
-  lastName: string;
-  email: string;
-  amount: number;
-  donationType: string;
-  impactArea: string;
-};
+
+type PaymentState = "form" | "verifying" | "paid" | "pending" | "unconfirmed";
 
 const Donate = () => {
   const [selectedAmount, setSelectedAmount] = useState(100);
   const [customAmount, setCustomAmount] = useState("");
-  const [donationType, setDonationType] = useState("one-time");
+  const [donationType, setDonationType] = useState<"one-time" | "monthly">("one-time");
   const [impactArea, setImpactArea] = useState("");
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-  });
+  const [formData, setFormData] = useState({ firstName: "", lastName: "", email: "" });
   const [errors, setErrors] = useState<Record<string, string>>({});
-  const [pledge, setPledge] = useState<Pledge | null>(null);
-  const [paymentCompleted, setPaymentCompleted] = useState(false);
-  const [copiedField, setCopiedField] = useState<string | null>(null);
+  const [isCheckingOut, setIsCheckingOut] = useState(false);
+  const [paymentState, setPaymentState] = useState<PaymentState>("form");
+  const [verifiedDonation, setVerifiedDonation] = useState<{
+    amountCents: number;
+    donationType: "one-time" | "monthly";
+    impactArea: string;
+  } | null>(null);
+  const [checkoutNotice, setCheckoutNotice] = useState("");
   const selectedImpact = useMemo(
-    () =>
-      impactAreas.find(
-        (area) => area.value === (pledge?.impactArea ?? impactArea),
-      ),
-    [impactArea, pledge],
+    () => impactAreas.find((area) => area.value === impactArea),
+    [impactArea],
   );
   const SelectedImpactIcon = selectedImpact?.icon ?? Target;
 
-  const copyToClipboard = async (text: string, field: string) => {
-    try {
-      await navigator.clipboard.writeText(text);
-      setCopiedField(field);
-      toast.success(`${field} copied`);
-      window.setTimeout(() => setCopiedField(null), 2000);
-    } catch {
-      toast.error("Could not copy automatically", {
-        description: "Please select and copy the information manually.",
-      });
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const payment = params.get("payment");
+    if (payment === "cancelled") {
+      setCheckoutNotice("Checkout was canceled. You can adjust your gift and try again whenever you’re ready.");
+      window.history.replaceState({}, "", window.location.pathname);
+      return;
     }
-  };
+    if (payment !== "success") return;
 
-  const handlePledgeSubmit = (event: React.FormEvent) => {
+    const sessionId = params.get("session_id");
+    window.history.replaceState({}, "", window.location.pathname);
+    if (!sessionId) {
+      setPaymentState("unconfirmed");
+      return;
+    }
+
+    let active = true;
+    setPaymentState("verifying");
+    void supabase.functions
+      .invoke("create-donation-checkout", { body: { action: "verify", sessionId } })
+      .then(({ data, error }) => {
+        if (!active) return;
+        if (error || !data || typeof data.status !== "string") {
+          setPaymentState("unconfirmed");
+          return;
+        }
+        if (data.status === "paid") {
+          setVerifiedDonation({
+            amountCents: Number(data.amountCents),
+            donationType: data.donationType === "monthly" ? "monthly" : "one-time",
+            impactArea: String(data.impactArea ?? "general"),
+          });
+          setPaymentState("paid");
+        } else {
+          setPaymentState("pending");
+        }
+      })
+      .catch(() => {
+        if (active) setPaymentState("unconfirmed");
+      });
+    return () => {
+      active = false;
+    };
+  }, []);
+
+  const handleCheckout = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    setCheckoutNotice("");
     const amount = customAmount === "" ? selectedAmount : Number(customAmount);
-    const result = donationSchema.safeParse({
-      ...formData,
-      amount,
-      impactArea,
-    });
+    const result = donationSchema.safeParse({ ...formData, amount, impactArea, donationType });
     if (!result.success) {
       const nextErrors: Record<string, string> = {};
-      result.error.errors.forEach((error) => {
-        const key = error.path[0];
-        if (key) nextErrors[String(key)] = error.message;
+      result.error.issues.forEach((issue) => {
+        const key = issue.path[0];
+        if (key) nextErrors[String(key)] = issue.message;
       });
       setErrors(nextErrors);
       toast.error("Please review the highlighted fields");
       return;
     }
-    const nextPledge = { ...formData, amount, donationType, impactArea };
+
     setErrors({});
-    setPledge(nextPledge);
-    localStorage.setItem(
-      "donationPledge",
-      JSON.stringify({ ...nextPledge, timestamp: new Date().toISOString() }),
-    );
-    window.scrollTo({ top: 0, behavior: "smooth" });
-    toast.success("Your pledge is ready", {
-      description: "Choose a payment method to complete your donation.",
-    });
+    setIsCheckingOut(true);
+    try {
+      const { data, error } = await supabase.functions.invoke("create-donation-checkout", {
+        body: {
+          action: "create",
+          amountCents: Math.round(result.data.amount * 100),
+          donationType: result.data.donationType,
+          impactArea: result.data.impactArea,
+          donor: {
+            firstName: result.data.firstName,
+            lastName: result.data.lastName,
+            email: result.data.email,
+          },
+        },
+      });
+      if (error || typeof data?.url !== "string") {
+        throw new Error(data?.error ?? "Stripe could not start checkout. Please try again shortly.");
+      }
+      window.location.assign(data.url);
+    } catch (error) {
+      const message = error instanceof Error ? error.message : "Could not start checkout. Please try again.";
+      toast.error(message);
+      setIsCheckingOut(false);
+    }
   };
 
-  const resetPledge = () => {
-    setPledge(null);
-    setPaymentCompleted(false);
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
-  if (paymentCompleted && pledge) {
+  if (paymentState !== "form") {
+    const details = verifiedDonation
+      ? impactAreas.find((area) => area.value === verifiedDonation.impactArea)
+      : undefined;
+    const isPaid = paymentState === "paid";
+    const heading =
+      paymentState === "verifying"
+        ? "Confirming your donation"
+        : isPaid
+          ? "Your generosity brings hope closer."
+          : "Your checkout is still processing";
+    const body =
+      paymentState === "verifying"
+        ? "We’re confirming your payment securely with Stripe."
+        : isPaid && verifiedDonation
+          ? `Your ${verifiedDonation.donationType === "monthly" ? "monthly " : ""}$${(verifiedDonation.amountCents / 100).toFixed(2)} gift is confirmed${details ? ` for ${details.label.toLowerCase()}` : ""}. Thank you for supporting children and families.`
+          : "We couldn’t confirm the payment yet. Please allow a moment, then check your Stripe receipt or contact us before trying again.";
     return (
       <main className="min-h-screen bg-background pt-20">
         <section className="container-page flex min-h-[75vh] items-center justify-center py-20">
-          <motion.div
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="max-w-2xl text-center"
-          >
+          <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} className="max-w-2xl text-center">
             <span className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-secondary/10 text-secondary">
-              <Check className="h-10 w-10" />
+              {isPaid ? <Check className="h-10 w-10" /> : <ShieldCheck className="h-10 w-10" />}
             </span>
-            <p className="eyebrow mt-8">Thank you</p>
-            <h1 className="text-title mt-5">
-              Your generosity brings hope closer.
-            </h1>
-            <p className="mt-6 text-lg leading-8 text-muted-foreground">
-              You marked your ${pledge.amount} donation for{" "}
-              {selectedImpact?.label ?? "the greatest need"} as complete. Our
-              team will confirm it after the payment is verified.
-            </p>
-            <div className="mt-7 rounded-md border border-border bg-card p-5 text-sm leading-6 text-muted-foreground">
-              <Mail className="mx-auto mb-3 h-5 w-5 text-secondary" />
-              Verification can take 24–48 hours. Keep your transfer receipt for
-              your records.
-            </div>
-            <Button asChild variant="hero" size="lg" className="mt-8">
-              <Link to="/">Return home</Link>
-            </Button>
-          </motion.div>
-        </section>
-      </main>
-    );
-  }
-
-  if (pledge) {
-    const methods = [
-      {
-        title: "PayPal",
-        subtitle: "Online transfer",
-        icon: CreditCard,
-        details: [
-          ["PayPal email", paymentInfo.paypal.email],
-          ["Account name", paymentInfo.paypal.name],
-        ],
-      },
-      {
-        title: "Bank transfer",
-        subtitle: "Direct transfer",
-        icon: Building2,
-        details: [
-          ["Bank name", paymentInfo.bank.bankName],
-          ["Account name", paymentInfo.bank.accountName],
-          ["Account number", paymentInfo.bank.accountNumber],
-          ["Routing number", paymentInfo.bank.routingNumber],
-          ["SWIFT code", paymentInfo.bank.swiftCode],
-        ],
-      },
-    ];
-    return (
-      <main className="min-h-screen bg-background pt-20">
-        <section className="border-b border-border bg-muted/45 py-16">
-          <div className="container-page">
-            <Button variant="ghost" onClick={resetPledge}>
-              <ArrowLeft />
-              Edit pledge
-            </Button>
-            <div className="mt-8 grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
-              <div>
-                <p className="eyebrow">Pledge confirmed</p>
-                <h1 className="text-title mt-5">
-                  Complete your ${pledge.amount} donation.
-                </h1>
-                <p className="mt-4 max-w-2xl text-muted-foreground">
-                  Use one of the payment methods below, include your name in the
-                  reference, then tell us when your transfer is complete.
-                </p>
-              </div>
-              <div className="flex items-center gap-3 rounded-md border border-border bg-card px-5 py-4">
-                <SelectedImpactIcon className="h-6 w-6 text-secondary" />
-                <div>
-                  <span className="block text-xs text-muted-foreground">
-                    Supporting
-                  </span>
-                  <strong>{selectedImpact?.label}</strong>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-        <section className="py-16 md:py-24">
-          <div className="container-page">
-            <div className="grid gap-8 lg:grid-cols-2">
-              {methods.map(({ title, subtitle, icon: Icon, details }) => (
-                <article
-                  key={title}
-                  className="rounded-md border border-border bg-card p-6 shadow-soft md:p-8"
-                >
-                  <div className="flex items-center gap-4">
-                    <span className="flex h-12 w-12 items-center justify-center rounded-md bg-primary text-primary-foreground">
-                      <Icon className="h-6 w-6" />
-                    </span>
-                    <div>
-                      <h2 className="text-2xl font-bold">{title}</h2>
-                      <p className="text-sm text-muted-foreground">
-                        {subtitle}
-                      </p>
-                    </div>
-                  </div>
-                  <dl className="mt-7 divide-y divide-border border-y border-border">
-                    {details.map(([label, value]) => (
-                      <div
-                        key={label}
-                        className="grid gap-2 py-4 sm:grid-cols-[9rem_1fr_auto] sm:items-center"
-                      >
-                        <dt className="text-sm text-muted-foreground">
-                          {label}
-                        </dt>
-                        <dd className="break-all font-semibold">{value}</dd>
-                        <Button
-                          type="button"
-                          variant="ghost"
-                          size="icon"
-                          onClick={() => copyToClipboard(value, label)}
-                          aria-label={`Copy ${label}`}
-                        >
-                          {copiedField === label ? (
-                            <CheckCircle2 />
-                          ) : (
-                            <Clipboard />
-                          )}
-                        </Button>
-                      </div>
-                    ))}
-                  </dl>
-                </article>
-              ))}
-            </div>
-            <div className="mx-auto mt-12 max-w-3xl border-t border-border pt-10 text-center">
-              <h2 className="text-2xl font-bold">After you transfer</h2>
-              <p className="mt-3 text-muted-foreground">
-                Clicking below records your confirmation on this device. It does
-                not process or verify payment.
-              </p>
-              <Button
-                variant="hero"
-                size="lg"
-                onClick={() => {
-                  setPaymentCompleted(true);
-                  toast.success("Donation marked as complete");
-                  window.scrollTo({ top: 0, behavior: "smooth" });
-                }}
-                className="mt-6"
-              >
-                <CheckCircle2 />
-                I’ve completed my donation
+            <p className="eyebrow mt-8">{isPaid ? "Thank you" : "Stripe checkout"}</p>
+            <h1 className="text-title mt-5">{heading}</h1>
+            <p className="mt-6 text-lg leading-8 text-muted-foreground">{body}</p>
+            <div className="mt-7 flex flex-wrap justify-center gap-3">
+              {!isPaid && paymentState !== "verifying" && (
+                <Button variant="outline" size="lg" onClick={() => window.location.reload()}>
+                  Check payment again
+                </Button>
+              )}
+              <Button asChild variant="hero" size="lg">
+                <Link to="/">Return home</Link>
               </Button>
+              {!isPaid && paymentState !== "verifying" && (
+                <Button asChild variant="ghost" size="lg">
+                  <Link to="/contact">Contact us</Link>
+                </Button>
+              )}
             </div>
-          </div>
+          </motion.div>
         </section>
       </main>
     );
@@ -362,8 +244,8 @@ const Donate = () => {
     <main className="min-h-screen bg-background">
       <PageHero
         eyebrow="Give with confidence"
-        title="A pledge today can change a child's tomorrow."
-        description="Choose how you would like to help, then receive clear instructions to complete your contribution."
+        title="A gift today can change a child's tomorrow."
+        description="Choose a one-time gift or monthly support. Your secure payment is completed on Stripe."
         image={heroImage}
         icon={HandHeart}
         imagePosition="center 35%"
@@ -371,36 +253,21 @@ const Donate = () => {
       <section className="py-20 md:py-28">
         <div className="container-page grid gap-12 lg:grid-cols-[1.1fr_.9fr] lg:gap-20">
           <div>
-            <p className="eyebrow">Your pledge</p>
-            <h2 className="text-title mt-5">
-              Choose the support that feels right.
-            </h2>
-            <form
-              onSubmit={handlePledgeSubmit}
-              className="mt-10 space-y-8"
-              noValidate
-            >
+            <p className="eyebrow">Your donation</p>
+            <h2 className="text-title mt-5">Choose the support that feels right.</h2>
+            <form onSubmit={handleCheckout} className="mt-10 space-y-8" noValidate>
+              {checkoutNotice && (
+                <div role="status" className="rounded-md border border-border bg-muted p-4 text-sm text-muted-foreground">
+                  {checkoutNotice}
+                </div>
+              )}
               <fieldset>
                 <legend className="font-bold">Donation frequency</legend>
-                <RadioGroup
-                  value={donationType}
-                  onValueChange={setDonationType}
-                  className="mt-4 grid grid-cols-2 gap-3"
-                >
-                  {[
-                    ["one-time", "One-time"],
-                    ["monthly", "Monthly"],
-                  ].map(([value, label]) => (
+                <RadioGroup value={donationType} onValueChange={(value) => setDonationType(value as "one-time" | "monthly")} className="mt-4 grid grid-cols-2 gap-3">
+                  {[["one-time", "One-time"], ["monthly", "Monthly"]].map(([value, label]) => (
                     <div key={value}>
-                      <RadioGroupItem
-                        value={value}
-                        id={value}
-                        className="peer sr-only"
-                      />
-                      <Label
-                        htmlFor={value}
-                        className="flex h-12 cursor-pointer items-center justify-center rounded-md border border-input bg-background peer-data-[state=checked]:border-primary peer-data-[state=checked]:bg-primary peer-data-[state=checked]:text-primary-foreground"
-                      >
+                      <RadioGroupItem value={value} id={value} className="peer sr-only" />
+                      <Label htmlFor={value} className="flex h-12 cursor-pointer items-center justify-center rounded-md border border-input bg-background peer-data-[state=checked]:border-primary peer-data-[state=checked]:bg-primary peer-data-[state=checked]:text-primary-foreground">
                         {label}
                       </Label>
                     </div>
@@ -408,189 +275,81 @@ const Donate = () => {
                 </RadioGroup>
               </fieldset>
               <fieldset>
-                <legend className="font-bold">Pledge amount (USD)</legend>
+                <legend className="font-bold">Gift amount (USD)</legend>
                 <div className="mt-4 grid grid-cols-3 gap-3">
                   {donationAmounts.map((amount) => (
-                    <Button
-                      key={amount}
-                      type="button"
-                      variant={
-                        selectedAmount === amount && customAmount === ""
-                          ? "default"
-                          : "outline"
-                      }
-                      onClick={() => {
-                        setSelectedAmount(amount);
-                        setCustomAmount("");
-                      }}
-                      aria-pressed={
-                        selectedAmount === amount && customAmount === ""
-                      }
-                    >
+                    <Button key={amount} type="button" variant={selectedAmount === amount && customAmount === "" ? "default" : "outline"} onClick={() => { setSelectedAmount(amount); setCustomAmount(""); }} aria-pressed={selectedAmount === amount && customAmount === ""}>
                       ${amount}
                     </Button>
                   ))}
                 </div>
                 <div className="mt-4 space-y-2">
-                  <Label htmlFor="custom-amount">
-                    Or enter a custom amount
-                  </Label>
-                  <Input
-                    id="custom-amount"
-                    type="number"
-                    min="1"
-                    inputMode="decimal"
-                    value={customAmount}
-                    onChange={(event) => setCustomAmount(event.target.value)}
-                    placeholder="Amount in USD"
-                    className="h-12"
-                    aria-invalid={Boolean(errors.amount)}
-                  />
-                  {errors.amount && (
-                    <p className="text-sm text-destructive">{errors.amount}</p>
-                  )}
+                  <Label htmlFor="custom-amount">Or enter a custom amount</Label>
+                  <Input id="custom-amount" type="number" min="1" max="999999.99" step="0.01" inputMode="decimal" value={customAmount} onChange={(event) => setCustomAmount(event.target.value)} placeholder="Amount in USD" className="h-12" aria-invalid={Boolean(errors.amount)} />
+                  {errors.amount && <p className="text-sm text-destructive">{errors.amount}</p>}
                 </div>
               </fieldset>
               <div className="space-y-2">
-                <Label htmlFor="impact-area">
-                  Where should your gift help?
-                </Label>
+                <Label htmlFor="impact-area">Where should your gift help?</Label>
                 <Select value={impactArea} onValueChange={setImpactArea}>
-                  <SelectTrigger
-                    id="impact-area"
-                    className="h-12"
-                    aria-invalid={Boolean(errors.impactArea)}
-                  >
+                  <SelectTrigger id="impact-area" className="h-12" aria-invalid={Boolean(errors.impactArea)}>
                     <SelectValue placeholder="Select an impact area" />
                   </SelectTrigger>
                   <SelectContent>
-                    {impactAreas.map(({ value, label }) => (
-                      <SelectItem key={value} value={value}>
-                        {label}
-                      </SelectItem>
-                    ))}
+                    {impactAreas.map(({ value, label }) => <SelectItem key={value} value={value}>{label}</SelectItem>)}
                   </SelectContent>
                 </Select>
-                {errors.impactArea && (
-                  <p className="text-sm text-destructive">
-                    {errors.impactArea}
-                  </p>
-                )}
-                {selectedImpact && (
-                  <p className="flex items-center gap-2 text-sm text-muted-foreground">
-                    <SelectedImpactIcon className="h-4 w-4 text-secondary" />
-                    {selectedImpact.description}
-                  </p>
-                )}
+                {errors.impactArea && <p className="text-sm text-destructive">{errors.impactArea}</p>}
+                {selectedImpact && <p className="flex items-center gap-2 text-sm text-muted-foreground"><SelectedImpactIcon className="h-4 w-4 text-secondary" />{selectedImpact.description}</p>}
               </div>
               <fieldset>
                 <legend className="font-bold">Your information</legend>
                 <div className="mt-4 grid gap-5 sm:grid-cols-2">
                   <div className="space-y-2">
                     <Label htmlFor="first-name">First name</Label>
-                    <Input
-                      id="first-name"
-                      autoComplete="given-name"
-                      value={formData.firstName}
-                      onChange={(event) =>
-                        setFormData({
-                          ...formData,
-                          firstName: event.target.value,
-                        })
-                      }
-                      aria-invalid={Boolean(errors.firstName)}
-                      className="h-12"
-                    />
-                    {errors.firstName && (
-                      <p className="text-sm text-destructive">
-                        {errors.firstName}
-                      </p>
-                    )}
+                    <Input id="first-name" autoComplete="given-name" value={formData.firstName} onChange={(event) => setFormData({ ...formData, firstName: event.target.value })} aria-invalid={Boolean(errors.firstName)} className="h-12" />
+                    {errors.firstName && <p className="text-sm text-destructive">{errors.firstName}</p>}
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="last-name">Last name</Label>
-                    <Input
-                      id="last-name"
-                      autoComplete="family-name"
-                      value={formData.lastName}
-                      onChange={(event) =>
-                        setFormData({
-                          ...formData,
-                          lastName: event.target.value,
-                        })
-                      }
-                      aria-invalid={Boolean(errors.lastName)}
-                      className="h-12"
-                    />
-                    {errors.lastName && (
-                      <p className="text-sm text-destructive">
-                        {errors.lastName}
-                      </p>
-                    )}
+                    <Input id="last-name" autoComplete="family-name" value={formData.lastName} onChange={(event) => setFormData({ ...formData, lastName: event.target.value })} aria-invalid={Boolean(errors.lastName)} className="h-12" />
+                    {errors.lastName && <p className="text-sm text-destructive">{errors.lastName}</p>}
                   </div>
                 </div>
                 <div className="mt-5 space-y-2">
                   <Label htmlFor="donor-email">Email address</Label>
-                  <Input
-                    id="donor-email"
-                    type="email"
-                    autoComplete="email"
-                    value={formData.email}
-                    onChange={(event) =>
-                      setFormData({ ...formData, email: event.target.value })
-                    }
-                    aria-invalid={Boolean(errors.email)}
-                    className="h-12"
-                  />
-                  {errors.email && (
-                    <p className="text-sm text-destructive">{errors.email}</p>
-                  )}
+                  <Input id="donor-email" type="email" autoComplete="email" value={formData.email} onChange={(event) => setFormData({ ...formData, email: event.target.value })} aria-invalid={Boolean(errors.email)} className="h-12" />
+                  {errors.email && <p className="text-sm text-destructive">{errors.email}</p>}
                 </div>
               </fieldset>
-              <Button variant="hero" size="xl" className="w-full" type="submit">
-                <Mail />
-                Make pledge and view payment details
+              <Button variant="hero" size="xl" className="w-full" type="submit" disabled={isCheckingOut}>
+                <CreditCard />
+                {isCheckingOut ? "Opening secure checkout…" : `Continue to Stripe Checkout${donationType === "monthly" ? " · monthly" : ""}`}
               </Button>
               <div className="flex flex-col gap-2 text-sm text-muted-foreground sm:flex-row sm:justify-center sm:gap-6">
-                <span className="flex items-center gap-2">
-                  <Mail className="h-4 w-4" />
-                  Clear payment instructions
-                </span>
-                <span className="flex items-center gap-2">
-                  <LockKeyhole className="h-4 w-4" />
-                  Your details stay on this device
-                </span>
+                <span className="flex items-center gap-2"><LockKeyhole className="h-4 w-4" />Secure payment with Stripe</span>
+                <span className="flex items-center gap-2"><ShieldCheck className="h-4 w-4" />Card details are not stored here</span>
               </div>
             </form>
           </div>
           <aside className="lg:border-l lg:border-border lg:pl-12">
             <div className="sticky top-28">
               <p className="eyebrow">What giving can do</p>
-              <h2 className="mt-5 text-3xl font-bold">
-                Every amount has purpose.
-              </h2>
+              <h2 className="mt-5 text-3xl font-bold">Every amount has purpose.</h2>
               <div className="mt-8 divide-y divide-border border-y border-border">
                 {impactGuide.map(({ amount, text, icon: Icon }) => (
-                  <div
-                    key={amount}
-                    className="grid grid-cols-[3rem_4rem_1fr] items-center gap-3 py-5"
-                  >
-                    <span className="flex h-10 w-10 items-center justify-center rounded-md bg-secondary/10 text-secondary">
-                      <Icon className="h-5 w-5" />
-                    </span>
+                  <div key={amount} className="grid grid-cols-[3rem_4rem_1fr] items-center gap-3 py-5">
+                    <span className="flex h-10 w-10 items-center justify-center rounded-md bg-secondary/10 text-secondary"><Icon className="h-5 w-5" /></span>
                     <strong className="text-primary">${amount}</strong>
-                    <span className="text-sm leading-6 text-muted-foreground">
-                      {text}
-                    </span>
+                    <span className="text-sm leading-6 text-muted-foreground">{text}</span>
                   </div>
                 ))}
               </div>
               <div className="mt-8 rounded-md bg-muted p-6">
                 <ShieldCheck className="h-7 w-7 text-secondary" />
-                <h3 className="mt-4 font-bold">A transparent pledge process</h3>
+                <h3 className="mt-4 font-bold">A secure, transparent donation</h3>
                 <p className="mt-2 text-sm leading-6 text-muted-foreground">
-                  This form records your pledge and displays transfer details.
-                  No payment is charged on this website.
+                  Stripe securely processes your one-time or monthly donation. You’ll review the amount before completing payment.
                 </p>
               </div>
             </div>

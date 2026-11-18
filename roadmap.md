@@ -1,5 +1,6 @@
 # Roadmap
 
+- [ ] Connect Stripe test checkout for one-time and monthly donations and remove static bank/PayPal details
 - [ ] Optimize website image delivery while preserving original assets and dimensions
 - [ ] Improve About, Programs, Projects, and Contact hero contrast and verify image loading
 
