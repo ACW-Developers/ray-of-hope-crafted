@@ -27,6 +27,7 @@ import skillsImage from "@/assets/general/Latest/R16.jpeg";
 import basicImage from "@/assets/general/Latest/R25.jpeg";
 import protectionImage from "@/assets/general/Latest/R13.jpeg";
 import partnershipImage from "@/assets/general/Latest/R1.jpeg";
+import skills from "@/assets/general/Latest/R19.jpeg";
 
 const programs = [
   {
@@ -121,7 +122,7 @@ const programs = [
     tagline: "Equipping people for the digital world",
     description:
       "Empowering vulnerable youth, women, and community members with practical digital and creative skills that open doors to employment, entrepreneurship, self-expression, and income-generating opportunities.",
-    image: skillsImage,
+    image: skills,
     features: [
       "General computer skills",
       "Photography",
